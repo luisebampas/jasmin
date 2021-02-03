@@ -1,0 +1,21 @@
+# users data
+INSERT INTO users VALUES (usernum, 'id01', 'pwd01', 'james01');
+INSERT INTO users VALUES (usernum, 'id02', 'pwd02', 'james02');
+INSERT INTO users VALUES (usernum, 'id03', 'pwd03', 'james03');
+INSERT INTO users VALUES (usernum, 'id04', 'pwd04', 'james04');
+INSERT INTO users VALUES (usernum, 'id05', 'pwd05', 'james05');
+INSERT INTO users VALUES (usernum, 'id06', 'pwd06', 'james06');
+INSERT INTO users VALUES (usernum, 'id07', 'pwd07', 'james07');
+INSERT INTO users VALUES (usernum, 'id08', 'pwd08', 'james08');
+INSERT INTO users VALUES (usernum, 'id09', 'pwd09', 'james09');
+INSERT INTO users VALUES (usernum, 'id10', 'pwd10', 'james10');
+INSERT INTO users VALUES (usernum, 'id11', 'pwd11', 'james11');
+INSERT INTO users VALUES (usernum, 'id12', 'pwd12', 'james12');
+INSERT INTO users VALUES (usernum, 'id13', 'pwd13', 'james13');
+INSERT INTO users VALUES (usernum, 'id14', 'pwd14', 'james14');
+INSERT INTO users VALUES (usernum, 'id15', 'pwd15', 'james15');
+INSERT INTO users VALUES (usernum, 'id16', 'pwd16', 'james16');
+INSERT INTO users VALUES (usernum, 'id17', 'pwd17', 'james17');
+INSERT INTO users VALUES (usernum, 'id18', 'pwd18', 'james18');
+INSERT INTO users VALUES (usernum, 'id19', 'pwd19', 'james19');
+INSERT INTO users VALUES (usernum, 'id20', 'pwd20', 'james20');

@@ -1,0 +1,27 @@
+# formats data
+INSERT INTO formats VALUES (1,'EPUB');
+INSERT INTO formats VALUES (2,'EPUB3.0');
+INSERT INTO formats VALUES (3,'PDF');
+INSERT INTO formats VALUES (4,'m.PDF');
+INSERT INTO formats VALUES (5,'COMIC');
+
+##################################################
+# items data
+INSERT INTO items VALUES (itemnum, 10101, 1001, 1, '책001', 5000, 'img001', CURRENT_DATE(), 1000);
+INSERT INTO items VALUES (itemnum, 10102, 1002, 2, '책002', 5500, 'img002', CURRENT_DATE(), 1200);
+INSERT INTO items VALUES (itemnum, 10201, 1003, 3, '책003', 6000, 'img003', CURRENT_DATE(), 1400);
+INSERT INTO items VALUES (itemnum, 10202, 1004, 4, '책004', 6500, 'img004', CURRENT_DATE(), 1600);
+INSERT INTO items VALUES (itemnum, 10203, 1001, 5, '책005', 7000, 'img005', CURRENT_DATE(), 1800);
+INSERT INTO items VALUES (itemnum, 10301, 1002, 1, '책006', 5000, 'img006', CURRENT_DATE(), 2000);
+INSERT INTO items VALUES (itemnum, 10101, 1003, 2, '책007', 5000, 'img007', CURRENT_DATE(), 3000);
+INSERT INTO items VALUES (itemnum, 10202, 1004, 4, '책008', 5500, 'img008', CURRENT_DATE(), 1000);
+INSERT INTO items VALUES (itemnum, 10303, 1004, 3, '책009', 5500, 'img009', CURRENT_DATE(), 1500);
+INSERT INTO items VALUES (itemnum, 20101, 1002, 5, '책010', 6000, 'img010', CURRENT_DATE(), 2000);
+INSERT INTO items VALUES (itemnum, 20201, 1003, 1, '책011', 6000, 'img011', CURRENT_DATE(), 2500);
+INSERT INTO items VALUES (itemnum, 20202, 1001, 1, '책012', 6500, 'img012', CURRENT_DATE(), 3000);
+INSERT INTO items VALUES (itemnum, 20301, 1003, 2, '책013', 6500, 'img013', CURRENT_DATE(), 1000);
+INSERT INTO items VALUES (itemnum, 20302, 1001, 2, '책014', 7000, 'img014', CURRENT_DATE(), 1400);
+INSERT INTO items VALUES (itemnum, 20303, 1004, 3, '책015', 7000, 'img015', CURRENT_DATE(), 1800);
+INSERT INTO items VALUES (itemnum, 20301, 1002, 3, '책016', 5000, 'img016', CURRENT_DATE(), 2200);
+INSERT INTO items VALUES (itemnum, 20302, 1001, 4, '책017', 5000, 'img017', CURRENT_DATE(), 2600);
+INSERT INTO items VALUES (itemnum, 20303, 1002, 5, '책018', 5500, 'img018', CURRENT_DATE(), 3000);

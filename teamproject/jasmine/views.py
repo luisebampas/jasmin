@@ -39,3 +39,22 @@ class MainView:
             'section': 'jasmine/join.html'
         };
         return render(request, 'jasmine/join.html', context)
+
+class sectionView:
+    def mainSection(request):
+        context = {
+            'section': 'jasmine/mainsection.html'
+        };
+        return render(request, 'jasmine/home.html', context)
+
+    def itemlist(request):
+        context = {
+            'section': 'jasmine/itemlist.html'
+        };
+        return render(request, 'jasmine/home.html', context)
+
+    def itemcontent(request):
+        context = {
+            'section': 'jasmine/itemcontent.html'
+        };
+        return render(request, 'jasmine/home.html', context)

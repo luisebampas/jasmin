@@ -28,4 +28,9 @@ urlpatterns = [
     path('join', views.MainView.join, name='join'),
     path('loginimpl', views.MainView.loginimpl, name='loginimpl'),
     path('logout', views.MainView.logout, name='logout'),
+
+    path('mainSection', views.sectionView.mainSection, name='mainSection'),
+    path('itemlist', views.sectionView.itemlist, name='itemlist'),
+    path('itemcontent', views.sectionView.itemcontent, name='itemcontent'),
+
 ]

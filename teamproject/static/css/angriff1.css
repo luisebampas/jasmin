@@ -1,0 +1,66 @@
+/* itemlist(card) css */
+.list_content {
+  font-size: 12px;
+  color: #777;
+  line height: 100%;
+}
+
+.list_content ul {
+  border-bottom: 1px solid #d8d8d8;
+  overflow: hidden;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.list_content ul .list_item {
+  width: 170px;
+  float: left;
+  padding: 27px 10px 30px;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+.list_content ul .list_item .pic_area {
+  width: 124px;
+  height: 182px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.list_content ul .list_item .pic_area .book_img {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.list_content ul .list_item .pic_area .book_img img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #9c9c9c;
+}
+
+.list_content .list_item .cont_area {
+  text-align: center;
+  color: #6b6d70;
+  padding-top: 8px;
+}
+
+/* paging */
+.paging {
+  text-align: center;
+}
+
+/* search bar */
+.searchbar {
+  text-align: center;
+  font-size: 18px;
+}

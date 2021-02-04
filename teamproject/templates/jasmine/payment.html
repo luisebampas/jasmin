@@ -1,0 +1,88 @@
+{% load static %}
+
+{% block content %}
+<section>
+    <h1>Payment</h1>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6">
+            <div class="pic_area">
+              <a href="{% url 'itemcontent' %}" class="book_img"><img src="static/img/testimg.jpg"></a>
+            </div>
+        </div>
+        <!-- //picture -->
+        <div class="col-lg-6">
+            <div class="cont_area">
+              <div class="item_title">
+                  제목 : <a href="{% url 'itemcontent' %}">하마터면 깨달을 뻔 인지심리학자가 본 에고의 진실게임</a>
+              </div>
+              <div class="item_title">
+                  가격 :
+              </div>
+            </div>
+        </div>
+      </div>
+      <div>
+        <tbody><tr>
+            <td width="700">
+                <img src="/ucl_editor/img_secur/order/2010/dot_star.gif" width="17" height="18" align="middle">
+                <span class="title"></span><span class="title">결제 수단 선택</span>
+            </td></tr>
+        </tbody>
+      </div>
+      <span></span>
+      <div>
+        <tbody><tr>
+            <td colspan="2" style="padding:10px 10px 20px 10px;" bgcolor="#FFFFFF">
+                <!--<div style="background:#f8e9d6; margin:0 0 10px 0; padding:5px 10px 10px 10px; border-radius:3px; color:#333333; font-size:14px;font-family:'Apple SD Gothic Neo',Malgun Gothic,'돋움',Sans-serif; "><strong>국내도서/외국도서/중고도서/전자책 구매 시 소득공제 가능</strong></div>-->
+                <!--결재 부분 수정-->
+			    <table width="96%" cellspacing="0" cellpadding="2" border="0">
+                <tbody>
+                    <tr>
+                        <td width="37%">
+                            <input type="radio" value="38" id="PayMethod_38" name="PayMethod" onclick="selPayment(this.value);" class="linkP">
+                            <span><label for="PayMethod_38">
+                            <img src="https://image.aladin.co.kr/img/order/step2_logo_toss.jpg" align="absmiddle"></label></span></td>
+                        <td width="33%">
+                            <input id="PayMethod_37" type="radio" value="37" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><label for="PayMethod_37">해외발급 신용카드</label></td>
+                        <td width="30%">
+                            <input id="PayMethod_15" type="radio" value="15" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><label for="PayMethod_15">실시간계좌이체</label></td></tr>
+                    <tr>
+                        <td width="37%">
+                            <input id="PayMethod_13" type="radio" value="13" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><span><label for="PayMethod_13">신용카드</label></span></td>
+                        <td width="33%">
+                            <input id="PayMethod_2" type="radio" value="2" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><label for="PayMethod_2">무통장입금</label></td>
+                        <td width="30%">
+                            <input type="radio" value="17" id="PayMethod_17" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><label for="PayMethod_17">휴대폰 결제</label></td></tr>
+                    <tr>
+                        <td width="37%">
+                            <input type="radio" value="29" id="PayMethod_29" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><span><label for="PayMethod_29"><img src="https://image.aladin.co.kr/img/order/step2_logo_naver.jpg" align="absmiddle"></label></span></td>
+                        <td width="33%">
+                            <input type="radio" value="15" id="PayMethod_14" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><label for="PayMethod_14">에스크로<img src="/ucl_editor/img_secur/bu/help_p.gif" class="linkP" onclick="window.open('http://blog.aladin.co.kr/cscenter/1824522','HelpEscrow2','scrollbars=yes,width=800,height=800,status=1')" border="0" align="absmiddle"></label></td>
+                        <td width="30%"><input type="radio" value="35" id="PayMethod_35" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><span><label for="PayMethod_35"><img src="http://image.aladin.co.kr/img/order/step2_logo_lpay.jpg" align="absmiddle"></label></span></td>
+                    </tr>
+                    <tr>
+                        <td width="37%">
+                            <input type="radio" value="34" id="PayMethod_34" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><span><label for="PayMethod_34"><img src="https://image.aladin.co.kr/img/order/step2_logo_kakao.jpg" align="absmiddle"></label></span></td>
+                        <td width="33%">
+                            <input type="radio" value="33" id="PayMethod_33" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><span><label for="PayMethod_33"><img src="https://image.aladin.co.kr/img/order/step2_logo_smaile.jpg" align="absmiddle"></label></span></td>
+                        <td width="30%">
+                            <input type="radio" value="36" id="PayMethod_36" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><span><label for="PayMethod_36"><img src="http://image.aladin.co.kr/img/order/step2_logo_ssg.jpg" align="absmiddle"></label></span></td></tr>
+                    <tr>
+                        <td width="37%">
+                            <input type="radio" value="27" id="PayMethod_27" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><span><label for="PayMethod_27"><img src="https://image.aladin.co.kr/img/order/step2_logo_payco.jpg" align="absmiddle"></label></span></td>
+                        <td width="33%">
+                            <input type="radio" value="32" id="PayMethod_32" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><span><label for="PayMethod_32"><img src="https://image.aladin.co.kr/img/order/step2_logo_samsung.jpg" align="absmiddle"></label></span></td>
+                        <td width="30%"></td>
+                    </tr>
+                </tbody>
+                </table>
+            </td>
+        </tr></tbody>
+      </div>
+    <span></span>
+    <button type="button" class="btn btn-default" align="middle"><a href="{% url 'paydetail' %}"></a>결제하기</button>
+    </div>
+</section>
+<span></span>
+{% endblock %}

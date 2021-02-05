@@ -1,6 +1,15 @@
-from django.shortcuts import render
+import logging
+
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 
 # Create your views here.
+from django.utils.http import urlencode
+
+from frame.error import ErrorCode
+from frame.userdb import UserDb
+logger = logging.getLogger('users');
+
 class MainView:
     def login(request):
         context = {
@@ -18,24 +27,94 @@ class MainView:
         pwd = request.POST['pwd'];
         try:
             user = UserDb().selectone(id);
-            if pwd == user.pwd:
+            if pwd == user.userpwd:
+                logger.debug(id)
                 request.session['suser'] = id;
                 context = {
-                  'section':'shop2/loginok.html',
+                  'section':'jasmine/loginok.html',
                     'loginuser':user
                 };
             else:
                 raise Exception;
-
         except:
             context = {
                 'section': 'jasmine/error.html',
                 'error': ErrorCode.e0003
             };
-        return render(request, 'jasmine/home', context);
+        return render(request, 'jasmine/home.html', context);
 
     def join(request):
         context = {
             'section': 'jasmine/join.html'
         };
         return render(request, 'jasmine/join.html', context)
+
+    def joinimpl(request):
+        id = request.POST['id'];
+        pwd = request.POST['pwd'];
+        name = request.POST['name'];
+        try:
+            UserDb().insert(id, pwd, name);
+            context = {
+                'section':'jasmine/joinok.html'
+            };
+        except:
+            context = {
+                'section': 'jasmine/error.html',
+                'error': ErrorCode.e0001
+            };
+        return render(request, 'jasmine/home.html', context);
+
+def mypage(request):
+    return render(request, 'mypage.html');
+
+def userdetail(request):
+    id = request.GET['id'];
+    print(id)
+    rsuser = UserDb().selectone(id);
+    print(rsuser)
+    context = {
+        'section': 'jasmine/userdetail.html',
+        'userdetail':rsuser,
+    };
+
+    return render(request, 'jasmine/mypage.html', context)
+
+def userupdate(request):
+    id = request.GET['id'];
+    user = UserDb().selectone(id);
+    context = {
+        'section':'jasmine/userupdate.html',
+        'uuser':user
+    };
+    return render(request, 'jasmine/mypage.html',context)
+
+def userupdateimpl(request):
+    id = request.POST['id'];
+    pwd = request.POST['pwd'];
+    name = request.POST['name'];
+    try:
+        UserDb().update(id,pwd,name);
+    except:
+        context = {
+            'section': 'jasmine/error.html',
+            'error':ErrorCode.e0001
+        };
+        return render(request,'jasmine/home.html',context);
+    qstr = urlencode({'id':id})
+    return HttpResponseRedirect('%s?%s' % ('userdetail',qstr));
+
+def userdelete(request):
+    id = request.GET['id'];
+    try:
+        UserDb().delete(id);
+        request.session['suser'] = None;
+    except:
+        context = {
+            'section': 'jasmine/error.html',
+            'error':ErrorCode.e0002
+        };
+        return render(request,'jasmine/home.html',context);
+    return render(request,'jasmine/home.html');
+
+

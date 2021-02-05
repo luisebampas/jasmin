@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 # Create your views here.
 class MainView:
     def login(request):
@@ -11,7 +12,7 @@ class MainView:
     def logout(request):
         if request.session['suser'] != None:
             del request.session['suser'];
-        return render(request,'jasmine/home.html')
+        return render(request, 'jasmine/home.html')
 
     def loginimpl(request):
         id = request.POST['id'];
@@ -21,8 +22,8 @@ class MainView:
             if pwd == user.pwd:
                 request.session['suser'] = id;
                 context = {
-                  'section':'shop2/loginok.html',
-                    'loginuser':user
+                    'section': 'shop2/loginok.html',
+                    'loginuser': user
                 };
             else:
                 raise Exception;
@@ -39,6 +40,7 @@ class MainView:
             'section': 'jasmine/join.html'
         };
         return render(request, 'jasmine/join.html', context)
+
 
 class sectionView:
     def mainSection(request):

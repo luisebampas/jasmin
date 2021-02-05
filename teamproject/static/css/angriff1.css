@@ -1,12 +1,21 @@
-/* itemlist(card) css */
-.list_content {
+/* font */
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800');
+
+section {
+  font-family: 'NanumBarunGothic', 'Nanum Gothic', sans-serif;
   font-size: 12px;
   color: #777;
-  line height: 100%;
+}
+
+/* item list */
+.list_content {
+  font-family: 'NanumBarunGothic', 'Nanum Gothic', sans-serif;
+  font-size: 12px;
+  color: #777;
 }
 
 .list_content ul {
-  border-bottom: 1px solid #d8d8d8;
   overflow: hidden;
   list-style: none;
   margin: 0px;
@@ -16,42 +25,121 @@
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  padding-inline-start: 40px;
+  padding-inline-start: 10px;
+  border-bottom: 1px solid #d8d8d8;
 }
 
 .list_content ul .list_item {
-  width: 170px;
+  width: 200px;
   float: left;
-  padding: 27px 10px 30px;
+  padding: 30px 10px;
   text-align: center;
-  margin: 0px;
-  padding: 0px;
+  background-color: transparent;
+  border-top: 1px solid #d8d8d8;
 }
 
-.list_content ul .list_item .pic_area {
+.list_content ul .list_item .pic-area {
   width: 124px;
   height: 182px;
   margin: 0 auto;
   position: relative;
 }
 
-.list_content ul .list_item .pic_area .book_img {
+.list_content ul .list_item .pic-area .book-img {
   display: block;
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.list_content ul .list_item .pic_area .book_img img {
+img {
     width: 100%;
     height: 100%;
     border: 1px solid #9c9c9c;
 }
 
-.list_content .list_item .cont_area {
+.list_content .list_item .cont-area {
   text-align: center;
   color: #6b6d70;
   padding-top: 8px;
+}
+
+/* item menu */
+.item-menu {
+  font-family: 'NanumBarunGothic', 'Nanum Gothic', sans-serif;
+  font-size: 12px;
+  color: #777;
+  margin-top: 30px;
+}
+
+.item-menu .book-preview {
+  width: 200px;
+  float: left;
+  text-align: center;
+  margin-right: 30px;
+}
+
+.item-menu .book-preview .cover {
+  margin-bottom: 12px;
+}
+
+/*
+.item-menu .book-preview .txt-preview{
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  right: 10px;
+  padding: 12px 0 10px;
+  color: #fff;
+  line-height: 18px;
+  margin-top: -20px;
+  text-align: center;
+}
+*/
+
+.item-menu .order-box .book-title {
+  color: #343a40;
+}
+
+.item-menu .order-box .book-price {
+  color: #343a40;
+  margin: 30px 0 20px;
+}
+
+.item-menu .order-box .btn-wrap .buttons {
+  display: inline-block;
+  min-width: 85px;
+  height: 56px;
+  padding: 14px 10px 0;
+  margin-right: 10px;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  background-color: #007bff;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.item-detail {
+  font-family: 'NanumBarunGothic', 'Nanum Gothic', sans-serif;
+  font-size: 12px;
+  color: #777;
+  clear:left
+}
+
+.item-detail .detail-title{
+  font-size: 18px;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.item-detail .detail-title:first-child {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
 }
 
 /* paging */
@@ -63,4 +151,6 @@
 .searchbar {
   text-align: center;
   font-size: 18px;
+  padding-top: 30px;
+  padding-bottom: 50px;
 }

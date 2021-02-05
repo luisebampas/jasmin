@@ -12,11 +12,14 @@
 
   <title>JASMINE</title>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
   <!-- Bootstrap core CSS -->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+
   <!-- Custom styles for this template -->
   <link href="{% static 'css/shop-homepage.css' %}" rel="stylesheet">
+  <link href="{% static 'css/angriff1.css' %}" rel="stylesheet">
+  <link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet">
 
 </head>
 
@@ -48,12 +51,13 @@
       </div>
     </div>
   </nav>
-    {% block content %}
-    {% endblock %}
 
+  {% block content %}
+  {% endblock %}
 
   <!-- Bootstrap core JavaScript -->
   <script src="{% static 'vendor/jquery/jquery.js' %}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+  <script src="{% static 'vendor/jquery/jquery.magnific-popup.js' %}"></script>
 </body>
 </html>

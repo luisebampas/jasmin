@@ -6,9 +6,69 @@
 </script>
 {% block content %}
 <section>
-    <h1>결제가 완료되었습니다.</h1>
-    <dib con></dib>
-
+    <h1>결제가 완료되었습니다.</h1><br>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-4">
+            <div class="pic_area">
+              <a href="{% url 'itemcontent' %}" class="book_img"><img src="static/img/testimg.jpg"></a>
+            </div>
+        </div>
+        <!-- //picture -->
+        <div class="col-lg-8">
+            <div class="cont_area">
+              <div class="item_title">
+                  제목 : <a href="{% url 'itemcontent' %}">하마터면 깨달을 뻔 인지심리학자가 본 에고의 진실게임</a>
+              </div>
+              <div class="item_title">
+                  가격 :
+              <div class="item_title">
+                  구매일자 :
+              <div class="item_title">
+                  파일형식 :
+              </div><br><br>
+              <div>
+                  <h3 class="list_item">PC<br>
+                     <div class="btn-group-lg">
+                          <button type="button" class="btn btn-primary">Download</button>
+                          <button type="button" class="btn btn-default">Viewer로 보기</button>
+                     </div>
+                  </h3>
+                  <h3 class="list_item">디바이스<br>
+                      <div class="btn-group-lg">
+                          <button type="button" class="btn btn-primary">Download</button>
+                          <button type="button" class="btn btn-default">Viewer로 보기</button>
+                      </div>
+                  </h3>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid"><br>
+        <p>최근에 구입한 E-Book</p>
+        <div class="card-deck">
+            <div class="card h-80">
+                <img class="card-img-top" src="static/img/testimg.jpg" alt="Card image">
+                <div class="card-body"></div>
+            </div>
+            <div class="card h-80">
+                <img class="card-img-top" src="static/img/testimg.jpg" alt="Card image">
+                <div class="card-body"></div>
+            </div>
+            <div class="card h-80">
+                <img class="card-img-top" src="static/img/testimg.jpg" alt="Card image">
+                <div class="card-body"></div>
+            </div>
+            <div class="card h-80">
+                <img class="card-img-top" src="static/img/testimg.jpg" alt="Card image">
+                <div class="card-body"></div>
+            </div>
+            <div class="card h-80">
+                <img class="card-img-top" src="static/img/testimg.jpg" alt="Card image">
+                <div class="card-body"></div>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

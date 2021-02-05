@@ -25,4 +25,10 @@
   * base 템플릿 구현
   * base의 nav, side bar 공통요소 공유하며 다른 페이지들 제작
   * login, join, itemlist, itemdetail, payment 템플릿의 section 구현.
-  * 추후 과제 : base 템플릿, 조원 각자의 템플릿 정교화..
+  * 추후 과제 : base 템플릿, 조원 각자의 템플릿 정교화.
+
+## 2. 5(금)
+
+* 각자 화면구현 작업 계속
+* paydetail 화면 구현
+* 각자 branch에 작업물 저장. 

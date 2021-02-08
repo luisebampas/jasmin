@@ -1,12 +1,13 @@
 class Sql:
-    userlist = "SELECT * FROM users";
-    userlistone = "SELECT * FROM users WHERE usernum=%d";
-    userinsert = "INSERT INTO users (userid, userpwd, username) VALUES ('%s','%s','%s')";
-    userdeletewithnum = "DELETE FROM users WHERE usernum=%d";
-    userdeletewithid = "DELETE FROM users WHERE userid='%s'";
-    userupdatewithnum = "UPDATE users SET pwd='%s', name='%s' WHERE usernum=%d";
-    userupdatewithid = "UPDATE users SET pwd='%s', name='%s' WHERE userid='%s'";
+    userlist = 'SELECT * FROM users';
+    userlistone = "SELECT * FROM users WHERE userid='%s'";
+    userinsert = "INSERT INTO users VALUES (null,'%s','%s','%s')";
+    userdelete = "DELETE FROM users WHERE userid= '%s'";
+    userupdate = "UPDATE users SET userpwd='%s', username='%s' WHERE userid='%s'";
+    orderlistone = "SELECT * FROM orderlist WHERE usernum=%d"
+    main = "SELECT o.ordernum, i.itemnum, i.itemname, i.price, a.authorname FROM orderlist o INNER JOIN items i ON o.itemnum = i.itemnum INNER JOIN authors a ON i.authornum = a.authornum where o.usernum = %d"
 
+<<<<<<< HEAD
     itemlist = """SELECT i.itemnum, i.itemname, a.authorname, i.price, i.itemdate FROM items i LEFT OUTER JOIN authors a ON i.authornum = a.authornum
                   ORDER BY itemnum DESC
                """;
@@ -18,5 +19,12 @@ class Sql:
                     VALUES (%d, %d, '%s', %d, '%s', '%s', %d, %d)""";
     itemdelete = "DELETE FROM items WHERE itemnum=%d";
     itemupdate = "UPDATE items SET catenum=%d, authornum=%d, itemname='%s', price=%d, itemdate='%s', iteminfo='%s', series=%d WHERE itemnum=%d";
+=======
+>>>>>>> master
 
+    # itemlist = "SELECT * FROM itemtb";
+    # itemlistone = "SELECT * FROM itemtb WHERE id= %d ";
+    # iteminsert = "INSERT INTO itemtb VALUES (null,'%s',%d,CURRENT_DATE(), '%s')";
+    # itemdelete = "DELETE FROM itemtb WHERE id= %d ";
+    # itemupdate = "UPDATE itemtb SET name='%s',price=%d, imgname='%s' WHERE id= %d ";
 

@@ -1,0 +1,33 @@
+{% load static %}
+
+
+<section>
+    <h1>주문정보</h1>
+
+            <table class="table">
+         <thead>
+           <tr>
+              <th>주문번호</th>
+              <th>유저번호</th>
+              <th>아이템번호</th>
+           </tr>
+         </thead>
+         <tbody>
+
+         {% for u in orderlist %}
+           <tr>
+
+              <td>{{ u.ordernum }}</td>
+              <td>{{ u.usernum  }}</td>
+              <td>{{ u.itemnum  }}</td>
+           </tr>
+         {% endfor %}
+
+         </tbody>
+
+        </table>
+
+
+
+
+</section>

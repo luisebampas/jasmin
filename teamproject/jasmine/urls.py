@@ -26,9 +26,17 @@ urlpatterns = [
 
     path('login', views.MainView.login, name='login'),
     path('join', views.MainView.join, name='join'),
+    path('joinimpl', views.MainView.joinimpl, name='joinimpl'),
     path('loginimpl', views.MainView.loginimpl, name='loginimpl'),
     path('logout', views.MainView.logout, name='logout'),
+    path('mypage', views.mypage, name='mypage'),
+    path('userdetail', views.userdetail, name='userdetail'),
+    path('userupdate', views.userupdate, name='userupdate'),
+    path('userupdateimpl', views.userupdateimpl, name='userupdateimpl'),
+    path('userdelete', views.userdelete, name='userdelete'),
+    path('orderlist', views.orderlist, name='orderlist'),
 
+<<<<<<< HEAD
     path('mainSection', views.mainSectionView.mainSection, name='mainSection'),
     path('itemlist', views.mainSectionView.itemlist, name='itemlist'),
     path('itemcontent', views.mainSectionView.itemcontent, name='itemcontent'),
@@ -37,4 +45,20 @@ urlpatterns = [
 
     path('sideSection', views.sideSectionView.sideSection, name='sideSection'),
     path('category', views.sideSectionView.category, name='category'),
+=======
+<<<<<<< HEAD
+    path('about', TemplateView.as_view(template_name='jasmine/about.html'), name='about'),
+    path('map', views.map, name='map'),
+=======
+    path('mainSection', views.sectionView.mainSection, name='mainSection'),
+    path('itemlist', views.sectionView.itemlist, name='itemlist'),
+    path('itemcontent', views.sectionView.itemcontent, name='itemcontent'),
+
+    path('payment', views.sectionView.payment, name='payment'),
+    path('paydetail', views.sectionView.paydetail, name='paydetail'),
+
+    path('cartlist', views.sectionView.cartlist, name='cartlist'),
+
+>>>>>>> 5fe25ff4563ece6559bb3547ed44bcd41e9b5cb5
+>>>>>>> master
 ]

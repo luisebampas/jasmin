@@ -1,41 +1,29 @@
-DROP DATABASE teamp;
-CREATE DATABASE teamp;
-USE teamp;
+DROP DATABASE jasminDb;
+CREATE DATABASE jasminDb;
+USE jasminDb;
 
 # 기본 테이블 
 CREATE TABLE authors (
 	authornum INT,
 	authorname NVARCHAR(20),
-	authorinfo NVARCHAR(50)
-);
-
-CREATE TABLE formats (
-	formatnum INT,
-	formatname VARCHAR(20)
-);
-
-CREATE TABLE levelofcate (
-	catelevel INT,
-	levelname NVARCHAR(10)
+	authorinfo NVARCHAR(200)
 );
 
 CREATE TABLE category (
 	catenum INT,
-	catelevel INT,
-	catename NVARCHAR(10),
-	pcatenum INT
+	catename NVARCHAR(10)
 );
 
 CREATE TABLE items (
 	itemnum INT,
 	catenum INT,
 	authornum INT,
-	formatnum INT,
-	itemname NVARCHAR(20),
+	itemname NVARCHAR(40),
 	price INT,
-	itemimg VARCHAR(50),
 	itemdate DATE,
-	downloads INT
+	iteminfo NVARCHAR(200),
+	downloads INT,
+	series INT
 );
 
 CREATE TABLE users (
@@ -54,7 +42,7 @@ CREATE TABLE orders (
 	ordernum INT,
 	usernum INT,
 	totalprice INT,
-	ordersummary VARCHAR(50)
+	ordersummary VARCHAR(100)
 );
 
 CREATE TABLE orderlist (
@@ -71,6 +59,14 @@ CREATE TABLE payment (
 );
 
 # 추가 테이블 
+# 리뷰
+CREATE TABLE comments (
+	itemnum INT,
+	usernum INT,
+	eval INT,
+	cmt NVARCHAR(200)
+);
+
 # 쿠폰 
 CREATE TABLE coupons (
 	couponnum INT,
@@ -84,13 +80,13 @@ CREATE TABLE couponlist (
 	discount INT,
 	issuedate DATE,
 	expdate DATE,
-	useddate DATE
+	canuse BOOL
 );
 
 CREATE TABLE couponused (
-	ordernum INT,
+	couponpin INT,
 	usernum INT,
-	couponpin INT
+	ordernum INT
 );
 
 # 관심분야 
@@ -101,30 +97,27 @@ CREATE TABLE interests (
 
 ########################################authors
 # 제약조건 
-# primary key
-ALTER TABLE authors ADD CONSTRAINT authornum_pk PRIMARY KEY (authornum);
-ALTER TABLE formats ADD CONSTRAINT formatnum_pk PRIMARY KEY (formatnum);
-ALTER TABLE levelofcate ADD CONSTRAINT catelevel_pk PRIMARY KEY (catelevel);
-ALTER TABLE category ADD CONSTRAINT catenum_pk PRIMARY KEY (catenum);
-ALTER TABLE items ADD CONSTRAINT itemnum_pk PRIMARY KEY (itemnum);
-ALTER TABLE users ADD CONSTRAINT usernum_pk  PRIMARY KEY (usernum);
-ALTER TABLE orders ADD CONSTRAINT ordernum_pk PRIMARY KEY (ordernum);
+# primary key, unique
+ALTER TABLE authors ADD CONSTRAINT authors_pk PRIMARY KEY (authornum);
+ALTER TABLE category ADD CONSTRAINT category_pk PRIMARY KEY (catenum);
+ALTER TABLE items ADD CONSTRAINT items_pk PRIMARY KEY (itemnum);
+ALTER TABLE users ADD CONSTRAINT users_pk  PRIMARY KEY (usernum);
+ALTER TABLE users ADD CONSTRAINT users_id_unique UNIQUE (userid);
+ALTER TABLE orders ADD CONSTRAINT orders_pk PRIMARY KEY (ordernum);
+ALTER TABLE coupons ADD CONSTRAINT coupons_pk PRIMARY KEY (couponnum);
+ALTER TABLE couponlist ADD CONSTRAINT couponlist_pk PRIMARY KEY (couponpin);
 
 # auto increment
 ALTER TABLE authors MODIFY authornum INT NOT NULL AUTO_INCREMENT;
-ALTER TABLE authors AUTO_INCREMENT = 1001;
 ALTER TABLE items MODIFY itemnum INT NOT NULL AUTO_INCREMENT;
-ALTER TABLE items AUTO_INCREMENT = 10001;
 ALTER TABLE users MODIFY usernum INT NOT NULL AUTO_INCREMENT;
-ALTER TABLE users AUTO_INCREMENT = 100001;
 ALTER TABLE orders MODIFY ordernum INT NOT NULL AUTO_INCREMENT;
-ALTER TABLE orders AUTO_INCREMENT = 1000001;
+ALTER TABLE coupons MODIFY couponnum INT NOT NULL AUTO_INCREMENT;
+ALTER TABLE couponlist MODIFY couponpin INT NOT NULL AUTO_INCREMENT;
 
 # foreign key
-ALTER TABLE category ADD CONSTRAINT category_catelevel FOREIGN KEY (catelevel) REFERENCES levelofcate(catelevel);
 ALTER TABLE items ADD CONSTRAINT items_catenum FOREIGN KEY (catenum) REFERENCES category(catenum);
 ALTER TABLE items ADD CONSTRAINT items_authornum FOREIGN KEY (authornum) REFERENCES authors(authornum);
-ALTER TABLE items ADD CONSTRAINT items_formatnum FOREIGN KEY (formatnum) REFERENCES formats(formatnum);
 ALTER TABLE carts ADD CONSTRAINT carts_usernum FOREIGN KEY (usernum) REFERENCES users(usernum);
 ALTER TABLE carts ADD CONSTRAINT carts_itemnum FOREIGN KEY (itemnum) REFERENCES items(itemnum);
 ALTER TABLE orderlist ADD CONSTRAINT orderlist_ordernum FOREIGN KEY (ordernum) REFERENCES orders(ordernum);
@@ -132,3 +125,13 @@ ALTER TABLE orderlist ADD CONSTRAINT orderlist_usernum FOREIGN KEY (usernum) REF
 ALTER TABLE orderlist ADD CONSTRAINT orderlist_itemnum FOREIGN KEY (itemnum) REFERENCES items(itemnum);
 ALTER TABLE payment ADD CONSTRAINT payment_ordernum FOREIGN KEY (ordernum) REFERENCES orders(ordernum);
 ALTER TABLE payment ADD CONSTRAINT payment_usernum FOREIGN KEY (usernum) REFERENCES users(usernum);
+ALTER TABLE comments ADD CONSTRAINT comments_itemnum FOREIGN KEY (itemnum) REFERENCES items(itemnum);
+ALTER TABLE comments ADD CONSTRAINT comments_usernum FOREIGN KEY (usernum) REFERENCES users(usernum);
+ALTER TABLE coupons ADD CONSTRAINT coupons_catenum FOREIGN KEY (catenum) REFERENCES category(catenum);
+ALTER TABLE couponlist ADD CONSTRAINT couponlist_couponnum FOREIGN KEY (couponnum) REFERENCES coupons(couponnum);
+ALTER TABLE couponlist ADD CONSTRAINT couponlist_usernum FOREIGN KEY (usernum) REFERENCES users(usernum);
+ALTER TABLE couponused ADD CONSTRAINT couponused_couponpin FOREIGN KEY (couponpin) REFERENCES couponlist(couponpin);
+ALTER TABLE couponused ADD CONSTRAINT couponused_usernum FOREIGN KEY (usernum) REFERENCES users(usernum);
+ALTER TABLE couponused ADD CONSTRAINT couponused_ordernum FOREIGN KEY (ordernum) REFERENCES orders(ordernum);
+ALTER TABLE interests ADD CONSTRAINT interests_usernum FOREIGN KEY (usernum) REFERENCES users(usernum);
+ALTER TABLE interests ADD CONSTRAINT interests_catenum FOREIGN KEY (catenum) REFERENCES category(catenum);

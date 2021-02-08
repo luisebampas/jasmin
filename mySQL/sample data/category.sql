@@ -1,48 +1,21 @@
-# level of category
-INSERT INTO levelofcate VALUES (1,'대분류');
-INSERT INTO levelofcate VALUES (2,'중분류');
-INSERT INTO levelofcate VALUES (3,'소분류');
-
-##################################################
 # category data
-INSERT INTO category VALUES (10000,1,'대분류1',NULL);
-INSERT INTO category VALUES (10100,2,'중분류1-1',10000);
-INSERT INTO category VALUES (10101,3,'소분류1-1-1',10100);
-INSERT INTO category VALUES (10102,3,'소분류1-1-2',10100);
-INSERT INTO category VALUES (10200,2,'중분류1-2',10000);
-INSERT INTO category VALUES (10201,3,'소분류1-2-1',10200);
-INSERT INTO category VALUES (10202,3,'소분류1-2-2',10200);
-INSERT INTO category VALUES (10203,3,'소분류1-2-3',10200);
-INSERT INTO category VALUES (10300,2,'중분류1-3',10000);
-INSERT INTO category VALUES (10301,3,'소분류1-3-1',10300);
-INSERT INTO category VALUES (10302,3,'소분류1-3-2',10300);
-INSERT INTO category VALUES (10303,3,'소분류1-3-3',10300);
-INSERT INTO category VALUES (10304,3,'소분류1-3-4',10300);
+INSERT INTO category VALUES (1, '전체');
 
-INSERT INTO category VALUES (20000,1,'대분류2',NULL);
-INSERT INTO category VALUES (20100,2,'중분류2-1',20000);
-INSERT INTO category VALUES (20101,3,'소분류2-1-1',20100);
-INSERT INTO category VALUES (20102,3,'소분류2-1-2',20100);
-INSERT INTO category VALUES (20200,2,'중분류2-2',20000);
-INSERT INTO category VALUES (20201,3,'소분류2-2-1',20200);
-INSERT INTO category VALUES (20202,3,'소분류2-2-2',20200);
-INSERT INTO category VALUES (20203,3,'소분류2-2-3',20200);
-INSERT INTO category VALUES (20300,2,'중분류2-3',20000);
-INSERT INTO category VALUES (20301,3,'소분류2-3-1',20300);
-INSERT INTO category VALUES (20302,3,'소분류2-3-2',20300);
-INSERT INTO category VALUES (20303,3,'소분류2-3-3',20300);
-INSERT INTO category VALUES (20304,3,'소분류2-3-4',20300);
+INSERT INTO category VALUES (2, '일반소설');
+INSERT INTO category VALUES (3, '한국소설');
+INSERT INTO category VALUES (4, '영미소설');
+INSERT INTO category VALUES (5, '일본소설');
+INSERT INTO category VALUES (6, '중국소설');
+INSERT INTO category VALUES (7, '러시아소설');
+INSERT INTO category VALUES (8, '프랑스소설');
+INSERT INTO category VALUES (9, '독일소설');
+INSERT INTO category VALUES (10, '북유럽소설');
+INSERT INTO category VALUES (11, '기타나라소설');
 
-INSERT INTO category VALUES (30000,1,'대분류3',NULL);
-INSERT INTO category VALUES (30100,2,'중분류3-1',30000);
-INSERT INTO category VALUES (30101,3,'소분류3-1-1',30100);
-INSERT INTO category VALUES (30102,3,'소분류3-1-2',30100);
-INSERT INTO category VALUES (30200,2,'중분류3-2',30000);
-INSERT INTO category VALUES (30201,3,'소분류3-2-1',30200);
-INSERT INTO category VALUES (30202,3,'소분류3-2-2',30200);
-INSERT INTO category VALUES (30203,3,'소분류3-2-3',30200);
-INSERT INTO category VALUES (30300,2,'중분류3-3',30000);
-INSERT INTO category VALUES (30301,3,'소분류3-3-1',30300);
-INSERT INTO category VALUES (30302,3,'소분류3-3-2',30300);
-INSERT INTO category VALUES (30303,3,'소분류3-3-3',30300);
-INSERT INTO category VALUES (30304,3,'소분류3-3-4',30300);
+INSERT INTO category VALUES (12, '장르소설');
+INSERT INTO category VALUES (13, '로맨스');
+INSERT INTO category VALUES (14, '무협');
+INSERT INTO category VALUES (15, '판타지');
+INSERT INTO category VALUES (16, '라이트노벨');
+INSERT INTO category VALUES (17, 'BL/GL');
+INSERT INTO category VALUES (18, '성인소설');

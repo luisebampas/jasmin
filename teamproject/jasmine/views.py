@@ -4,18 +4,14 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 # Create your views here.
-<<<<<<< HEAD
+logger = logging.getLogger('users');
+
 from django.utils.http import urlencode
 
 from frame.error import ErrorCode
 from frame.userdb import UserDb, OrderDb
 
-logger = logging.getLogger('users');
-=======
-from frame.error import ErrorCode
-from frame.userdb import UserDb
 
->>>>>>> 5fe25ff4563ece6559bb3547ed44bcd41e9b5cb5
 
 class MainView:
     def login(request):
@@ -129,11 +125,10 @@ def userdelete(request):
     except:
         context = {
             'section': 'jasmine/error.html',
-            'error':ErrorCode.e0002
+            'error': ErrorCode.e0002
         };
-<<<<<<< HEAD
-        return render(request,'jasmine/home.html',context);
-    return render(request,'jasmine/home.html');
+    return render(request,'jasmine/home.html',context);
+
 
 
 def orderlist(request):
@@ -154,12 +149,11 @@ def map(request):
         'section': 'jasmine/map.html'
     };
     return render(request, 'jasmine/about.html', context)
-=======
-        return render(request, 'jasmine/home.html', context)
+
 
     def cartlist(request):
         context = {
             'section': 'jasmine/cartlist.html'
         };
         return render(request, 'jasmine/home.html', context)
->>>>>>> 5fe25ff4563ece6559bb3547ed44bcd41e9b5cb5
+

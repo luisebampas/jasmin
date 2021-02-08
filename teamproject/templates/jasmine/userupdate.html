@@ -1,0 +1,15 @@
+{% load static %}
+
+
+<section>
+    <h1>개인정보 변경</h1>
+    <form action="{% url 'userupdateimpl' %}" method="POST">
+        <div id="updatebox">
+            {% csrf_token %}
+            ID<input type="text" name="id" value="{{uuser.userid}}" readonly="true"><br>
+            PWD<input type="password" name="pwd" value="{{uuser.userpwd}}"><br>
+            NAME<input type="text" name="name" value="{{uuser.username}}"><br><br>
+            <input id="updatesq" type="submit" value="UPDATE">
+        </div>
+    </form>
+</section>

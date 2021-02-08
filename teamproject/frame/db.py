@@ -1,23 +1,22 @@
 import MySQLdb
 
 config = {
-    'database': 'jasmindb',
-    'user': 'root',
-    'password': '111111',
-    'host': '127.0.0.1',
-    'port': 3306,
-    'charset': 'utf8',
-    'use_unicode': True
+    'database':'jasmine',
+    'user':'root',
+    'password':'111111',
+    'host':'127.0.0.1',
+    'port':3306,
+    'charset':'utf8',
+    'use_unicode':True
 }
-
 
 class Db:
     def getConnection(self):
-        conn = MySQLdb.connect(**config)
-        return conn
+        conn = MySQLdb.connect(**config);
+        return conn;
 
     def close(self, conn, cursor):
         if cursor != None:
-            cursor.close()
+            cursor.close();
         if conn != None:
-            cursor.close()
+            cursor.close();

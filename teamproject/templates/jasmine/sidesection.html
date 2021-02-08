@@ -1,0 +1,10 @@
+{% load static  %}
+
+<section>
+  <h1 class="my-4">WELCOME Jasmine</h1>
+  <div class="list-group">
+    <a href="{% url 'itemlist' %}?category=1&page=1" class="list-group-item">모든 소설</a>
+    <a href="{% url 'itemlist' %}?category=2&page=1" class="list-group-item">일반 소설</a>
+    <a href="{% url 'itemlist' %}?category=12&page=1" class="list-group-item">장르 소설</a>
+  </div>
+</section>

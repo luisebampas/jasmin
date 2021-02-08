@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
@@ -37,17 +38,35 @@ urlpatterns = [
     path('orderlist', views.orderlist, name='orderlist'),
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+    path('mainSection', views.mainSectionView.mainSection, name='mainSection'),
+    path('itemlist', views.mainSectionView.itemlist, name='itemlist'),
+    path('itemcontent', views.mainSectionView.itemcontent, name='itemcontent'),
+    path('payment', views.mainSectionView.payment, name='payment'),
+    path('paydetail', views.mainSectionView.paydetail, name='paydetail'),
+
+    path('sideSection', views.sideSectionView.sideSection, name='sideSection'),
+    path('category', views.sideSectionView.category, name='category'),
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 33290ac3561c317a71cf05b90f58fcb29eeb4d1a
     path('about', TemplateView.as_view(template_name='jasmine/about.html'), name='about'),
     path('map', views.map, name='map'),
-=======
-    path('mainSection', views.sectionView.mainSection, name='mainSection'),
-    path('itemlist', views.sectionView.itemlist, name='itemlist'),
-    path('itemcontent', views.sectionView.itemcontent, name='itemcontent'),
 
-    path('payment', views.sectionView.payment, name='payment'),
-    path('paydetail', views.sectionView.paydetail, name='paydetail'),
+    path('itemlist', views.itemlist, name='itemlist'),
+    path('itemcontent', views.itemcontent, name='itemcontent'),
 
-    path('cartlist', views.sectionView.cartlist, name='cartlist'),
+    path('payment', views.payment, name='payment'),
+    path('paydetail', views.paydetail, name='paydetail'),
 
+    path('cartlist', views.cartlist, name='cartlist'),
+
+
+<<<<<<< HEAD
 >>>>>>> 5fe25ff4563ece6559bb3547ed44bcd41e9b5cb5
+>>>>>>> master
+=======
+>>>>>>> 33290ac3561c317a71cf05b90f58fcb29eeb4d1a
 ]

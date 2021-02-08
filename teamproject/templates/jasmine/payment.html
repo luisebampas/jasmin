@@ -7,7 +7,11 @@
       <div class="row">
         <div class="col-lg-4">
             <div class="pic_area">
+<<<<<<< HEAD
+              <a href="{% url 'itemcontent' %}" class="book_img"><img src="static/img/testimg.jpg"></a>
+=======
               <a href="{% url 'itemcontent' %}" class="book-img"><img src="static/img/testimg.jpg"></a>
+>>>>>>> master
             </div>
         </div>
         <!-- //picture -->
@@ -16,13 +20,27 @@
               <div class="item_title">
                   제목 : <a href="{% url 'itemcontent' %}">하마터면 깨달을 뻔 인지심리학자가 본 에고의 진실게임</a>
               </div>
+<<<<<<< HEAD
+              <div class="item_title">
+=======
               <div class="item_price">
+>>>>>>> master
                   가격 :
               </div>
             </div>
         </div>
       </div>
       <div>
+<<<<<<< HEAD
+        <tbody><tr>
+            <td width="700">
+                <img src="/ucl_editor/img_secur/order/2010/dot_star.gif" width="17" height="18" align="middle">
+                <span class="title"></span><span class="title">결제 수단 선택</span>
+            </td></tr>
+        </tbody>
+      </div>
+      <span></span>
+=======
         <tbody>
             <tr>
                 <td width="700">
@@ -31,17 +49,29 @@
             </tr>
         </tbody>
       </div><br>
+>>>>>>> master
       <div>
         <tbody>
         <tr>
             <td colspan="2" style="padding:10px 10px 20px 10px;" bgcolor="#FFFFFF">
+<<<<<<< HEAD
+                <!--<div style="background:#f8e9d6; margin:0 0 10px 0; padding:5px 10px 10px 10px; border-radius:3px; color:#333333; font-size:14px;font-family:'Apple SD Gothic Neo',Malgun Gothic,'돋움',Sans-serif; "><strong>국내도서/외국도서/중고도서/전자책 구매 시 소득공제 가능</strong></div>-->
+                <!--결재 부분 수정-->
+=======
+>>>>>>> master
 			    <table width="96%" cellspacing="0" cellpadding="2" border="0">
                 <tbody>
                     <tr>
                         <td width="37%">
+<<<<<<< HEAD
+                            <input type="radio" value="38" id="PayMethod_38" name="PayMethod" onclick="selPayment(this.value);" class="linkP">
+                            <span><label for="PayMethod_38">
+                            <img src="https://image.aladin.co.kr/img/order/step2_logo_toss.jpg" align="absmiddle"></label></span>
+=======
                             <input type="radio" value="38" id="PayMethod_38" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><span><label for="PayMethod_38">
                                 <img src="https://image.aladin.co.kr/img/order/step2_logo_toss.jpg" align="absmiddle">
                                 </label></span>
+>>>>>>> master
                         </td>
                         <td width="33%">
                             <input id="PayMethod_37" type="radio" value="37" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><label for="PayMethod_37">해외발급 신용카드</label>
@@ -66,7 +96,11 @@
                             <input type="radio" value="29" id="PayMethod_29" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><span><label for="PayMethod_29"><img src="https://image.aladin.co.kr/img/order/step2_logo_naver.jpg" align="absmiddle"></label></span>
                         </td>
                         <td width="33%">
+<<<<<<< HEAD
+                            <input type="radio" value="15" id="PayMethod_14" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><label for="PayMethod_14">에스크로<img src="/ucl_editor/img_secur/bu/help_p.gif" class="linkP" onclick="window.open('http://blog.aladin.co.kr/cscenter/1824522','HelpEscrow2','scrollbars=yes,width=800,height=800,status=1')" border="0" align="absmiddle"></label>
+=======
                             <input type="radio" value="15" id="PayMethod_14" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><label for="PayMethod_14">에스크로</label>
+>>>>>>> master
                         </td>
                         <td width="30%"><input type="radio" value="35" id="PayMethod_35" name="PayMethod" onclick="selPayment(this.value);" class="linkP"><span><label for="PayMethod_35"><img src="http://image.aladin.co.kr/img/order/step2_logo_lpay.jpg" align="absmiddle"></label></span>
                         </td>
@@ -98,9 +132,17 @@
         </tr>
         </tbody>
       </div>
+<<<<<<< HEAD
+    <span></span>
+    <button type="button" class="btn btn-default" align="middle"><a href="{% url 'paydetail' %}">결제하기</a></button>
+    </div>
+</section>
+<span></span>
+=======
       <div class="btn-lg-wrap" align="absmiddle">
           <a class="buttons" href="{% url 'paydetail' %}">결제하기</a>
       </div><br>
     </div><br>
 </section><br>
+>>>>>>> master
 {% endblock %}

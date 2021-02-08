@@ -3,6 +3,10 @@
 
 
 {% block content %}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5fe25ff4563ece6559bb3547ed44bcd41e9b5cb5
   <!-- Page Content -->
   <div class="container">
 
@@ -12,9 +16,19 @@
 
         <h1 class="my-4">WELCOME Jasmine</h1>
         <div class="list-group">
+<<<<<<< HEAD
           <a href="#" class="list-group-item">Category 1</a>
           <a href="#" class="list-group-item">Category 2</a>
           <a href="#" class="list-group-item">Category 3</a>
+=======
+          <a href="{% url 'itemlist' %}" class="list-group-item">공상과학(SF)</a>
+          <a href="#" class="list-group-item">현실 판타지</a>
+          <a href="#" class="list-group-item">무협지</a>
+          <a href="#" class="list-group-item">코미디</a>
+          <a href="#" class="list-group-item">순정/연애</a>
+          <a href="#" class="list-group-item">학원/액션</a>
+          <a href="#" class="list-group-item">고전/순수문학</a>
+>>>>>>> 5fe25ff4563ece6559bb3547ed44bcd41e9b5cb5
         </div>
 
       </div>
@@ -25,6 +39,7 @@
         {% include "jasmine/mainsection.html" %}
     {% endif %}
       <div class="col-lg-9">
+<<<<<<< HEAD
 
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
@@ -154,6 +169,13 @@
         </div>
         <!-- /.row -->
 
+=======
+        {% if section != None %}
+          {% include section %}
+        {% else %}
+          {% include "jasmine/itemlist.html" %}
+        {% endif %}
+>>>>>>> 5fe25ff4563ece6559bb3547ed44bcd41e9b5cb5
       </div>
       <!-- /.col-lg-9 -->
 

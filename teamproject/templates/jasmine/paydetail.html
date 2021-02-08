@@ -1,0 +1,82 @@
+
+{% load static %}
+
+<script>
+
+</script>
+{% block content %}
+<section>
+    <h1>결제가 완료되었습니다.</h1>
+    <div class="container-fluid">
+        <div class="col-lg-4">
+            <div class="pic_area">
+              <a href="{% url 'itemcontent' %}" class="book_img"><img src="static/img/testimg.jpg"></a>
+            </div>
+        </div>
+        <!-- //picture -->
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="item_title">
+                      제목 : <a href="{% url 'itemcontent' %}">하마터면 깨달을 뻔 인지심리학자가 본 에고의 진실게임</a>
+                </div>
+                <div class="item_title">
+                      가격 :
+                </div>
+                <div class="item_title">
+                      구매일자 :
+                </div>
+                <div class="item_title">
+                      파일형식 :
+                </div><br>
+              <div class="btn-group btn-group-justified" role="group" aria-label="download">
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default">PC Download</button>
+                  </div>
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default">iOS Download</button>
+                  </div>
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default">Android Download</button>
+              </div><br>
+              <div class="btn-group btn-group-justified" role="group" aria-label="viewr">
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-warp">브라우저 뷰어</button>
+                  </div>
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-warp">크레마 뷰어</button>
+                  </div>
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-warp">오디오북 듣기</button>
+                  </div>
+              </div>
+            </div>
+        </div>
+    <div class="container-fluid">
+        <h2>최근에 구입한 E-Book</h2>
+        <div class="card-deck">
+            <div class="card h-80">
+                <img class="card-img-top" src="static/img/testimg.jpg" alt="Card image">
+                <div class="card-body"></div>
+                <a href="{% url 'itemcontent' %}"></a>
+            </div>
+            <div class="card h-80">
+                <img class="card-img-top" src="static/img/testimg.jpg" alt="Card image">
+                <div class="card-body"></div>
+            </div>
+            <div class="card h-80">
+                <img class="card-img-top" src="static/img/testimg.jpg" alt="Card image">
+                <div class="card-body"></div>
+            </div>
+            <div class="card h-80">
+                <img class="card-img-top" src="static/img/testimg.jpg" alt="Card image">
+                <div class="card-body"></div>
+            </div>
+            <div class="card h-80">
+                <img class="card-img-top" src="static/img/testimg.jpg" alt="Card image">
+                <div class="card-body"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

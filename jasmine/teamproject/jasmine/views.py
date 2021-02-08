@@ -3,12 +3,12 @@ import logging
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
-
 # Create your views here.
 from django.utils.http import urlencode
 
 from frame.error import ErrorCode
-from frame.userdb import UserDb
+from frame.userdb import UserDb, OrderDb
+
 logger = logging.getLogger('users');
 
 class MainView:
@@ -21,7 +21,7 @@ class MainView:
     def logout(request):
         if request.session['suser'] != None:
             del request.session['suser'];
-        return render(request, 'jasmine/home.html')
+        return render(request,'jasmine/home.html')
 
     def loginimpl(request):
         id = request.POST['id'];
@@ -31,14 +31,10 @@ class MainView:
             if pwd == user.userpwd:
                 logger.debug(id)
                 request.session['suser'] = id;
+                request.session['susernum'] = user.usernum;
                 context = {
-<<<<<<< HEAD
                   'section':'jasmine/loginok.html',
                     'loginuser':user
-=======
-                    'section': 'shop2/loginok.html',
-                    'loginuser': user
->>>>>>> aad851d185dadcdc087b7f21a795bba5c1a79d51
                 };
             else:
                 raise Exception;
@@ -55,7 +51,6 @@ class MainView:
         };
         return render(request, 'jasmine/join.html', context)
 
-<<<<<<< HEAD
     def joinimpl(request):
         id = request.POST['id'];
         pwd = request.POST['pwd'];
@@ -73,7 +68,16 @@ class MainView:
         return render(request, 'jasmine/home.html', context);
 
 def mypage(request):
-    return render(request, 'mypage.html');
+    usernum = request.GET['usernum'];
+    print(usernum)
+    rsusernum = OrderDb().mainone(int(usernum));
+    print(rsusernum)
+    context = {
+        'section': 'jasmine/mypagemain.html',
+        'orderlist':rsusernum,
+    };
+
+    return render(request, 'jasmine/mypage.html', context)
 
 def userdetail(request):
     id = request.GET['id'];
@@ -125,36 +129,21 @@ def userdelete(request):
     return render(request,'jasmine/home.html');
 
 
-=======
+def orderlist(request):
+    usernum = request.GET['usernum'];
+    print(usernum)
+    rsusernum = OrderDb().selectone(int(usernum));
+    print(rsusernum)
+    context = {
+        'section': 'jasmine/orderlist.html',
+        'orderlist':rsusernum,
+    };
 
-class sectionView:
-    def mainSection(request):
-        context = {
-            'section': 'jasmine/mainsection.html'
-        };
-        return render(request, 'jasmine/home.html', context)
+    return render(request, 'jasmine/mypage.html', context)
 
-    def itemlist(request):
-        context = {
-            'section': 'jasmine/itemlist.html'
-        };
-        return render(request, 'jasmine/home.html', context)
 
-    def itemcontent(request):
-        context = {
-            'section': 'jasmine/itemcontent.html'
-        };
-        return render(request, 'jasmine/home.html', context)
-
-    def payment(request):
-        context = {
-            'section': 'jasmine/payment.html'
-        };
-        return render(request, 'jasmine/home.html', context)
-
-    def paydetail(request):
-        context = {
-            'section': 'jasmine/paydetail.html'
-        };
-        return render(request, 'jasmine/home.html', context)
->>>>>>> aad851d185dadcdc087b7f21a795bba5c1a79d51
+def map(request):
+    context = {
+        'section': 'jasmine/map.html'
+    };
+    return render(request, 'jasmine/about.html', context)

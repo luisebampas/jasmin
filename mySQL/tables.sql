@@ -1,4 +1,4 @@
-DROP DATABASE jasminDb;
+
 CREATE DATABASE jasminDb;
 USE jasminDb;
 

@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'jasmine'
+    'jasmine',
 ]
 
 MIDDLEWARE = [
@@ -122,11 +122,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
 
-os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static')
 
 ]
 
-UPLOAD_DIR = os.path.join(BASE_DIR,'static/img');
+UPLOAD_DIR = os.path.join(BASE_DIR,'static/img')
 LOG_FILE = os.path.join(BASE_DIR,'log/mylog.log')
 
 LOGGING = {

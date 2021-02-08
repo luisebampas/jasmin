@@ -2,6 +2,10 @@ from django.shortcuts import render
 
 
 # Create your views here.
+from frame.error import ErrorCode
+from frame.userdb import UserDb
+
+
 class MainView:
     def login(request):
         context = {
@@ -70,5 +74,11 @@ class sectionView:
     def paydetail(request):
         context = {
             'section': 'jasmine/paydetail.html'
+        };
+        return render(request, 'jasmine/home.html', context)
+
+    def cartlist(request):
+        context = {
+            'section': 'jasmine/cartlist.html'
         };
         return render(request, 'jasmine/home.html', context)

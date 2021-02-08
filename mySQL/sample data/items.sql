@@ -9,6 +9,7 @@
 #	downloads INT,
 #	series INT
 #);
+ALTER TABLE items AUTO_INCREMENT = 1;
 
 # items data
 SET @tseries = 101;
@@ -56,14 +57,14 @@ INSERT INTO items VALUES (itemnum, 2, 2, '가 테스트용4-8', 7000, '2020-02-2
 INSERT INTO items VALUES (itemnum, 2, 2, '가 테스트용4-9', 7000, '2020-02-27', '테스트용4-9권', 981, @tseries);
 
 SET @tseries = (SELECT LAST_INSERT_ID() + 1);
-INSERT INTO items VALUES (itemnum, 3, 2, '다 테스트용5-1', 7000, '2020-03-01', '테스트용5-1권', 989, @tseries);
-INSERT INTO items VALUES (itemnum, 3, 2, '다 테스트용5-2', 7000, '2020-03-02', '테스트용5-2권', 988, @tseries);
+INSERT INTO items VALUES (itemnum, 12, 2, '다 테스트용5-1', 7000, '2020-03-01', '테스트용5-1권', 989, @tseries);
+INSERT INTO items VALUES (itemnum, 12, 2, '다 테스트용5-2', 7000, '2020-03-02', '테스트용5-2권', 988, @tseries);
 
 SET @tseries = (SELECT LAST_INSERT_ID() + 1);
-INSERT INTO items VALUES (itemnum, 4, 3, '나 테스트용6', 7000, '2020-03-01', '테스트용6 정보', 99, @tseries);
+INSERT INTO items VALUES (itemnum, 12, 3, '나 테스트용6', 7000, '2020-03-01', '테스트용6 정보', 99, @tseries);
 
 SET @tseries = (SELECT LAST_INSERT_ID() + 1);
-INSERT INTO items VALUES (itemnum, 5, 3, '바 테스트용7', 7000, '2020-03-01', '테스트용7 정보', 99, @tseries);
+INSERT INTO items VALUES (itemnum, 12, 3, '바 테스트용7', 7000, '2020-03-01', '테스트용7 정보', 99, @tseries);
 
 SET @tseries = (SELECT LAST_INSERT_ID() + 1);
 INSERT INTO items VALUES (itemnum, 2, 3, '라 테스트용8', 7000, '2020-03-01', '테스트용8-1권', 99, @tseries);

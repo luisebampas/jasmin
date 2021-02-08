@@ -7,8 +7,13 @@ class Sql:
     userupdatewithnum = "UPDATE users SET pwd='%s', name='%s' WHERE usernum=%d";
     userupdatewithid = "UPDATE users SET pwd='%s', name='%s' WHERE userid='%s'";
 
-    itemlist = "SELECT * FROM items";
-    itemlistone = "SELECT * FROM items WHERE itemnum=%d";
+    itemlist = """SELECT i.itemnum, i.itemname, a.authorname, i.price, i.itemdate FROM items i LEFT OUTER JOIN authors a ON i.authornum = a.authornum
+                  ORDER BY itemnum DESC
+               """;
+    catenum = " WHERE catenum = %d"
+    page = " LIMIT 20 OFFSET %d"
+    itemlistone = """SELECT i.*, a.* FROM items i LEFT OUTER JOIN authors a ON i.authornum = a.authornum
+                     WHERE itemnum = %d""";
     iteminsert = """INSERT INTO items (catenum, authornum, itemname, price, itemdate, iteminfo, downloads, series)
                     VALUES (%d, %d, '%s', %d, '%s', '%s', %d, %d)""";
     itemdelete = "DELETE FROM items WHERE itemnum=%d";

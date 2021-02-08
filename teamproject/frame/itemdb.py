@@ -25,17 +25,22 @@ class ItemDb(Db):
         super().close(conn, cursor);
         return item;
 
-    def select(self):
+    # i.itemnum, i.itemname, a.authorname, i.price, i.itemdate
+    def select(self, catenum, page):
         conn = super().getConnection();
         cursor = conn.cursor();
-        cursor.execute(Sql.itemlist);
+        limit = 20;
+        offset = (page - 1) * limit
+        cursor.execute(Sql.itemlist + Sql.page % offset);
         result = cursor.fetchall();
         all = [];
         for i in result:
-            item = Item(i[0],i[1], i[2],i[3],i[4]);
+            item = Item(i[0], i[1], i[2], i[3], i[4]);
             all.append(item);
         super().close(conn, cursor);
         return all;
+
+
     def update(self,id, name,price, imgname):
         try:
             conn = super().getConnection();

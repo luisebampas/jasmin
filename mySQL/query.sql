@@ -20,18 +20,20 @@ SELECT i.itemnum, i.itemname, a.authorname, i.price, i.itemdate
 FROM items i LEFT OUTER JOIN authors a
 ON i.authornum = a.authornum
 # 검색조건 
-
+WHERE itemname LIKE '%%'
 # 정렬조건 
 ORDER BY itemnum DESC
 LIMIT 20 OFFSET 0;
 
+# test itemnum
+SET @test_itemnum = 128;
+
 # item detail
-@testitem_num = 140
 SELECT i.*, a.*
 FROM items i LEFT OUTER JOIN authors a
 ON i.authornum = a.authornum
-WHERE itemnum = @testitem_num;
+WHERE itemnum = @test_itemnum;
 
+# series
 SELECT itemnum, itemname, price FROM items
-WHERE series = (SELECT series FROM items WHERE itemnum = testitem_num)
-SELECT series FROM items WHERE itemnum = testitem_num
+WHERE series = (SELECT series FROM items WHERE itemnum = @test_itemnum);

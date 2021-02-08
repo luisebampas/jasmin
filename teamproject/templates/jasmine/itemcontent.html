@@ -1,6 +1,8 @@
 {% load static  %}
 
 <script>
+
+
 function view_big_img(){
   $.magnificPopup.open({
     items: [
@@ -19,7 +21,7 @@ function view_big_img(){
     <div class="book-preview">
       <div class="cover">
         <a href="#" onclick="view_big_img();">
-          <img src="{% static 'img/testimg.jpg' %}">
+          <img class="thumbnails" src="{% static 'img/testimg.jpg' %}">
           <!-- 미구현 <span class="txt-preview">크게보기</span> -->
         </a>
       </div>

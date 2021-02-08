@@ -1,6 +1,6 @@
 from frame.db import Db
 from frame.sql import Sql
-from frame.value import Item
+from frame.value import Item, Itemlist
 
 
 class ItemDb(Db):
@@ -35,7 +35,7 @@ class ItemDb(Db):
         result = cursor.fetchall();
         all = [];
         for i in result:
-            item = Item(i[0], i[1], i[2], i[3], i[4]);
+            item = Itemlist(i[0], i[1], i[2], i[3], i[4]);
             all.append(item);
         super().close(conn, cursor);
         return all;
@@ -74,14 +74,16 @@ def itemlistone_test():
     item = ItemDb().selectone(2);
     print(item);
 
+
 def iteminsert_test():
     ItemDb().insert('shirts',30000,'s.jpg');
 def itemupdate_test():
     ItemDb().update(2,'pants2',30000,'s.jpg');
 def itemdelete_test():
     ItemDb().delete(2);
+
+
 if __name__ == '__main__':
-    #itemupdate_test()
-    #iteminsert_test();
-    itemdelete_test()
-    itemlist_test();
+    itemlist = ItemDb().select(1, 1);
+    for i in itemlist:
+        print(i)

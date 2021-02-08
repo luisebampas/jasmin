@@ -29,8 +29,12 @@ urlpatterns = [
     path('loginimpl', views.MainView.loginimpl, name='loginimpl'),
     path('logout', views.MainView.logout, name='logout'),
 
-    path('mainSection', views.sectionView.mainSection, name='mainSection'),
-    path('itemlist', views.sectionView.itemlist, name='itemlist'),
-    path('itemcontent', views.sectionView.itemcontent, name='itemcontent'),
+    path('mainSection', views.mainSectionView.mainSection, name='mainSection'),
+    path('itemlist', views.mainSectionView.itemlist, name='itemlist'),
+    path('itemcontent', views.mainSectionView.itemcontent, name='itemcontent'),
+    path('payment', views.mainSectionView.payment, name='payment'),
+    path('paydetail', views.mainSectionView.paydetail, name='paydetail'),
 
+    path('sideSection', views.sideSectionView.sideSection, name='sideSection'),
+    path('category', views.sideSectionView.category, name='category'),
 ]

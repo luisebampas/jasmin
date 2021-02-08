@@ -2,6 +2,11 @@ from django.shortcuts import render
 
 
 # Create your views here.
+from frame.error import ErrorCode
+from frame.itemdb import ItemDb
+from frame.userdb import UserDb
+
+
 class MainView:
     def login(request):
         context = {
@@ -42,21 +47,51 @@ class MainView:
         return render(request, 'jasmine/join.html', context)
 
 
-class sectionView:
+class mainSectionView:
     def mainSection(request):
         context = {
-            'section': 'jasmine/mainsection.html'
+            'main_section': 'jasmine/mainsection.html'
         };
         return render(request, 'jasmine/home.html', context)
 
     def itemlist(request):
+        catenum = request.GET['category'];
+        page = request.GET['page'];
+        selectedItems = ItemDb().select(int(catenum), int(page));
         context = {
-            'section': 'jasmine/itemlist.html'
+            'main_section': 'jasmine/itemlist.html',
+            'itemlist': selectedItems,
         };
         return render(request, 'jasmine/home.html', context)
 
     def itemcontent(request):
         context = {
-            'section': 'jasmine/itemcontent.html'
+            'main_section': 'jasmine/itemcontent.html'
         };
         return render(request, 'jasmine/home.html', context)
+
+    def payment(request):
+        context = {
+            'main_section': 'jasmine/payment.html'
+        };
+        return render(request, 'jasmine/home.html', context)
+
+    def paydetail(request):
+        context = {
+            'main_section': 'jasmine/paydetail.html'
+        };
+        return render(request, 'jasmine/home.html', context)
+
+
+class sideSectionView:
+    def sideSection(request):
+        context = {
+            'side_section': 'jasmine/sidesection.html'
+        };
+        return render(request, 'jasmine/home.html', context)
+
+    def category(request):
+        context = {
+            'side_section': 'jasmine/category.html'
+        };
+        return render(request, 'jasmine/sidesection.html', context)

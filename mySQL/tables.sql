@@ -22,7 +22,7 @@ CREATE TABLE items (
 	price INT,
 	itemdate DATE,
 	iteminfo NVARCHAR(200),
-	downloads INT,
+	sells INT,
 	series INT
 );
 

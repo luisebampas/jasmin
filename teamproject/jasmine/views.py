@@ -151,9 +151,32 @@ def map(request):
     return render(request, 'jasmine/about.html', context)
 
 
-    def cartlist(request):
-        context = {
-            'section': 'jasmine/cartlist.html'
-        };
-        return render(request, 'jasmine/home.html', context)
+def cartlist(request):
+    context = {
+        'section': 'jasmine/cartlist.html'
+    };
+    return render(request, 'jasmine/home.html', context)
 
+def itemlist(request):
+    context = {
+        'section': 'jasmine/itemlist.html'
+    };
+    return render(request, 'jasmine/home.html', context)
+
+def itemcontent(request):
+    context = {
+        'section': 'jasmine/itemcontent.html'
+    };
+    return render(request, 'jasmine/home.html', context)
+
+def paydetail(request):
+    context = {
+        'section': 'jasmine/paydetail.html'
+    };
+    return render(request, 'jasmine/home.html', context)
+
+def payment(request):
+    context = {
+        'section': 'jasmine/payment.html'
+    };
+    return render(request, 'jasmine/home.html', context)

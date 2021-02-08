@@ -41,14 +41,13 @@ urlpatterns = [
     path('about', TemplateView.as_view(template_name='jasmine/about.html'), name='about'),
     path('map', views.map, name='map'),
 
-    path('mainSection', views.sectionView.mainSection, name='mainSection'),
-    path('itemlist', views.sectionView.itemlist, name='itemlist'),
-    path('itemcontent', views.sectionView.itemcontent, name='itemcontent'),
+    path('itemlist', views.itemlist, name='itemlist'),
+    path('itemcontent', views.itemcontent, name='itemcontent'),
 
-    path('payment', views.sectionView.payment, name='payment'),
-    path('paydetail', views.sectionView.paydetail, name='paydetail'),
+    path('payment', views.payment, name='payment'),
+    path('paydetail', views.paydetail, name='paydetail'),
 
-    path('cartlist', views.sectionView.cartlist, name='cartlist'),
+    path('cartlist', views.cartlist, name='cartlist'),
 
 
 ]

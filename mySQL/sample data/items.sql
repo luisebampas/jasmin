@@ -1,27 +1,73 @@
-# formats data
-INSERT INTO formats VALUES (1,'EPUB');
-INSERT INTO formats VALUES (2,'EPUB3.0');
-INSERT INTO formats VALUES (3,'PDF');
-INSERT INTO formats VALUES (4,'m.PDF');
-INSERT INTO formats VALUES (5,'COMIC');
+#CREATE TABLE items (
+#	itemnum INT,
+#	catenum INT,
+#	authornum INT,
+#	itemname NVARCHAR(40),
+#	price INT,
+#	itemdate DATE,
+#	iteminfo NVARCHAR(200),
+#	downloads INT,
+#	series INT
+#);
 
-##################################################
 # items data
-INSERT INTO items VALUES (itemnum, 10101, 1001, 1, '책001', 5000, 'img001', CURRENT_DATE(), 1000);
-INSERT INTO items VALUES (itemnum, 10102, 1002, 2, '책002', 5500, 'img002', CURRENT_DATE(), 1200);
-INSERT INTO items VALUES (itemnum, 10201, 1003, 3, '책003', 6000, 'img003', CURRENT_DATE(), 1400);
-INSERT INTO items VALUES (itemnum, 10202, 1004, 4, '책004', 6500, 'img004', CURRENT_DATE(), 1600);
-INSERT INTO items VALUES (itemnum, 10203, 1001, 5, '책005', 7000, 'img005', CURRENT_DATE(), 1800);
-INSERT INTO items VALUES (itemnum, 10301, 1002, 1, '책006', 5000, 'img006', CURRENT_DATE(), 2000);
-INSERT INTO items VALUES (itemnum, 10101, 1003, 2, '책007', 5000, 'img007', CURRENT_DATE(), 3000);
-INSERT INTO items VALUES (itemnum, 10202, 1004, 4, '책008', 5500, 'img008', CURRENT_DATE(), 1000);
-INSERT INTO items VALUES (itemnum, 10303, 1004, 3, '책009', 5500, 'img009', CURRENT_DATE(), 1500);
-INSERT INTO items VALUES (itemnum, 20101, 1002, 5, '책010', 6000, 'img010', CURRENT_DATE(), 2000);
-INSERT INTO items VALUES (itemnum, 20201, 1003, 1, '책011', 6000, 'img011', CURRENT_DATE(), 2500);
-INSERT INTO items VALUES (itemnum, 20202, 1001, 1, '책012', 6500, 'img012', CURRENT_DATE(), 3000);
-INSERT INTO items VALUES (itemnum, 20301, 1003, 2, '책013', 6500, 'img013', CURRENT_DATE(), 1000);
-INSERT INTO items VALUES (itemnum, 20302, 1001, 2, '책014', 7000, 'img014', CURRENT_DATE(), 1400);
-INSERT INTO items VALUES (itemnum, 20303, 1004, 3, '책015', 7000, 'img015', CURRENT_DATE(), 1800);
-INSERT INTO items VALUES (itemnum, 20301, 1002, 3, '책016', 5000, 'img016', CURRENT_DATE(), 2200);
-INSERT INTO items VALUES (itemnum, 20302, 1001, 4, '책017', 5000, 'img017', CURRENT_DATE(), 2600);
-INSERT INTO items VALUES (itemnum, 20303, 1002, 5, '책018', 5500, 'img018', CURRENT_DATE(), 3000);
+SET @tseries = 101;
+INSERT INTO items VALUES (101, 2, 1, '테스트용1-1', 8000, '2020-02-05', '테스트용1-1권', 999, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용1-2', 8000, '2020-02-06', '테스트용1-2권', 899, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용1-3', 8000, '2020-02-07', '테스트용1-3권', 799, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용1-4', 8000, '2020-02-07', '테스트용1-4권', 699, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용1-5', 8000, '2020-02-08', '테스트용1-5권', 599, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용1-6', 8000, '2020-02-08', '테스트용1-6권', 499, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용1-7', 8000, '2020-02-08', '테스트용1-7권', 399, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용1-8', 8000, '2020-02-08', '테스트용1-8권', 299, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용1-9', 8000, '2020-02-09', '테스트용1-9권', 199, @tseries);
+
+SET @tseries = (SELECT LAST_INSERT_ID() + 1);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용2-1', 9000, '2020-02-10', '테스트용2-1권', 999, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용2-2', 9000, '2020-02-11', '테스트용2-2권', 989, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용2-3', 9000, '2020-02-12', '테스트용2-3권', 979, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용2-4', 9000, '2020-02-13', '테스트용2-4권', 969, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용2-5', 9000, '2020-02-14', '테스트용2-5권', 959, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용2-6', 9000, '2020-02-15', '테스트용2-6권', 949, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용2-7', 9000, '2020-02-16', '테스트용2-7권', 939, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용2-8', 9000, '2020-02-17', '테스트용2-8권', 929, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용2-9', 9000, '2020-02-18', '테스트용2-9권', 919, @tseries);
+
+SET @tseries = (SELECT LAST_INSERT_ID() + 1);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용3-1', 10000, '2020-02-18', '테스트용3-1권', 999, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용3-2', 10000, '2020-02-18', '테스트용3-2권', 998, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용3-3', 10000, '2020-02-18', '테스트용3-3권', 997, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용3-4', 10000, '2020-02-18', '테스트용3-4권', 996, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용3-5', 10000, '2020-02-18', '테스트용3-5권', 995, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용3-6', 10000, '2020-02-18', '테스트용3-6권', 994, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용3-7', 10000, '2020-02-18', '테스트용3-7권', 993, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용3-8', 10000, '2020-02-18', '테스트용3-8권', 992, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 1, '테스트용3-9', 10000, '2020-02-18', '테스트용3-9권', 991, @tseries);
+
+SET @tseries = (SELECT LAST_INSERT_ID() + 1);
+INSERT INTO items VALUES (itemnum, 2, 2, '가 테스트용4-1', 7000, '2020-02-19', '테스트용4-1권', 989, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 2, '가 테스트용4-2', 7000, '2020-02-20', '테스트용4-2권', 988, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 2, '가 테스트용4-3', 7000, '2020-02-21', '테스트용4-3권', 987, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 2, '가 테스트용4-4', 7000, '2020-02-22', '테스트용4-4권', 986, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 2, '가 테스트용4-5', 7000, '2020-02-23', '테스트용4-5권', 985, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 2, '가 테스트용4-6', 7000, '2020-02-24', '테스트용4-6권', 984, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 2, '가 테스트용4-7', 7000, '2020-02-25', '테스트용4-7권', 983, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 2, '가 테스트용4-8', 7000, '2020-02-26', '테스트용4-8권', 982, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 2, '가 테스트용4-9', 7000, '2020-02-27', '테스트용4-9권', 981, @tseries);
+
+SET @tseries = (SELECT LAST_INSERT_ID() + 1);
+INSERT INTO items VALUES (itemnum, 3, 2, '다 테스트용5-1', 7000, '2020-03-01', '테스트용5-1권', 989, @tseries);
+INSERT INTO items VALUES (itemnum, 3, 2, '다 테스트용5-2', 7000, '2020-03-02', '테스트용5-2권', 988, @tseries);
+
+SET @tseries = (SELECT LAST_INSERT_ID() + 1);
+INSERT INTO items VALUES (itemnum, 4, 3, '나 테스트용6', 7000, '2020-03-01', '테스트용6 정보', 99, @tseries);
+
+SET @tseries = (SELECT LAST_INSERT_ID() + 1);
+INSERT INTO items VALUES (itemnum, 5, 3, '바 테스트용7', 7000, '2020-03-01', '테스트용7 정보', 99, @tseries);
+
+SET @tseries = (SELECT LAST_INSERT_ID() + 1);
+INSERT INTO items VALUES (itemnum, 2, 3, '라 테스트용8', 7000, '2020-03-01', '테스트용8-1권', 99, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 3, '라 테스트용8', 7000, '2020-03-01', '테스트용8-2권', 99, @tseries);
+INSERT INTO items VALUES (itemnum, 2, 3, '라 테스트용8', 7000, '2020-03-01', '테스트용8-3권', 99, @tseries);
+
+INSERT INTO items VALUES (1000, 1, 1000, '테스트용', 100000, CURRENT_DATE(), '테스트용책입니다.', 1000, 1000);

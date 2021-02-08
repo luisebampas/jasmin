@@ -16,10 +16,15 @@
 ## 2.3 (수)
 
 * django framework와 bootstrap을 이용하여 웹 페이지 제작
-  * 로그인 페이지
+
+  * 로그인 페이지 작성
   * 메인페이지, 아이템목록 css 수정 및 작성
 
-## 2. 4(목)
+
+## 2.4 (목)
+
+* django framework와 bootstrap을 이용하여 웹 페이지 제작
+  * 아이템 상세정보 페이지 작성
 
 * 각자 화면구현 작업 시작
   * base 템플릿 구현
@@ -27,7 +32,13 @@
   * login, join, itemlist, itemdetail, payment 템플릿의 section 구현.
   * 추후 과제 : base 템플릿, 조원 각자의 템플릿 정교화.
 
-## 2. 5(금)
+## 2.5 (금)
+
+* django framework와 bootstrap을 이용하여 웹 페이지 제작
+  * 아이템 상세정보 페이지 css 작업과 jQuery를 이용한 기능추가
+
+  * 로그인 페이지
+  * 메인페이지, 아이템목록 css 수정 및 작성
 
 * 각자 화면구현 작업 계속
 * paydetail 화면 구현

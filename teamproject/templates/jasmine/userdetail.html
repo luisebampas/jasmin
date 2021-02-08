@@ -22,6 +22,6 @@
 
         </table>
 
-
-
+    <div id="update"><a href="{% url 'userupdate' %}?id={{ request.session.suser }}">Userinfo Update</a></div>
+    <div id="delete"><a href="{% url 'userdelete' %}?id={{ request.session.suser }}">회원탈퇴</a></div>
 </section>

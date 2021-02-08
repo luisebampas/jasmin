@@ -29,8 +29,10 @@ urlpatterns = [
     path('joinimpl', views.MainView.joinimpl, name='joinimpl'),
     path('loginimpl', views.MainView.loginimpl, name='loginimpl'),
     path('logout', views.MainView.logout, name='logout'),
-    path('mypage', TemplateView.as_view(template_name='jasmine/mypage.html'), name='mypage'),
+    path('mypage', views.mypage, name='mypage'),
     path('userdetail', views.userdetail, name='userdetail'),
+    path('userupdate', views.userupdate, name='userupdate'),
+    path('userupdateimpl', views.userupdateimpl, name='userupdateimpl'),
+    path('userdelete', views.userdelete, name='userdelete'),
     path('orderlist', views.orderlist, name='orderlist'),
-
 ]

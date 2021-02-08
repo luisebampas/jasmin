@@ -10,9 +10,9 @@
         <form id="login_form" action="{% url 'loginimpl' %}" method="POST">
             {% csrf_token %}
             ID<input type="text" name="id"><br>
-            PWD<input type="password" name="pwd"><br>
-            <input id="loginsq" type="submit" value="LOGIN"><br>
-            회원가입을 원하신다면<div id="login_join"><a href="{% url 'join' %}">join</a></div>
+            PWD<input type="password" name="pwd"><br><br>
+            <input id="loginsq" type="submit" value="LOGIN"><br><br>
+            회원가입을 원하신다면&#10153;  <div id="login_join"><a href="{% url 'join' %}">join</a></div>
 
         </form>
     </div>

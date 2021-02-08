@@ -1,7 +1,6 @@
 from frame.db import Db
 from frame.sql import Sql
-from frame.value import User, Orderlist
-
+from frame.value import User, Orderlist, Mainlist
 
 class UserDb(Db):
     def delete(self, id):
@@ -75,10 +74,29 @@ class OrderDb(Db):
         super().close(conn, cursor);
         return all;
 
-def orderlist_test():
-    orders = OrderDb().selectone(100025);
-    for u in orders:
-        print(u);
+    def mainone(self,num):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        cursor.execute(Sql.main % (num) );
+        result = cursor.fetchall();
+        allm = [];
+        for u in result:
+            orders = Mainlist(u[0],u[1],u[2],u[3],u[4]);
+            allm.append(orders)
+        super().close(conn, cursor);
+        return allm;
+
+   # def cart(self,num):
+   #     conn = super().getConnection();
+   #     cursor = conn.cursor();
+   #     cursor.execute(Sql.cart % (num) );
+   #     result = cursor.fetchall();
+   #     allc = [];
+   #     for u in result:
+   #         orders = Cartlist(u[0],u[1],u[2]);
+   #         allc.append(orders)
+   #     super().close(conn, cursor);
+   #     return allc;
 
 
 def userlist_test():
@@ -86,10 +104,25 @@ def userlist_test():
     for u in users:
         print(u);
 
+def orderlist_test():
+    orders = OrderDb().selectone(100025);
+    for u in orders:
+        print(u);
+
 def userlistone_test():
-    users = UserDb().selectone('aaa');
+    users = UserDb().selectone('id100');
     print(users);
 
+def mainone_test():
+    orders = OrderDb().mainone(100025);
+    for u in orders:
+        print(u)
+
+
+#def cart_test():
+#    carts = OrderDb.cart(100025);
+#    for u in carts:
+#        print(u)
 
 def userinsert_test():
     users = UserDb().insert('id21','pwd21','james21');
@@ -99,4 +132,5 @@ def userdelete_test():
     users = UserDb().delete('id100');
 
 if __name__ == '__main__':
-    orderlist_test()
+    mainone_test()
+

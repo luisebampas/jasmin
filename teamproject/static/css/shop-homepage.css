@@ -63,16 +63,15 @@ section > h1 {
   width: 100%
   height: 150%;
   border: 1px solid red;
-  padding: 30px;
+  padding: 10px;
   color: red;
 }
 
 #logok {
-    margin-top:10px;
-    margin-right:10px;
-    margin-bottom:90px;
-    margin-left:10x;
+
     width:100%;
+    display:block;
+    float: right;
     border: 1px solid #f05bb2;
     text-align: center;
 }
@@ -95,10 +94,62 @@ section > h1 {
 
 }
 
-#login_join {
+#login_join  {
     width:10%;
     border:1px solid DodgerBlue;
     text-align: center;
     text-decoration: none;
+    background-color:DodgerBlue;
     color: white;
+    font-weight: bold;
+    display: inline-block;
+    float: center;
+    padding: 4px;
+}
+#login_join > a:hover {
+    color: white;
+}
+#update {
+
+  border: 1px solid DodgerBlue;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+
+}
+#delete{
+
+  border: 1px solid DodgerBlue;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+
+}
+
+#delete>a:hover {
+    color:red;
+}
+
+#updatebox {
+  text-align: center;
+  margin: auto;
+  width: 85%;
+  border: 3px solid DodgerBlue;
+  padding: 30px;
+}
+
+#updatesq {
+  background-color: DodgerBlue; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+
 }

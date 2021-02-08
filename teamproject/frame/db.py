@@ -1,7 +1,7 @@
 import MySQLdb
 
 config = {
-    'database':'teamp',
+    'database':'jasmine',
     'user':'root',
     'password':'111111',
     'host':'127.0.0.1',

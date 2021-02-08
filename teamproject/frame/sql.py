@@ -7,7 +7,7 @@ class Sql:
     orderlistone = "SELECT * FROM orderlist WHERE usernum=%d"
     main = "SELECT o.ordernum, i.itemnum, i.itemname, i.price, a.authorname FROM orderlist o INNER JOIN items i ON o.itemnum = i.itemnum INNER JOIN authors a ON i.authornum = a.authornum where o.usernum = %d"
 
-<<<<<<< HEAD
+
     itemlist = """SELECT i.itemnum, i.itemname, a.authorname, i.price, i.itemdate FROM items i LEFT OUTER JOIN authors a ON i.authornum = a.authornum
                   ORDER BY itemnum DESC
                """;
@@ -19,12 +19,4 @@ class Sql:
                     VALUES (%d, %d, '%s', %d, '%s', '%s', %d, %d)""";
     itemdelete = "DELETE FROM items WHERE itemnum=%d";
     itemupdate = "UPDATE items SET catenum=%d, authornum=%d, itemname='%s', price=%d, itemdate='%s', iteminfo='%s', series=%d WHERE itemnum=%d";
-=======
->>>>>>> master
-
-    # itemlist = "SELECT * FROM itemtb";
-    # itemlistone = "SELECT * FROM itemtb WHERE id= %d ";
-    # iteminsert = "INSERT INTO itemtb VALUES (null,'%s',%d,CURRENT_DATE(), '%s')";
-    # itemdelete = "DELETE FROM itemtb WHERE id= %d ";
-    # itemupdate = "UPDATE itemtb SET name='%s',price=%d, imgname='%s' WHERE id= %d ";
 

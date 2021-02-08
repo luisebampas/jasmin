@@ -1,15 +1,8 @@
 {% extends "base.html" %}
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> master
-=======
-
->>>>>>> 33290ac3561c317a71cf05b90f58fcb29eeb4d1a
 {% load static %}
 
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -34,21 +27,13 @@
 
 <body>
 {% block content %}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> master
-=======
->>>>>>> 33290ac3561c317a71cf05b90f58fcb29eeb4d1a
+
 
   <!-- Page Content -->
   <div class="container">
     <div class="row">
       <div class="col-lg-3">
         <h1 class="my-4">WELCOME Jasmine</h1>
-<<<<<<< HEAD
           <div class="list-group">
             <a href="{% url 'itemlist' %}?category=1&page=1" class="list-group-item">모든 소설</a>
             <a href="{% url 'itemlist' %}?category=2&page=1" class="list-group-item">일반 소설</a>
@@ -59,32 +44,9 @@
       <div class="col-lg-9">
         {% if main_section != None %}
           {% include main_section %}
-=======
-        <div class="list-group">
-          <a href="{% url 'itemlist' %}" class="list-group-item">공상과학(SF)</a>
-          <a href="#" class="list-group-item">현실 판타지</a>
-          <a href="#" class="list-group-item">무협지</a>
-          <a href="#" class="list-group-item">코미디</a>
-          <a href="#" class="list-group-item">순정/연애</a>
-          <a href="#" class="list-group-item">학원/액션</a>
-          <a href="#" class="list-group-item">고전/순수문학</a>
-        </div>
-      </div>
-      <!-- /.col-lg-3 -->
-      <div class="col-lg-9">
-        {% if section != None %}
-          {% include section %}
->>>>>>> master
         {% else %}
-          {% include "jasmine/itemlist.html" %}
+          {% include "jasmine/mainsection.html" %}
         {% endif %}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 5fe25ff4563ece6559bb3547ed44bcd41e9b5cb5
->>>>>>> master
-=======
->>>>>>> 33290ac3561c317a71cf05b90f58fcb29eeb4d1a
       </div>
       <!-- /.col-lg-9 -->
     </div>
@@ -96,44 +58,14 @@
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
     </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 33290ac3561c317a71cf05b90f58fcb29eeb4d1a
 </footer>
-  <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'vendor/jquery/jquery.js' %}"></script>
-  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
-<<<<<<< HEAD
-
 {% endblock %}
   <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'vendor/jquery/jquery.magnific-popup.js' %}"></script>
-=======
-    <!-- /.container -->
-  </footer>
->>>>>>> master
-
-=======
->>>>>>> 33290ac3561c317a71cf05b90f58fcb29eeb4d1a
-
-{% endblock %}
-  <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'vendor/jquery/jquery.magnific-popup.js' %}"></script>
+<script src="{% static 'vendor/jquery/jquery.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+<script src="{% static 'vendor/jquery/jquery.magnific-popup.js' %}"></script>
 
 </body>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 </html>
-=======
->>>>>>> master
-=======
-
-</html>
->>>>>>> 33290ac3561c317a71cf05b90f58fcb29eeb4d1a

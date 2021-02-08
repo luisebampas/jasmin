@@ -2,31 +2,14 @@ import logging
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-
-# Create your views here.
-<<<<<<< HEAD
-<<<<<<< HEAD
-from frame.error import ErrorCode
-from frame.itemdb import ItemDb
-from frame.userdb import UserDb
-
-=======
-<<<<<<< HEAD
-=======
-logger = logging.getLogger('users');
-
->>>>>>> 33290ac3561c317a71cf05b90f58fcb29eeb4d1a
 from django.utils.http import urlencode
-
+from frame.itemdb import ItemDb
 from frame.error import ErrorCode
 from frame.userdb import UserDb, OrderDb
 
+logger = logging.getLogger('users');
 
-<<<<<<< HEAD
->>>>>>> 5fe25ff4563ece6559bb3547ed44bcd41e9b5cb5
->>>>>>> master
-=======
->>>>>>> 33290ac3561c317a71cf05b90f58fcb29eeb4d1a
+
 
 class MainView:
     def login(request):
@@ -117,12 +100,6 @@ def userupdate(request):
     };
     return render(request, 'jasmine/mypage.html',context)
 
-<<<<<<< HEAD
-class mainSectionView:
-    def mainSection(request):
-        context = {
-            'main_section': 'jasmine/mainsection.html'
-=======
 def userupdateimpl(request):
     id = request.POST['id'];
     pwd = request.POST['pwd'];
@@ -133,21 +110,11 @@ def userupdateimpl(request):
         context = {
             'section': 'jasmine/error.html',
             'error':ErrorCode.e0001
->>>>>>> master
         };
         return render(request,'jasmine/home.html',context);
     qstr = urlencode({'id':id})
     return HttpResponseRedirect('%s?%s' % ('userdetail',qstr));
 
-<<<<<<< HEAD
-    def itemlist(request):
-        catenum = request.GET['category'];
-        page = request.GET['page'];
-        selectedItems = ItemDb().select(int(catenum), int(page));
-        context = {
-            'main_section': 'jasmine/itemlist.html',
-            'itemlist': selectedItems,
-=======
 def userdelete(request):
     id = request.GET['id'];
     try:
@@ -156,12 +123,7 @@ def userdelete(request):
     except:
         context = {
             'section': 'jasmine/error.html',
-<<<<<<< HEAD
-            'error':ErrorCode.e0002
->>>>>>> master
-=======
             'error': ErrorCode.e0002
->>>>>>> 33290ac3561c317a71cf05b90f58fcb29eeb4d1a
         };
     return render(request,'jasmine/home.html',context);
 
@@ -186,10 +148,33 @@ def map(request):
     };
     return render(request, 'jasmine/about.html', context)
 
-<<<<<<< HEAD
-    def cartlist(request):
+
+def cartlist(request):
+    context = {
+        'section': 'jasmine/cartlist.html'
+    };
+    return render(request, 'jasmine/home.html', context)
+
+
+class mainSectionView:
+    def mainSection(request):
         context = {
-<<<<<<< HEAD
+            'main_section': 'jasmine/mainsection.html'
+        };
+        return render(request, 'jasmine/home.html', context)
+
+    def itemlist(request):
+        catenum = request.GET['category'];
+        page = request.GET['page'];
+        selectedItems = ItemDb().select(int(catenum), int(page));
+        context = {
+            'main_section': 'jasmine/itemlist.html',
+            'itemlist': selectedItems,
+        };
+        return render(request, 'jasmine/home.html', context)
+
+    def itemcontent(request):
+        context = {
             'main_section': 'jasmine/itemcontent.html'
         };
         return render(request, 'jasmine/home.html', context)
@@ -206,7 +191,6 @@ def map(request):
         };
         return render(request, 'jasmine/home.html', context)
 
-
 class sideSectionView:
     def sideSection(request):
         context = {
@@ -219,41 +203,3 @@ class sideSectionView:
             'side_section': 'jasmine/category.html'
         };
         return render(request, 'jasmine/sidesection.html', context)
-=======
-            'section': 'jasmine/cartlist.html'
-        };
-        return render(request, 'jasmine/home.html', context)
->>>>>>> 5fe25ff4563ece6559bb3547ed44bcd41e9b5cb5
->>>>>>> master
-=======
-
-def cartlist(request):
-    context = {
-        'section': 'jasmine/cartlist.html'
-    };
-    return render(request, 'jasmine/home.html', context)
-
-def itemlist(request):
-    context = {
-        'section': 'jasmine/itemlist.html'
-    };
-    return render(request, 'jasmine/home.html', context)
-
-def itemcontent(request):
-    context = {
-        'section': 'jasmine/itemcontent.html'
-    };
-    return render(request, 'jasmine/home.html', context)
-
-def paydetail(request):
-    context = {
-        'section': 'jasmine/paydetail.html'
-    };
-    return render(request, 'jasmine/home.html', context)
-
-def payment(request):
-    context = {
-        'section': 'jasmine/payment.html'
-    };
-    return render(request, 'jasmine/home.html', context)
->>>>>>> 33290ac3561c317a71cf05b90f58fcb29eeb4d1a

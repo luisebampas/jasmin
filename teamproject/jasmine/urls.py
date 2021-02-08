@@ -37,8 +37,6 @@ urlpatterns = [
     path('userdelete', views.userdelete, name='userdelete'),
     path('orderlist', views.orderlist, name='orderlist'),
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     path('mainSection', views.mainSectionView.mainSection, name='mainSection'),
     path('itemlist', views.mainSectionView.itemlist, name='itemlist'),
     path('itemcontent', views.mainSectionView.itemcontent, name='itemcontent'),
@@ -47,26 +45,8 @@ urlpatterns = [
 
     path('sideSection', views.sideSectionView.sideSection, name='sideSection'),
     path('category', views.sideSectionView.category, name='category'),
-=======
-<<<<<<< HEAD
-=======
 
->>>>>>> 33290ac3561c317a71cf05b90f58fcb29eeb4d1a
     path('about', TemplateView.as_view(template_name='jasmine/about.html'), name='about'),
     path('map', views.map, name='map'),
 
-    path('itemlist', views.itemlist, name='itemlist'),
-    path('itemcontent', views.itemcontent, name='itemcontent'),
-
-    path('payment', views.payment, name='payment'),
-    path('paydetail', views.paydetail, name='paydetail'),
-
-    path('cartlist', views.cartlist, name='cartlist'),
-
-
-<<<<<<< HEAD
->>>>>>> 5fe25ff4563ece6559bb3547ed44bcd41e9b5cb5
->>>>>>> master
-=======
->>>>>>> 33290ac3561c317a71cf05b90f58fcb29eeb4d1a
 ]

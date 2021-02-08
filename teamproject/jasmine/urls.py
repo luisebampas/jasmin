@@ -33,4 +33,7 @@ urlpatterns = [
     path('itemlist', views.sectionView.itemlist, name='itemlist'),
     path('itemcontent', views.sectionView.itemcontent, name='itemcontent'),
 
+    path('payment', views.sectionView.payment, name='payment'),
+    path('paydetail', views.sectionView.paydetail, name='paydetail'),
+
 ]

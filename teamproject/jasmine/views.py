@@ -60,3 +60,15 @@ class sectionView:
             'section': 'jasmine/itemcontent.html'
         };
         return render(request, 'jasmine/home.html', context)
+
+    def payment(request):
+        context = {
+            'section': 'jasmine/payment.html'
+        };
+        return render(request, 'jasmine/home.html', context)
+
+    def paydetail(request):
+        context = {
+            'section': 'jasmine/paydetail.html'
+        };
+        return render(request, 'jasmine/home.html', context)

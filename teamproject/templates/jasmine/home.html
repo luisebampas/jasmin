@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -25,78 +27,45 @@
 
 <body>
 {% block content %}
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">JASMINE</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">LOGOUT</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'join' %}">JOIN</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
 
   <!-- searchbar -->
   <nav class="searchbar">
     검색
   </nav>
-
   <!-- Page Content -->
   <div class="container">
-
     <div class="row">
-
       <div class="col-lg-3">
-
         <h1 class="my-4">WELCOME Jasmine</h1>
         <div class="list-group">
           <a href="{% url 'itemlist' %}" class="list-group-item">Itemlist</a>
           <a href="#" class="list-group-item">Category 2</a>
           <a href="#" class="list-group-item">Category 3</a>
         </div>
-
       </div>
       <!-- /.col-lg-3 -->
-
       <div class="col-lg-9">
-
         {% if section != None %}
           {% include section %}
         {% else %}
           {% include "jasmine/mainsection.html" %}
         {% endif %}
-
       </div>
       <!-- /.col-lg-9 -->
-
     </div>
     <!-- /.row -->
-
   </div>
   <!-- /.container -->
-
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+<footer class="py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
     </div>
-    <!-- /.container -->
-  </footer>
+</footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+
 {% endblock %}
   <!-- Bootstrap core JavaScript -->
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
@@ -104,5 +73,6 @@
   <script src="{% static 'vendor/jquery/jquery.magnific-popup.js' %}"></script>
 
 </body>
+
 
 </html>

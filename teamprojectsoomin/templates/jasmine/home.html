@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <h1 class="my-4">WELCOME Jasmine</h1>
+          <div class="list-group">
+            <a href="{% url 'itemlist' %}?category=1&page=1" class="list-group-item">모든 소설</a>
+            <a href="{% url 'itemlist' %}?category=2&page=1" class="list-group-item">일반 소설</a>
+            <a href="{% url 'itemlist' %}?category=12&page=1" class="list-group-item">장르 소설</a>
+          </div>
+      </div>
+      <!-- /.col-lg-3 -->
+      <div class="col-lg-9">
+    {% if section != None %}
+        {% include section %}
+    {% else %}
+        {% include "jasmine/mainsection.html" %}
+    {% endif %}
+      </div>
+      <!-- /.col-lg-9 -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+  <!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+</footer>
+{% endblock %}

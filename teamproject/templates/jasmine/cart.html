@@ -1,0 +1,36 @@
+{% load static %}
+
+
+<section>
+    <h1>장바구니</h1>
+
+            <table class="table">
+         <thead>
+           <tr>
+              <th>아이템번호</th>
+              <th>아이템이름</th>
+              <th>가격</th>
+              <th>목록 삭제</th>
+           </tr>
+         </thead>
+         <tbody>
+
+         {% for u in cartlist %}
+           <tr>
+
+              <td>{{ u.itemnum }}</td>
+              <td>{{ u.itemname  }}</td>
+              <td>{{ u.price  }}</td>
+               <td><div id="delete"><a href="{% url 'cartdelete' %}?itemnum={{u.itemnum}}">장바구니 삭제</a></div></td>
+           </tr>
+
+         {% endfor %}
+
+         </tbody>
+
+        </table>
+
+
+
+
+</section>

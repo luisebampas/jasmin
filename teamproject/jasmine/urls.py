@@ -36,6 +36,7 @@ urlpatterns = [
     path('userupdateimpl', views.userupdateimpl, name='userupdateimpl'),
     path('userdelete', views.userdelete, name='userdelete'),
     path('orderlist', views.orderlist, name='orderlist'),
+    path('cart', views.cart, name='cart'),
 
     path('mainSection', views.mainSectionView.mainSection, name='mainSection'),
     path('itemlist', views.mainSectionView.itemlist, name='itemlist'),

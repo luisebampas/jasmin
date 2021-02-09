@@ -141,6 +141,18 @@ def orderlist(request):
 
     return render(request, 'jasmine/mypage.html', context)
 
+def cart(request):
+    usernum = request.GET['usernum'];
+    #print(usernum)
+    rsusernum = OrderDb().cart(int(usernum));
+    #print(rsusernum)
+    context = {
+        'section': 'jasmine/cart.html',
+        'cartlist':rsusernum,
+    };
+
+    return render(request, 'jasmine/mypage.html', context)
+
 
 def map(request):
     context = {

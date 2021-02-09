@@ -1,6 +1,6 @@
 from frame.db import Db
 from frame.sql import Sql
-from frame.value import User, Orderlist, Mainlist
+from frame.value import User, Orderlist, Mainlist, Cartlist
 
 
 class UserDb(Db):
@@ -87,6 +87,17 @@ class OrderDb(Db):
         super().close(conn, cursor);
         return allm;
 
+    def cart(self,num):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        cursor.execute(Sql.cart % (num) );
+        result = cursor.fetchall();
+        allc = [];
+        for u in result:
+            carts = Cartlist(u[0],u[1],u[2]);
+            allc.append(carts)
+        super().close(conn, cursor);
+        return allc;
 
 
 def userlist_test():

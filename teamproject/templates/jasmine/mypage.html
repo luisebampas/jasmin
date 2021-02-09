@@ -12,7 +12,7 @@
         <h1 class="my-4">WELCOME Jasmine</h1>
         <div class="list-group">
           <a href="{% url 'userdetail' %}?id={{ request.session.suser }}" class="list-group-item">Userdetail</a>
-          <a href="#" class="list-group-item">Cart</a>
+          <a href="{% url 'cart' %}?usernum={{ request.session.susernum }}" class="list-group-item">Cart</a>
           <a href="{% url 'orderlist' %}?usernum={{ request.session.susernum }}" class="list-group-item">OrderList</a>
         </div>
 

@@ -29,13 +29,13 @@ class Mainlist:
     def __str__(self):
         return str(self.ordernum)+' '+str(self.itemnum)+' '+self.itemname+' '+str(self.price)+' '+self.authorname+' ';
 
-#class Cartlist:
-#    def __init__(self, itemnum, itemname, price):
-#        self.itemnum = itemnum;
-#       self.itemname = itemname;
-#        self.price = price;
-#    def __str__(self):
-#        return str(self.itemnum)+' '+self.itemname+' '+str(self.price)+' ';
+class Cartlist:
+    def __init__(self, itemnum, itemname, price):
+        self.itemnum = itemnum;
+        self.itemname = itemname;
+        self.price = price;
+    def __str__(self):
+        return str(self.itemnum)+' '+self.itemname+' '+str(self.price)+' ';
 
 class Item:
     def __init__(self, itemnum, catenum, authornum, itemname, price, itemdate, iteminfo, sells, series):

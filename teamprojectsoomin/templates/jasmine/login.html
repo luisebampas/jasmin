@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+<style>
+</style>
+{% block content %}
+
+<section>
+
+    <h1>LOGIN PAGE</h1>
+    <div id="login_div">
+        <form id="login_form" action="{% url 'loginimpl' %}" method="POST">
+            {% csrf_token %}
+            ID<input type="text" name="id"><br>
+            PWD<input type="password" name="pwd"><br><br>
+            <input id="loginsq" type="submit" value="LOGIN"><br><br>
+            회원가입을 원하신다면&#10153;  <div id="login_join"><a href="{% url 'join' %}">join</a></div>
+
+        </form>
+
+
+    </div>
+
+            <div id="box_reason" style="margin:100px auto; padding: 13px; width:30%" >
+            <h3 style="color:#660066; font-weight:bold">&diams; 자스민이라서 더 좋은 이유 &diams;</h3><br>
+            <ul>
+                <li class="item 1" style="list-style:none;font-size:20px;border: 2px solid green;width:40%">
+                    <span>작은부분부터 생각합니다</span><br>
+                    <strong style="color:#0066cc">인터넷 고객만족 서비스</strong>
+                </li><br>
+                <li class="item 2" style="list-style:none;font-size:20px; border: 2px solid green;width:40%">
+                    <span>가장 가까운 서점</span><br>
+                    <strong style="color:#0066cc">모바일 JASMINE</strong>
+                </li><br>
+                <li class="item 3" style="list-style:none;font-size:20px; border: 2px solid green;width:45%">
+                    <span>빠르게 업데이트 되는 최신서적</span><br>
+                    <strong style="color:#0066cc">누구보다 빠르게 JAMINE에서 만나보세요</strong>
+                </li>
+            </ul>
+
+        </div>
+
+
+
+</section>
+{% endblock %}

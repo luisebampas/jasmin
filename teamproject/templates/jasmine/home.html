@@ -3,29 +3,7 @@
 {% load static %}
 
 
-<html lang="en">
 
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Jasmine Homepage</title>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- Bootstrap core CSS -->
-  <link href="{% static 'vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="{% static 'css/shop-homepage.css' %}" rel="stylesheet">
-  <link href="{% static 'css/angriff1.css' %}" rel="stylesheet">
-  <link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet">
-
-</head>
-
-<body>
 {% block content %}
 
 
@@ -42,10 +20,10 @@
       </div>
       <!-- /.col-lg-3 -->
       <div class="col-lg-9">
-        {% if main_section != None %}
-          {% include main_section %}
+        {% if section != None %}
+          {% include section %}
         {% else %}
-          {% include "jasmine/itemlist.html" %}
+          {% include "jasmine/mainsection.html" %}
         {% endif %}
       </div>
       <!-- /.col-lg-9 -->
@@ -60,12 +38,3 @@
     </div>
 </footer>
 {% endblock %}
-  <!-- Bootstrap core JavaScript -->
-<script src="{% static 'vendor/jquery/jquery.js' %}"></script>
-<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
-<script src="{% static 'vendor/jquery/jquery.magnific-popup.js' %}"></script>
-
-</body>
-
-
-</html>

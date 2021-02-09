@@ -159,7 +159,7 @@ def cartlist(request):
 class mainSectionView:
     def mainSection(request):
         context = {
-            'main_section': 'jasmine/mainsection.html'
+            'section': 'jasmine/mainsection.html'
         };
         return render(request, 'jasmine/home.html', context)
 
@@ -168,26 +168,26 @@ class mainSectionView:
         page = request.GET['page'];
         selectedItems = ItemDb().select(int(catenum), int(page));
         context = {
-            'main_section': 'jasmine/itemlist.html',
+            'section': 'jasmine/itemlist.html',
             'itemlist': selectedItems,
         };
         return render(request, 'jasmine/home.html', context)
 
     def itemcontent(request):
         context = {
-            'main_section': 'jasmine/itemcontent.html'
+            'section': 'jasmine/itemcontent.html'
         };
         return render(request, 'jasmine/home.html', context)
 
     def payment(request):
         context = {
-            'main_section': 'jasmine/payment.html'
+            'section': 'jasmine/payment.html'
         };
         return render(request, 'jasmine/home.html', context)
 
     def paydetail(request):
         context = {
-            'main_section': 'jasmine/paydetail.html'
+            'section': 'jasmine/paydetail.html'
         };
         return render(request, 'jasmine/home.html', context)
 

@@ -1,13 +1,16 @@
 {% load static  %}
 
 <script>
-
+$(document).ready(function(){
+	var price = string({{item.price}}).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	$('.price').html( '<h3>var price</h3>' );
+});
 
 function view_big_img(){
   $.magnificPopup.open({
     items: [
       {
-        src: '{% static 'img/testimgbig.jpg' %}'
+        src: 'static/img/b{{item.itemnum}}.jpg'
       }
     ],
     type: 'image'
@@ -21,25 +24,22 @@ function view_big_img(){
     <div class="book-preview">
       <div class="cover">
         <a href="#" onclick="view_big_img();">
-          <img class="thumbnails" src="{% static 'img/testimg.jpg' %}">
-          <!-- 미구현 <span class="txt-preview">크게보기</span> -->
+          <img class="thumbnails" src="static/img/t{{item.itemnum}}.jpg">
         </a>
       </div>
       <p><a href="#">미리보기</a></p>
     </div>
     <div class="order-box">
-      <h2 class="book-title"><strong>하마터면 깨달을 뻔 인지심리학자가 본 에고의 진실게임</strong></h2>
+      <h2 class="book-title"><strong>{{item.itemname}}</strong></h2>
       <p class="txt-info">
-        크리스 나이바우어 지음
+        {{item.authorname}}
         <span class="col">|</span>
-        정신세계사
-        <span class="col">|</span>
-        2017년 10월 25일 출간
+        {{item.itemdate}}
       </p>
       <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
       4.0 stars
       <div class="book-price">
-        <h3>10,500 원</h3>
+        <h3 class="price"></h3>
       </div>
       <div class="btn-wrap">
         <a class="buttons" href="#">구매하기</a>
@@ -55,12 +55,7 @@ function view_big_img(){
       책 소개
     </div>
     <div class="detail-body">
-      <strong>
-        <span>이 책이 속한 분야: </span>
-        <span>카테고리 들어갈 공간{{카테고리}}</span>
-      </strong>
-      <hr>
-      <p>책 소개 내용{{책소개}}</p>
+      <p>{{item.iteminfo}}</p>
       <hr>
     </div>
 
@@ -70,10 +65,10 @@ function view_big_img(){
     <div class="detail-body">
       <strong>
         <span>저자: </span>
-        <span>저자이름 들어갈 공간{{저자이름}}</span>
+        <span>{{item.authorname}}</span>
       </strong>
       <hr>
-      <p>저자 소개 내용{{저자소개}}</p>
+      <p>{{item.authorinfo}}</p>
       <hr>
     </div>
 

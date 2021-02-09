@@ -35,20 +35,22 @@
         <li class="list_item">
           <!-- picture -->
           <div class="pic-area">
-            <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}" class="book-img"><img class="thumbnails" src="static/img/t{{item.itemnum}}.jpg"></a>
+            <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}" class="book-img">
+              <img class="thumbnails" src="static/img/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';">
+            </a>
           </div>
           <!-- //picture -->
           <!-- content -->
           <div class="cont-area">
             <div class="item-title">
               <strong>
-                <a href="{% url 'itemcontent' %}">{{item.itemname}}</a>
+                <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}">{{item.itemname}}</a>
               </strong>
             </div>
             <div class="item-info">
               <span class="n1">{{item.authorname}}</span>
               <span class="co1">|</span>
-              <span class="n2">{{item.itemdate}}</span>
+              <span class="n2">{{item.itemdate|date:"Y-m-d"}}</span>
             </div>
           </div>
           <!-- //content -->
@@ -59,15 +61,28 @@
   </div>
   <!-- //item list -->
 
-  <div class="paging">
-    <a href="#" class="first"><<</a>
-    <a href="#" class="prev"><</a>
-    <!-- <a href="#" class="current">1</a> -->
-    <a href="{% url 'itemlist' %}?category=1&page=1">1</a>
-    <a href="{% url 'itemlist' %}?category=1&page=2">2</a>
-    <a href="{% url 'itemlist' %}?category=1&page=3">3</a>
-    <a href="#" class="next">></a>
-    <a href="#" class="last">>></a>
-  </div>
+  <nav class="paging">
+    <strong>
+      <a href="{% url 'itemlist' %}?category={{catenum}}&page=1"><<</a>
+      {% if prevpage != 0 %}
+        <a href="{% url 'itemlist' %}?category={{catenum}}&page={{prevpage}}"><</a>
+      {% else %}
+        <span><</span>
+      {% endif %}
+      {% for pagenum in pageRange %}
+        {% if pagenum == currentpage %}
+          <span>{{pagenum}}</span>
+        {% else %}
+          <a href="{% url 'itemlist' %}?category={{catenum}}&page={{pagenum}}">{{pagenum}}</a>
+        {% endif %}
+      {% endfor %}
+      {% if nextpage <= lastpage %}
+        <a href="{% url 'itemlist' %}?category={{catenum}}&page={{nextpage}}">></a>
+      {% else %}
+        <span>></span>
+      {% endif %}
+      <a href="{% url 'itemlist' %}?category={{catenum}}&page={{lastpage}}">>></a>
+    </strong>
+  </nav>
 
 </section>

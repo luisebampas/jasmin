@@ -4,11 +4,11 @@ from frame.value import Item, Itemlist, Itemdetail
 
 
 class ItemDb(Db):
-    def insert(self, name,price,imgname):
+    def insert(self, name, price, imgname):
         try:
             conn = super().getConnection();
             cursor = conn.cursor();
-            cursor.execute(Sql.iteminsert % (name,price,imgname));
+            cursor.execute(Sql.iteminsert % (name, price, imgname));
             conn.commit();
         except:
             conn.rollback();
@@ -16,8 +16,7 @@ class ItemDb(Db):
         finally:
             super().close(conn, cursor);
 
-
-    def selectone(self,itemnum):
+    def selectone(self, itemnum):
         conn = super().getConnection();
         cursor = conn.cursor();
         cursor.execute(Sql.itemlistone % int(itemnum));
@@ -26,13 +25,32 @@ class ItemDb(Db):
         super().close(conn, cursor);
         return item;
 
-
-    def select(self, catenum, page):
+    def select(self, catenum, page, maxItemlist):
+        ordercon = 1;
+        offset = (int(page) - 1) * maxItemlist;
         conn = super().getConnection();
         cursor = conn.cursor();
-        limit = 20;
-        offset = (int(page) - 1) * limit
-        cursor.execute(Sql.itemlist + Sql.page % offset);
+        if catenum == 1:
+            catesql = Sql.categoryAll;
+        else:
+            catesql = Sql.category % catenum;
+        if ordercon == 1:
+            ordersql = Sql.ordercon1;
+        elif ordercon == 2:
+            ordersql = Sql.ordercon2;
+        elif ordercon == 3:
+            ordersql = Sql.ordercon3;
+        elif ordercon == 4:
+            ordersql = Sql.ordercon4;
+        elif ordercon == 5:
+            ordersql = Sql.ordercon5;
+        elif ordercon == 6:
+            ordersql = Sql.ordercon6;
+        elif ordercon == 7:
+            ordersql = Sql.ordercon7;
+        else:
+            ordersql = ' ';
+        cursor.execute(Sql.itemlist + catesql + ordersql + Sql.page % offset);
         result = cursor.fetchall();
         all = [];
         for i in result:
@@ -41,12 +59,22 @@ class ItemDb(Db):
         super().close(conn, cursor);
         return all;
 
+    def listcount(self, catenum):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        if catenum == 1:
+            catesql = Sql.categoryAll;
+        else:
+            catesql = Sql.category % catenum;
+        cursor.execute(Sql.itemlistcount + catesql)
+        count = cursor.fetchone()[0];
+        return count;
 
-    def update(self,id, name,price, imgname):
+    def update(self, id, name, price, imgname):
         try:
             conn = super().getConnection();
             cursor = conn.cursor();
-            cursor.execute(Sql.itemupdate % (name,price,imgname,id));
+            cursor.execute(Sql.itemupdate % (name, price, imgname, id));
             conn.commit();
         except:
             conn.rollback();
@@ -66,25 +94,12 @@ class ItemDb(Db):
         finally:
             super().close(conn, cursor);
 
-def itemlist_test():
-    items = ItemDb().select();
-    for i in items:
-        print(i);
-
-def itemlistone_test():
-    item = ItemDb().selectone(2);
-    print(item);
-
-
-def iteminsert_test():
-    ItemDb().insert('shirts',30000,'s.jpg');
-def itemupdate_test():
-    ItemDb().update(2,'pants2',30000,'s.jpg');
-def itemdelete_test():
-    ItemDb().delete(2);
-
 
 if __name__ == '__main__':
+    """
     itemlist = ItemDb().select(1, 1);
     for i in itemlist:
         print(i)
+    """
+    itemlistcount = ItemDb().listcount(1);
+    print(itemlistcount);

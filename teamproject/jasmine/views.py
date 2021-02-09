@@ -1,4 +1,5 @@
 import logging
+import math
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -176,18 +177,33 @@ class mainSectionView:
         return render(request, 'jasmine/home.html', context)
 
     def itemlist(request):
-        catenum = request.GET['category'];
-        page = request.GET['page'];
-        itemlist = ItemDb().select(int(catenum), int(page));
+        # max items shown in a one page
+        maxItemlist = 20;
+        # max pages shown
+        maxPageview = 5;
+        catenum = int(request.GET['category']);
+        page = int(request.GET['page']);
+        itemlist = ItemDb().select(catenum, page, maxItemlist);
+        itemlistcount = ItemDb().listcount(catenum);
+        lastpage = math.ceil(itemlistcount / maxItemlist);
+        pageRange = range(max(1, page-2), min(page+2, lastpage)+1)
+        prevpage = page-1;
+        nextpage = page+1;
         context = {
             'section': 'jasmine/itemlist.html',
+            'catenum': catenum,
             'itemlist': itemlist,
+            'pageRange': pageRange,
+            'currentpage': page,
+            'prevpage': prevpage,
+            'nextpage': nextpage,
+            'lastpage': lastpage,
         };
         return render(request, 'jasmine/home.html', context)
 
     def itemcontent(request):
-        itemnum = request.GET['itemnum'];
-        item = ItemDb().selectone(int(itemnum))
+        itemnum = int(request.GET['itemnum']);
+        item = ItemDb().selectone(itemnum)
         context = {
             'section': 'jasmine/itemcontent.html',
             'item': item,

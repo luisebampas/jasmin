@@ -1,11 +1,7 @@
 {% load static  %}
+{% load humanize %}
 
 <script>
-$(document).ready(function(){
-	var price = string({{item.price}}).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	$('.price').html( '<h3>var price</h3>' );
-});
-
 function view_big_img(){
   $.magnificPopup.open({
     items: [
@@ -24,7 +20,7 @@ function view_big_img(){
     <div class="book-preview">
       <div class="cover">
         <a href="#" onclick="view_big_img();">
-          <img class="thumbnails" src="static/img/t{{item.itemnum}}.jpg">
+          <img class="thumbnails" src="static/img/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';">
         </a>
       </div>
       <p><a href="#">미리보기</a></p>
@@ -32,14 +28,13 @@ function view_big_img(){
     <div class="order-box">
       <h2 class="book-title"><strong>{{item.itemname}}</strong></h2>
       <p class="txt-info">
-        {{item.authorname}}
-        <span class="col">|</span>
-        {{item.itemdate}}
+        저자 : {{item.authorname}}<br>
+        출간일 : {{item.itemdate|date:"Y-m-d"}}
       </p>
-      <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-      4.0 stars
+
       <div class="book-price">
-        <h3 class="price"></h3>
+        <p class="ebook-price">E-book 정가</p>
+        <h3 class="price">{{item.price|intcomma}}원</h3>
       </div>
       <div class="btn-wrap">
         <a class="buttons" href="#">구매하기</a>
@@ -72,30 +67,7 @@ function view_big_img(){
       <hr>
     </div>
 
-    <div class="detail-title">
-      Product Reviews
-    </div>
-    <div class="detail-body">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-      <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
-      <span>5 stars</span>
-      <p></p>
-      <small class="text-muted"><p>Posted by Anonymous on 3/1/17</p></small>
-      <hr>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-      <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-      <span>4 stars</span>
-      <p></p>
-      <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-      <hr>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-      <span class="text-warning">&#9733; &#9733; &#9733; &#9734; &#9734;</span>
-      <span>3 stars</span>
-      <p></p>
-      <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-      <hr>
-      <a href="#" class="btn btn-success">리뷰 남기기</a>
-    </div>
+
   </div>
   <!-- //item detail -->
 

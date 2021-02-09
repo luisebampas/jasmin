@@ -1,14 +1,14 @@
 from frame.db import Db
 from frame.sql import Sql
-from frame.value import User
+from frame.value import User, Orderlist, Mainlist, Cartlist
 
 
 class UserDb(Db):
-    def insert(self, id, pwd, name):
+    def delete(self, id):
         try:
             conn = super().getConnection();
             cursor = conn.cursor();
-            cursor.execute(Sql.userinsert % (id, pwd, name));
+            cursor.execute(Sql.userdelete % (id));
             conn.commit();
         except:
             conn.rollback();
@@ -28,11 +28,12 @@ class UserDb(Db):
         finally:
             super().close(conn, cursor);
 
-    def delete(self, id):
+
+    def insert(self, id, pwd, name):
         try:
             conn = super().getConnection();
             cursor = conn.cursor();
-            cursor.execute(Sql.userdelete % (id));
+            cursor.execute(Sql.userinsert % (id,pwd,name));
             conn.commit();
         except:
             conn.rollback();
@@ -40,12 +41,12 @@ class UserDb(Db):
         finally:
             super().close(conn, cursor);
 
-    def selectone(self, id):
+    def selectone(self,id):
         conn = super().getConnection();
         cursor = conn.cursor();
-        cursor.execute(Sql.userlistone % id);
+        cursor.execute(Sql.userlistone % (id) );
         u = cursor.fetchone();
-        user = User(u[0], u[1], u[2]);
+        user = User(u[0],u[1],u[2],u[3]);
         super().close(conn, cursor);
         return user;
 
@@ -56,13 +57,49 @@ class UserDb(Db):
         result = cursor.fetchall();
         all = [];
         for u in result:
-            user = User(u[0], u[1], u[2]);
+            user = User(u[0],u[1],u[2],u[3]);
             all.append(user);
+        super().close(conn,cursor);
+        return all;
+
+class OrderDb(Db):
+    def selectone(self,num):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        cursor.execute(Sql.orderlistone % (num) );
+        result = cursor.fetchall();
+        all = [];
+        for u in result:
+            order = Orderlist(u[0],u[1],u[2]);
+            all.append(order)
         super().close(conn, cursor);
         return all;
 
+    def mainone(self,num):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        cursor.execute(Sql.main % (num) );
+        result = cursor.fetchall();
+        allm = [];
+        for u in result:
+            orders = Mainlist(u[0],u[1],u[2],u[3],u[4]);
+            allm.append(orders)
+        super().close(conn, cursor);
+        return allm;
 
-# userlist Test Function ................
+    def cart(self,num):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        cursor.execute(Sql.cart % (num) );
+        result = cursor.fetchall();
+        allc = [];
+        for u in result:
+            carts = Cartlist(u[0],u[1],u[2]);
+            allc.append(carts)
+        super().close(conn, cursor);
+        return allc;
+
+
 def userlist_test():
     users = UserDb().select();
     for u in users:
@@ -70,18 +107,16 @@ def userlist_test():
 
 
 def userlistone_test():
-    users = UserDb().selectone('id01');
+    users = UserDb().selectone('id100');
     print(users);
-
-
 def userinsert_test():
-    UserDb().insert('id04', 'pwd04', 'jeams');
-
-
+    users = UserDb().insert('id21','pwd21','james21');
 def userupdate_test():
-    UserDb().update('id01', 'pwd99', '홍말숙');
-
+    user = UserDb().update('id04','pwd04','james04');
+def userdelete_test():
+    users = UserDb().delete('id100');
 
 if __name__ == '__main__':
-    userupdate_test();
+    userlistone_test();
     userlist_test();
+

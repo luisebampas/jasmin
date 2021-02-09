@@ -1,0 +1,55 @@
+{% load static %}
+<style>
+    #map{
+        width:800px;
+        height:600px;
+        border: 2px solid DodgerBlue;
+        float: center;
+    }
+</style>
+<script>
+    $(document).ready(function(){
+        var container = document.getElementById('map');
+        var options = {
+            center: new kakao.maps.LatLng(37.5709641, 126.9755758),
+            level:3
+        };
+
+        var map = new kakao.maps.Map(container, options);
+
+        var position =  new kakao.maps.LatLng(37.5709641, 126.9755758);
+        var marker = new kakao.maps.Marker({
+            position: position
+        });
+        marker.setMap(map);
+        var iwContent = '<div style="padding:5px;">HELLO JASMINE</div>';
+        iwPosition = new kakao.maps.LatLng(37.5709641, 126.9755758);
+        var infowindow = new kakao.maps.InfoWindow({
+            position: iwPosition,
+            content : iwContent
+        });
+        kakao.maps.event.addListener(marker, 'mouseover', function() {
+            infowindow.open(map, marker);
+        });
+
+
+    });
+</script>
+
+
+
+
+<section>
+    <h1>위치안내</h1><br>
+    <div id="map"></div><br>
+<h4 style="color:DodgerBlue">지하철로 오시려면</h4><br>
+
+    <li style=list-style:square;">지하철 1,2호선 시청역 하차 시청 쪽 4번 출구로 나와 광화문 방향으로 500m</li><br>
+
+    <li style=list-style:square;>지하철 5호선 광화문역 하차 3번출구 나오기 직전 왼쪽 출입구</li><br>
+
+    <li style=list-style:square;>지하철 5호선 광화문역 하차 4번출구 나오기 직전 오른쪽 출입구</li><br>
+
+    <li style=list-style:square;>지하철 1호선 종각역 하차 1번출구 방향으로 500m 도보 후 오른쪽 건물 지하1층</li><br><br>
+
+</section>

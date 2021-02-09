@@ -10,14 +10,13 @@ config = {
     'use_unicode': True
 }
 
-
 class Db:
     def getConnection(self):
-        conn = MySQLdb.connect(**config)
-        return conn
+        conn = MySQLdb.connect(**config);
+        return conn;
 
     def close(self, conn, cursor):
         if cursor != None:
-            cursor.close()
+            cursor.close();
         if conn != None:
-            cursor.close()
+            cursor.close();

@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
@@ -26,8 +27,16 @@ urlpatterns = [
 
     path('login', views.MainView.login, name='login'),
     path('join', views.MainView.join, name='join'),
+    path('joinimpl', views.MainView.joinimpl, name='joinimpl'),
     path('loginimpl', views.MainView.loginimpl, name='loginimpl'),
     path('logout', views.MainView.logout, name='logout'),
+    path('mypage', views.mypage, name='mypage'),
+    path('userdetail', views.userdetail, name='userdetail'),
+    path('userupdate', views.userupdate, name='userupdate'),
+    path('userupdateimpl', views.userupdateimpl, name='userupdateimpl'),
+    path('userdelete', views.userdelete, name='userdelete'),
+    path('orderlist', views.orderlist, name='orderlist'),
+    path('cart', views.cart, name='cart'),
 
     path('mainSection', views.mainSectionView.mainSection, name='mainSection'),
     path('itemlist', views.mainSectionView.itemlist, name='itemlist'),
@@ -37,4 +46,8 @@ urlpatterns = [
 
     path('sideSection', views.sideSectionView.sideSection, name='sideSection'),
     path('category', views.sideSectionView.category, name='category'),
+
+    path('about', TemplateView.as_view(template_name='jasmine/about.html'), name='about'),
+    path('map', views.map, name='map'),
+
 ]

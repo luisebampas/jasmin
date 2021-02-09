@@ -29,11 +29,11 @@ LIMIT 20 OFFSET 0;
 SET @test_itemnum = 128;
 
 # item detail
-SELECT i.*, a.*
+SELECT i.itemnum, i.catenum, i.itemname, i.price, i.itemdate, i.iteminfo, i.sells, i.series, a.authorname, a.authorinfo
 FROM items i LEFT OUTER JOIN authors a
 ON i.authornum = a.authornum
 WHERE itemnum = @test_itemnum;
 
-# series
+# series list
 SELECT itemnum, itemname, price FROM items
 WHERE series = (SELECT series FROM items WHERE itemnum = @test_itemnum);

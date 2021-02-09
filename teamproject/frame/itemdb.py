@@ -1,6 +1,6 @@
 from frame.db import Db
 from frame.sql import Sql
-from frame.value import Item, Itemlist
+from frame.value import Item, Itemlist, Itemdetail
 
 
 class ItemDb(Db):
@@ -16,21 +16,22 @@ class ItemDb(Db):
         finally:
             super().close(conn, cursor);
 
-    def selectone(self,id):
+
+    def selectone(self,itemnum):
         conn = super().getConnection();
         cursor = conn.cursor();
-        cursor.execute(Sql.itemlistone % id );
+        cursor.execute(Sql.itemlistone % int(itemnum));
         i = cursor.fetchone();
-        item = Item(i[0],i[1], i[2],i[3],i[4]);
+        item = Itemdetail(i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9]);
         super().close(conn, cursor);
         return item;
 
-    # i.itemnum, i.itemname, a.authorname, i.price, i.itemdate
+
     def select(self, catenum, page):
         conn = super().getConnection();
         cursor = conn.cursor();
         limit = 20;
-        offset = (page - 1) * limit
+        offset = (int(page) - 1) * limit
         cursor.execute(Sql.itemlist + Sql.page % offset);
         result = cursor.fetchall();
         all = [];

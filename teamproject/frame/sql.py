@@ -12,7 +12,8 @@ class Sql:
                """;
     catenum = " WHERE catenum = %d"
     page = " LIMIT 20 OFFSET %d"
-    itemlistone = """SELECT i.*, a.* FROM items i LEFT OUTER JOIN authors a ON i.authornum = a.authornum
+    itemlistone = """SELECT i.itemnum, i.catenum, i.itemname, i.price, i.itemdate, i.iteminfo, i.sells, i.series, a.authorname, a.authorinfo 
+                     FROM items i LEFT OUTER JOIN authors a ON i.authornum = a.authornum 
                      WHERE itemnum = %d""";
     iteminsert = """INSERT INTO items (catenum, authornum, itemname, price, itemdate, iteminfo, downloads, series)
                     VALUES (%d, %d, '%s', %d, '%s', '%s', %d, %d)""";

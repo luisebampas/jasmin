@@ -54,21 +54,27 @@ class mainSectionView:
         };
         return render(request, 'jasmine/home.html', context)
 
+
     def itemlist(request):
         catenum = request.GET['category'];
         page = request.GET['page'];
-        selectedItems = ItemDb().select(int(catenum), int(page));
+        itemlist = ItemDb().select(int(catenum), int(page));
         context = {
             'main_section': 'jasmine/itemlist.html',
-            'itemlist': selectedItems,
+            'itemlist': itemlist,
         };
         return render(request, 'jasmine/home.html', context)
 
+
     def itemcontent(request):
+        itemnum = request.GET['itemnum'];
+        item = ItemDb().selectone(itemnum)
         context = {
-            'main_section': 'jasmine/itemcontent.html'
+            'main_section': 'jasmine/itemcontent.html',
+            'item': item,
         };
         return render(request, 'jasmine/home.html', context)
+
 
     def payment(request):
         context = {

@@ -35,7 +35,7 @@
         <li class="list_item">
           <!-- picture -->
           <div class="pic-area">
-            <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}" class="book-img"><img class="thumbnails" src="{% static 'img/testimg.jpg' %}"></a>
+            <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}" class="book-img"><img class="thumbnails" src="static/img/t{{item.itemnum}}.jpg"></a>
           </div>
           <!-- //picture -->
           <!-- content -->
@@ -62,8 +62,10 @@
   <div class="paging">
     <a href="#" class="first"><<</a>
     <a href="#" class="prev"><</a>
-    <a href="#" class="current">1</a>
-    <a href="#">2</a>
+    <!-- <a href="#" class="current">1</a> -->
+    <a href="{% url 'itemlist' %}?category=1&page=1">1</a>
+    <a href="{% url 'itemlist' %}?category=1&page=2">2</a>
+    <a href="{% url 'itemlist' %}?category=1&page=3">3</a>
     <a href="#" class="next">></a>
     <a href="#" class="last">>></a>
   </div>

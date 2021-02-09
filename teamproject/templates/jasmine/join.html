@@ -12,7 +12,7 @@
         <form id="join_form" action="{% url 'joinimpl' %}" method="post">
         {% csrf_token %}
         ID<input type="text" name="id"><br>
-        PWD<input type="text" name="pwd"><br>
+        PWD<input type="password" name="pwd"><br>
         NAME<input type="text" name="name"><br><br>
         <input id="joinsq" type="submit" value="REGISTER">
         </form>

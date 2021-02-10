@@ -94,10 +94,22 @@ class OrderDb(Db):
         result = cursor.fetchall();
         allc = [];
         for u in result:
-            carts = Cartlist(u[0],u[1],u[2]);
+            carts = Cartlist(u[0],u[1],u[2],u[3]);
             allc.append(carts)
         super().close(conn, cursor);
         return allc;
+
+    def cartdelete(self, cartnum):
+        try:
+            conn = super().getConnection();
+            cursor = conn.cursor();
+            cursor.execute(Sql.cartdelete % (cartnum));
+            conn.commit();
+        except:
+            conn.rollback();
+            raise Exception;
+        finally:
+            super().close(conn, cursor);
 
 
 def userlist_test():

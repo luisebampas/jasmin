@@ -125,7 +125,8 @@ def userdelete(request):
             'section': 'jasmine/error.html',
             'error': ErrorCode.e0002
         };
-    return render(request,'jasmine/home.html',context);
+    return redirect('home');
+
 
 
 
@@ -152,6 +153,27 @@ def cart(request):
     };
 
     return render(request, 'jasmine/mypage.html', context)
+
+
+def cartdelete(request):
+    cartnum = request.GET['cartnum'];
+    print(cartnum)
+    try:
+        OrderDb().cartdelete(int(cartnum));
+        context = {
+            'section': 'jasmine/cart.html',
+        };
+    except:
+        context = {
+            'section': 'jasmine/error.html',
+            'error':ErrorCode.e0002
+        };
+        return render(request,'jasmine/mypage.html',context);
+
+    usernm = request.session['susernum']
+    qstr = urlencode({'usernum': usernm})
+    return HttpResponseRedirect('%s?%s' % ('cart', qstr))
+
 
 
 def map(request):

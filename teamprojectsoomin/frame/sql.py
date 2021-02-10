@@ -6,7 +6,10 @@ class Sql:
     userupdate = "UPDATE users SET userpwd='%s', username='%s' WHERE userid='%s'";
     orderlistone = "SELECT * FROM orderlist WHERE usernum=%d"
     main = "SELECT o.ordernum, i.itemnum, i.itemname, i.price, a.authorname FROM orderlist o INNER JOIN items i ON o.itemnum = i.itemnum INNER JOIN authors a ON i.authornum = a.authornum where o.usernum = %d"
-    cart = "SELECT c.itemnum, i.itemname, i.price FROM carts c INNER JOIN items i ON c.itemnum = i.itemnum where c.usernum = %d "
+
+    cart = "SELECT c.cartnum, c.itemnum, i.itemname, i.price FROM carts c INNER JOIN items i ON c.itemnum = i.itemnum where c.usernum = %d "
+    cartdelete = "DELETE FROM carts WHERE cartnum= %d ";
+
 
     itemlist = """SELECT i.itemnum, i.itemname, a.authorname, i.price, i.itemdate FROM items i LEFT OUTER JOIN authors a ON i.authornum = a.authornum
                   ORDER BY itemnum DESC

@@ -37,7 +37,6 @@ urlpatterns = [
     path('userdelete', views.userdelete, name='userdelete'),
     path('orderlist', views.orderlist, name='orderlist'),
     path('cart', views.cart, name='cart'),
-    path('cartdelete', views.cartdelete, name='cartdelete'),
 
 
     path('mainSection', views.mainSectionView.mainSection, name='mainSection'),

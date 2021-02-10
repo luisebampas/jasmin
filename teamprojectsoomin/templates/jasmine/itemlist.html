@@ -30,6 +30,9 @@
 
   <!-- item list -->
   <div class="list_content">
+    {% if searchmod != 0 and searchword != '' %}
+      {{catename}}의 {{searchmodname}}에서 '{{searchword}}'로 검색한 결과: {{itemlistcount}}건
+    {% endif %}
     <ul>
       {% for item in itemlist %}
         <li class="list_item">
@@ -56,16 +59,18 @@
           <!-- //content -->
         </li>
       {% endfor %}
-
     </ul>
+    {% if itemlistcount == 0 %}
+    <center><h3>검색결과가 존재하지 않습니다.</h3></center>
+    {% endif %}
   </div>
   <!-- //item list -->
 
   <nav class="paging">
     <strong>
-      <a href="{% url 'itemlist' %}?category={{catenum}}&page=1"><<</a>
+      <a href="{% url 'itemlist' %}?category={{catenum}}&page=1&searchmod={{searchmod}}&searchword={{searchword}}"><<</a>
       {% if prevpage != 0 %}
-        <a href="{% url 'itemlist' %}?category={{catenum}}&page={{prevpage}}"><</a>
+        <a href="{% url 'itemlist' %}?category={{catenum}}&page={{prevpage}}&searchmod={{searchmod}}&searchword={{searchword}}"><</a>
       {% else %}
         <span><</span>
       {% endif %}
@@ -73,16 +78,18 @@
         {% if pagenum == currentpage %}
           <span>{{pagenum}}</span>
         {% else %}
-          <a href="{% url 'itemlist' %}?category={{catenum}}&page={{pagenum}}">{{pagenum}}</a>
+          <a href="{% url 'itemlist' %}?category={{catenum}}&page={{pagenum}}&searchmod={{searchmod}}&searchword={{searchword}}">{{pagenum}}</a>
         {% endif %}
       {% endfor %}
       {% if nextpage <= lastpage %}
-        <a href="{% url 'itemlist' %}?category={{catenum}}&page={{nextpage}}">></a>
+        <a href="{% url 'itemlist' %}?category={{catenum}}&page={{nextpage}}&searchmod={{searchmod}}&searchword={{searchword}}">></a>
       {% else %}
         <span>></span>
       {% endif %}
-      <a href="{% url 'itemlist' %}?category={{catenum}}&page={{lastpage}}">>></a>
+      <a href="{% url 'itemlist' %}?category={{catenum}}&page={{lastpage}}&searchmod={{searchmod}}&searchword={{searchword}}">>></a>
     </strong>
   </nav>
 
 </section>
+
+ 

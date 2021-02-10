@@ -126,7 +126,7 @@ def userdelete(request):
             'section': 'jasmine/error.html',
             'error': ErrorCode.e0002
         };
-    return redirect('home');
+    return render(request,'jasmine/home.html',context);
 
 
 def orderlist(request):
@@ -149,28 +149,7 @@ def cart(request):
         'section': 'jasmine/cart.html',
         'cartlist':rsusernum,
     };
-
     return render(request, 'jasmine/mypage.html', context)
-
-
-def cartdelete(request):
-    cartnum = request.GET['cartnum'];
-    print(cartnum)
-    try:
-        OrderDb().cartdelete(int(cartnum));
-        context = {
-            'section': 'jasmine/cart.html',
-        };
-    except:
-        context = {
-            'section': 'jasmine/error.html',
-            'error':ErrorCode.e0002
-        };
-        return render(request,'jasmine/mypage.html',context);
-
-    usernm = request.session['susernum']
-    qstr = urlencode({'usernum': usernm})
-    return HttpResponseRedirect('%s?%s' % ('cart', qstr))
 
 
 def map(request):
@@ -199,10 +178,41 @@ class mainSectionView:
         maxItemlist = 20;
         # max pages shown
         maxPageview = 5;
-        catenum = int(request.GET['category']);
-        page = int(request.GET['page']);
-        itemlist = ItemDb().select(catenum, page, maxItemlist);
-        itemlistcount = ItemDb().listcount(catenum);
+        try:
+            catenum = int(request.GET['category']);
+        except:
+            catenum = 1;
+        try:
+            page = int(request.GET['page']);
+        except:
+            page = 1;
+        try:
+            searchmod = int(request.GET['searchmod']);
+        except:
+            searchmod = 0;
+        try:
+            searchword = request.GET['searchword'];
+        except:
+            searchword = '';
+
+        if catenum == 1:
+            catename = '모든 소설';
+        elif catenum == 2:
+            catename = '일반 소설';
+        elif catenum == 12:
+            catename = '장르 소설';
+        else:
+            catename = '';
+        if searchmod == 1:
+            searchmodname = '제목과 작가';
+        elif searchmod == 2:
+            searchmodname = '제목';
+        elif searchmod == 3:
+            searchmodname = '작가';
+        else:
+            searchmodname = '';
+        itemlist = ItemDb().select(catenum, page, maxItemlist, searchmod, searchword);
+        itemlistcount = ItemDb().listcount(catenum, searchmod, searchword);
         lastpage = math.ceil(itemlistcount / maxItemlist);
         pageRange = range(max(1, page-2), min(page+2, lastpage)+1)
         prevpage = page-1;
@@ -210,12 +220,17 @@ class mainSectionView:
         context = {
             'section': 'jasmine/itemlist.html',
             'catenum': catenum,
+            'catename': catename,
             'itemlist': itemlist,
+            'itemlistcount': itemlistcount,
             'pageRange': pageRange,
             'currentpage': page,
             'prevpage': prevpage,
             'nextpage': nextpage,
             'lastpage': lastpage,
+            'searchmod': searchmod,
+            'searchmodname': searchmodname,
+            'searchword': searchword,
         };
         return render(request, 'jasmine/home.html', context)
 
@@ -267,3 +282,5 @@ class sideSectionView:
             'section': 'jasmine/category.html'
         };
         return render(request, 'jasmine/sidesection.html', context)
+
+

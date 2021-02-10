@@ -10,7 +10,6 @@ class User:
     def __str__(self):
         return str(self.usernum)+' '+self.userid+' '+self.userpwd+' '+self.username+' ';
 
-
 class Orderlist:
     def __init__(self,  ordernum, usernum, itemnum ):
         self.ordernum = ordernum;
@@ -33,13 +32,12 @@ class Mainlist:
 
 
 class Cartlist:
-    def __init__(self,cartnum, itemnum, itemname, price):
-        self.cartnum = cartnum;
+    def __init__(self, itemnum, itemname, price):
         self.itemnum = itemnum;
         self.itemname = itemname;
         self.price = price;
     def __str__(self):
-        return str(self.cartnum)+' '+str(self.itemnum)+' '+self.itemname+' '+str(self.price)+' ';
+        return str(self.itemnum)+' '+self.itemname+' '+str(self.price)+' ';
 
 
 class Item:
@@ -100,3 +98,4 @@ class Serieslist:
 
     def __str__(self):
         return str(self.itemnum) + self.itemname + str(self.price);
+

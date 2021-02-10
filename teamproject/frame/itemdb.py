@@ -25,7 +25,7 @@ class ItemDb(Db):
         super().close(conn, cursor);
         return item;
 
-    def select(self, catenum, page, maxItemlist):
+    def select(self, catenum, page, maxItemlist, searchmod=1, searchword=''):
         ordercon = 1;
         offset = (int(page) - 1) * maxItemlist;
         conn = super().getConnection();
@@ -34,6 +34,14 @@ class ItemDb(Db):
             catesql = Sql.categoryAll;
         else:
             catesql = Sql.category % catenum;
+        if searchmod == 1:
+            searchsql = Sql.searchAll + searchword + "%'"
+        elif searchmod == 2:
+            searchsql = Sql.searchWithTitle + searchword + "%'"
+        elif searchmod == 3:
+            searchsql = Sql.searchWithAuthor + searchword + "%'"
+        else:
+            searchsql = '';
         if ordercon == 1:
             ordersql = Sql.ordercon1;
         elif ordercon == 2:
@@ -50,7 +58,7 @@ class ItemDb(Db):
             ordersql = Sql.ordercon7;
         else:
             ordersql = ' ';
-        cursor.execute(Sql.itemlist + catesql + ordersql + Sql.page % offset);
+        cursor.execute(Sql.itemlist + catesql + searchsql + ordersql + Sql.page % offset);
         result = cursor.fetchall();
         all = [];
         for i in result:
@@ -59,14 +67,22 @@ class ItemDb(Db):
         super().close(conn, cursor);
         return all;
 
-    def listcount(self, catenum):
+    def listcount(self, catenum, searchmod=1, searchword=''):
         conn = super().getConnection();
         cursor = conn.cursor();
         if catenum == 1:
             catesql = Sql.categoryAll;
         else:
             catesql = Sql.category % catenum;
-        cursor.execute(Sql.itemlistcount + catesql)
+        if searchmod == 1:
+            searchsql = Sql.searchAll + searchword + "%'"
+        elif searchmod == 2:
+            searchsql = Sql.searchWithTitle + searchword + "%'"
+        elif searchmod == 3:
+            searchsql = Sql.searchWithAuthor + searchword + "%'"
+        else:
+            searchsql = '';
+        cursor.execute(Sql.itemlistcount + catesql + searchsql)
         count = cursor.fetchone()[0];
         return count;
 

@@ -13,8 +13,11 @@ class Sql:
                   ON i.authornum = a.authornum """;
     categoryAll = "WHERE catenum IS NOT NULL ";
     category = "WHERE catenum = %d ";
+    searchAll = "AND CONCAT (itemname, a.authorname) LIKE '%"
+    searchWithTitle = "AND itemname LIKE '%"
+    searchWithAuthor = "AND a.authorname LIKE '%"
     ordercon1 = "ORDER BY itemnum DESC ";
-    ordercon2 = "ORDER BY itemdate ASC  ";
+    ordercon2 = "ORDER BY itemdate ASC ";
     ordercon3 = "ORDER BY download DESC ";
     ordercon4 = "ORDER BY itemname ASC ";
     ordercon5 = "ORDER BY itemname DESC ";

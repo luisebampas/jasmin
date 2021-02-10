@@ -20,7 +20,8 @@ SELECT i.itemnum, i.itemname, a.authorname, i.price, i.itemdate
 FROM items i LEFT OUTER JOIN authors a 
 ON i.authornum = a.authornum 
 # 검색조건 
-WHERE catenum IS NOT NULL  
+WHERE catenum IS NOT NULL 
+AND CONCAT (itemname, a.authorname) LIKE '%%'
 # 정렬조건 
 ORDER BY itemnum DESC 
 LIMIT 20 OFFSET 0;

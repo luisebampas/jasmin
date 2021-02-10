@@ -126,7 +126,7 @@ section {
   font-family: 'NanumBarunGothic', 'Nanum Gothic', sans-serif;
   font-size: 12px;
   color: #777;
-  clear:left
+  clear: left;
 }
 
 .item-detail .detail-title{
@@ -164,4 +164,29 @@ section {
 .paging strong span {
   margin: 0 5px;
   color: #343a40;
+}
+
+/* searchbar */
+.navbar-form {
+  font-family: 'NanumBarunGothic', 'Nanum Gothic', sans-serif;
+  font-size: 12px;
+  margin: 0 auto;
+  display: inline-block;
+  width: 365px;
+}
+
+.form-select {
+  margin-bottom: 0;
+  vertical-align: middle;
+  height: 34px;
+}
+
+.form-control {
+  width: 200px;
+}
+
+@media (max-width: 768px) {
+  .navbar-brand, .navbar-form {
+    clear: left;
+  }
 }

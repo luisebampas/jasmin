@@ -1,4 +1,5 @@
 import logging
+import math
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -128,8 +129,6 @@ def userdelete(request):
     return redirect('home');
 
 
-
-
 def orderlist(request):
     usernum = request.GET['usernum'];
     print(usernum)
@@ -139,7 +138,6 @@ def orderlist(request):
         'section': 'jasmine/orderlist.html',
         'orderlist':rsusernum,
     };
-
     return render(request, 'jasmine/mypage.html', context)
 
 def cart(request):
@@ -175,7 +173,6 @@ def cartdelete(request):
     return HttpResponseRedirect('%s?%s' % ('cart', qstr))
 
 
-
 def map(request):
     context = {
         'section': 'jasmine/map.html'
@@ -198,30 +195,63 @@ class mainSectionView:
         return render(request, 'jasmine/home.html', context)
 
     def itemlist(request):
-        catenum = request.GET['category'];
-        page = request.GET['page'];
-        selectedItems = ItemDb().select(int(catenum), int(page));
+        # max items shown in a one page
+        maxItemlist = 20;
+        # max pages shown
+        maxPageview = 5;
+        catenum = int(request.GET['category']);
+        page = int(request.GET['page']);
+        itemlist = ItemDb().select(catenum, page, maxItemlist);
+        itemlistcount = ItemDb().listcount(catenum);
+        lastpage = math.ceil(itemlistcount / maxItemlist);
+        pageRange = range(max(1, page-2), min(page+2, lastpage)+1)
+        prevpage = page-1;
+        nextpage = page+1;
         context = {
             'section': 'jasmine/itemlist.html',
-            'itemlist': selectedItems,
+            'catenum': catenum,
+            'itemlist': itemlist,
+            'pageRange': pageRange,
+            'currentpage': page,
+            'prevpage': prevpage,
+            'nextpage': nextpage,
+            'lastpage': lastpage,
         };
         return render(request, 'jasmine/home.html', context)
 
     def itemcontent(request):
+        itemnum = int(request.GET['itemnum']);
+        item = ItemDb().selectone(itemnum)
         context = {
-            'section': 'jasmine/itemcontent.html'
+            'section': 'jasmine/itemcontent.html',
+            'item': item,
         };
         return render(request, 'jasmine/home.html', context)
+
 
     def payment(request):
-        context = {
-            'section': 'jasmine/payment.html'
-        };
-        return render(request, 'jasmine/home.html', context)
+        try:
+            userid = request.session['suser']
+            userid = str(userid)
+            itemnum = int(request.GET['itemnum']);
+            item = ItemDb().selectone(itemnum)
+            context = {
+                'section': 'jasmine/payment.html',
+                'item': item,
+                'id': userid,
+            };
+            return render(request, 'jasmine/home.html', context)
+        except:
+            return redirect('login')
+
 
     def paydetail(request):
+        itemnum = int(request.GET['itemnum']);
+        item = ItemDb().selectone(itemnum)
+        id = request.session['suser']
         context = {
-            'section': 'jasmine/paydetail.html'
+            'section': 'jasmine/paydetail.html',
+            'item': item,
         };
         return render(request, 'jasmine/home.html', context)
 

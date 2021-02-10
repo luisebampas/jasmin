@@ -10,6 +10,7 @@ class User:
     def __str__(self):
         return str(self.usernum)+' '+self.userid+' '+self.userpwd+' '+self.username+' ';
 
+
 class Orderlist:
     def __init__(self,  ordernum, usernum, itemnum ):
         self.ordernum = ordernum;
@@ -18,6 +19,7 @@ class Orderlist:
 
     def __str__(self):
         return str(self.ordernum)+' '+str(self.usernum)+' '+str(self.itemnum)+' ';
+
 
 class Mainlist:
     def __init__(self, ordernum, itemnum, itemname, price, authorname ):
@@ -28,6 +30,7 @@ class Mainlist:
         self.authorname = authorname;
     def __str__(self):
         return str(self.ordernum)+' '+str(self.itemnum)+' '+self.itemname+' '+str(self.price)+' '+self.authorname+' ';
+
 
 class Cartlist:
     def __init__(self,cartnum, itemnum, itemname, price):
@@ -68,3 +71,32 @@ class Itemlist:
     def __str__(self):
         return str(self.itemnum) + ' ' + self.itemname + ' ' + self.authorname + ' ' + \
                str(self.price) + ' ' + str(self.itemdate);
+
+
+class Itemdetail:
+    def __init__(self, itemnum, catenum, itemname, price, itemdate, iteminfo, sells, series, authorname, authorinfo):
+        self.itemnum = itemnum;
+        self.catenum = catenum;
+        self.itemname = itemname;
+        self.price = price;
+        self.itemdate = itemdate;
+        self.iteminfo = iteminfo;
+        self.sells = sells;
+        self.series = series;
+        self.authorname = authorname;
+        self.authorinfo = authorinfo;
+
+    def __str__(self):
+        return str(self.itemnum) + ' ' + str(self.catenum) + ' ' + self.itemname + ' ' + \
+               str(self.price) + ' ' + str(self.itemdate) + ' ' + self.iteminfo + ' ' + \
+               str(self.sells) + ' ' + str(self.series) + self.authorname + self.authorinfo;
+
+
+class Serieslist:
+    def __init__(self, itemnum, itemname, price):
+        self.itemnum = itemnum;
+        self.itemname = itemname;
+        self.price = price;
+
+    def __str__(self):
+        return str(self.itemnum) + self.itemname + str(self.price);

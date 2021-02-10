@@ -9,11 +9,10 @@
 
       <div class="col-lg-3">
 
-        <h1 style="color:#660066">WELCOME Jasmine</h1>
+        <h1 style="color:#660066">Manage Jasmine</h1>
         <div class="list-group">
-          <a href="{% url 'userdetail' %}?id={{ request.session.suser }}" class="list-group-item">Userdetail</a>
-          <a href="{% url 'cart' %}?usernum={{ request.session.susernum }}" class="list-group-item">Cart</a>
-          <a href="{% url 'mypage' %}?usernum={{ request.session.susernum }}" class="list-group-item">OrderHistory</a>
+          <a href="{%url 'userlist' %}" class="list-group-item">Userlist</a>
+          <a href="#" class="list-group-item">Itemlist</a>
         </div>
 
       </div>
@@ -23,7 +22,7 @@
                 {% if  section != None  %}
                     {% include  section %}
                 {% else %}
-                    {% include  "jasmine/mypagemain.html" %}
+                    {% include  "admin/managemain.html" %}
                 {% endif%}
         </div>
 
@@ -52,4 +51,3 @@
 
 
 {% endblock %}
-

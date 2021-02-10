@@ -130,6 +130,5 @@ def userdelete_test():
     users = UserDb().delete('id100');
 
 if __name__ == '__main__':
-    userlistone_test();
     userlist_test();
 

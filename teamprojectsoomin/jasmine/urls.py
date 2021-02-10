@@ -38,6 +38,8 @@ urlpatterns = [
     path('orderlist', views.orderlist, name='orderlist'),
     path('cart', views.cart, name='cart'),
     path('cartdelete', views.cartdelete, name='cartdelete'),
+    path('manage',views.manage, name='manage'),
+    path('userlist',views.userlist, name='userlist'),
 
     path('mainSection', views.mainSectionView.mainSection, name='mainSection'),
     path('itemlist', views.mainSectionView.itemlist, name='itemlist'),

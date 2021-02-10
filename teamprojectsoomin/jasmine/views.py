@@ -19,7 +19,7 @@ class MainView:
         return render(request, 'jasmine/login.html', context)
 
     def logout(request):
-        if request.session['suser'] != None:
+        if request.session['suser']!= None:
             del request.session['suser'];
         return render(request,'jasmine/home.html')
 
@@ -29,13 +29,20 @@ class MainView:
         try:
             user = UserDb().selectone(id);
             if pwd == user.userpwd:
-                logger.debug(id)
-                request.session['suser'] = id;
-                request.session['susernum'] = user.usernum;
-                context = {
-                  'section':'jasmine/loginok.html',
-                    'loginuser':user
-                };
+                if user.userid == 'admin':
+                    request.session['suser'] = id;
+                    context = {
+                        'section': 'jasmine/loginok.html',
+                        'loginuser': user
+                    };
+                else:
+                    logger.debug(id)
+                    request.session['suser'] = id;
+                    request.session['susernum'] = user.usernum;
+                    context = {
+                        'section': 'jasmine/loginok.html',
+                        'loginuser': user
+                    };
             else:
                 raise Exception;
         except:
@@ -66,6 +73,10 @@ class MainView:
                 'error': ErrorCode.e0001
             };
         return render(request, 'jasmine/home.html', context);
+
+
+
+
 
 def mypage(request):
     usernum = request.GET['usernum'];
@@ -118,8 +129,15 @@ def userupdateimpl(request):
 def userdelete(request):
     id = request.GET['id'];
     try:
-        UserDb().delete(id);
-        request.session['suser'] = None;
+        if id == 'admin':
+            context={
+                'section': 'jasmine/error.html',
+                'error': ErrorCode.e0004
+            }
+            return render(request, 'admin/manage.html', context)
+        else:
+            UserDb().delete(id);
+            request.session['suser'] = None;
     except:
         context = {
             'section': 'jasmine/error.html',
@@ -171,6 +189,19 @@ def cartdelete(request):
     usernm = request.session['susernum']
     qstr = urlencode({'usernum': usernm})
     return HttpResponseRedirect('%s?%s' % ('cart', qstr))
+
+def manage(request):
+    return render(request, 'admin/manage.html')
+
+def userlist(request):
+    ruserlist = UserDb().select();
+    context = {
+        'section':'admin/userlist.html',
+        'userlist' : ruserlist
+    };
+    return render(request, 'admin/manage.html',context)
+
+
 
 
 def map(request):

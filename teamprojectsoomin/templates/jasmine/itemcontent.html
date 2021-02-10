@@ -2,6 +2,7 @@
 {% load humanize %}
 
 <script>
+
 function view_big_img(){
   $.magnificPopup.open({
     items: [
@@ -12,6 +13,8 @@ function view_big_img(){
     type: 'image'
   });
 };
+
+
 </script>
 
 <section>
@@ -37,8 +40,8 @@ function view_big_img(){
         <h3 class="price">{{item.price|intcomma}}원</h3>
       </div>
       <div class="btn-wrap">
-        <a class="buttons" href="#">구매하기</a>
-        <a class="buttons" href="#">장바구니에 담기</a>
+        <a class="buttons" href="{% url 'payment' %}?itemnum={{item.itemnum}}">즉시 구매하기</a>
+        <a class="buttons" href="{% url 'cart' %}?itemnum={{item.itemnum}}">장바구니에 담기</a>
       </div>
     </div>
   </div>

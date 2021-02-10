@@ -98,6 +98,7 @@ section {
   margin: 30px 0 20px;
 }
 
+
 .item-menu .order-box .book-price .ebook-price {
   font-size: 14px;
 }
@@ -189,4 +190,5 @@ section {
   .navbar-brand, .navbar-form {
     clear: left;
   }
+
 }

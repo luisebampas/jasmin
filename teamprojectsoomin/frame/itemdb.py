@@ -34,6 +34,7 @@ class ItemDb(Db):
             catesql = Sql.categoryAll;
         else:
             catesql = Sql.category % catenum;
+
         if searchmod == 1:
             searchsql = Sql.searchAll + searchword + "%'"
         elif searchmod == 2:
@@ -42,6 +43,7 @@ class ItemDb(Db):
             searchsql = Sql.searchWithAuthor + searchword + "%'"
         else:
             searchsql = '';
+
         if ordercon == 1:
             ordersql = Sql.ordercon1;
         elif ordercon == 2:
@@ -67,7 +69,8 @@ class ItemDb(Db):
         super().close(conn, cursor);
         return all;
 
-    def listcount(self, catenum, searchmod=1, searchword=''):
+
+    def listcount(self, catenum):
         conn = super().getConnection();
         cursor = conn.cursor();
         if catenum == 1:
@@ -119,3 +122,4 @@ if __name__ == '__main__':
     """
     itemlistcount = ItemDb().listcount(1);
     print(itemlistcount);
+

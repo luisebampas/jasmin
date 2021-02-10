@@ -112,7 +112,6 @@ class OrderDb(Db):
             super().close(conn, cursor);
 
 
-
 def userlist_test():
     users = UserDb().select();
     for u in users:

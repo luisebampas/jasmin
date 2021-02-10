@@ -38,6 +38,7 @@ class Cartlist:
     def __str__(self):
         return str(self.cartnum)+' '+str(self.itemnum)+' '+self.itemname+' '+str(self.price)+' ';
 
+
 class Item:
     def __init__(self, itemnum, catenum, authornum, itemname, price, itemdate, iteminfo, sells, series):
         self.itemnum = itemnum;

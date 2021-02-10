@@ -129,6 +129,7 @@ def userdelete(request):
 
 
 
+
 def orderlist(request):
     usernum = request.GET['usernum'];
     print(usernum)
@@ -153,6 +154,7 @@ def cart(request):
 
     return render(request, 'jasmine/mypage.html', context)
 
+
 def cartdelete(request):
     cartnum = request.GET['cartnum'];
     print(cartnum)
@@ -171,6 +173,7 @@ def cartdelete(request):
     usernm = request.session['susernum']
     qstr = urlencode({'usernum': usernm})
     return HttpResponseRedirect('%s?%s' % ('cart', qstr))
+
 
 
 def map(request):

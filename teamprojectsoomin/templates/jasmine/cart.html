@@ -21,6 +21,7 @@
               <td>{{ u.itemname  }}</td>
               <td>{{ u.price  }}</td>
               <td><div id="delete"><a href="{% url 'cartdelete' %}?cartnum={{u.cartnum}}">장바구니 삭제</a></div></td>
+
            </tr>
          {% endfor %}
 

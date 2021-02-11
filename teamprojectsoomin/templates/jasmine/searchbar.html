@@ -1,20 +1,22 @@
 
+<script>
+  $(document).ready(function(){
+    $('.form-searchmod').each(function(){
+      if($(this).val()=={{searchmod}}){
+        $(this).attr("selected", "selected");
+      }
+    });
+  });
+</script>
+
 <form class="navbar-form navbar-left" action="{% url 'itemlist' %}" accept-charset="utf-8" method="get">
   <div class="form-group">
     <input type="hidden" name="category" value="{{catenum}}">
     <input type="hidden" name="page" value="{{currentpage}}">
     <select class="form-select" name="searchmod">
-      <option value="1">제목 + 작가</option>
-      {% if searchmod == 2 %}
-        <option value="2" selected>제목</option>
-      {% else %}
-        <option value="2">제목</option>
-      {% endif %}
-      {% if searchmod == 3 %}
-        <option value="3" selected>작가</option>
-      {% else %}
-        <option value="3">작가</option>
-      {% endif %}
+      <option class="form-searchmod" value="1">제목 + 작가</option>
+      <option class="form-searchmod" value="2">제목</option>
+      <option class="form-searchmod" value="3">작가</option>
     </select>
     <input type="text" class="form-control" placeholder="Search" name="searchword" value="{{searchword}}">
   </div>

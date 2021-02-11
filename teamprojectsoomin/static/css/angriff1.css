@@ -21,6 +21,23 @@ section {
   color: #777;
 }
 
+.list-topbar {
+  font-size: 15px;
+  color: #343a40;
+  line-height: 100%;
+}
+
+.current-cate {
+  float: left;
+  height: 34px;
+  margin: 10px 20px 0;
+}
+
+.search-result {
+  font-size: 12px;
+  margin: 0 20px;
+}
+
 .list_content ul {
   overflow: hidden;
   list-style: none;
@@ -167,12 +184,17 @@ section {
 }
 
 /* searchbar */
+.navbar-brand {
+  margin-right: 100px;
+}
+
 .navbar-form {
   font-family: 'NanumBarunGothic', 'Nanum Gothic', sans-serif;
   font-size: 12px;
-  margin: 0 auto;
+  margin: 0;
   display: inline-block;
   width: 365px;
+  margin-left: auto; margin-right: auto;
 }
 
 .form-select {

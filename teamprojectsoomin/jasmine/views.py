@@ -197,7 +197,10 @@ class mainSectionView:
             searchword = request.GET['searchword'];
         except:
             searchword = '';
-
+        try:
+            ordercon = int(request.GET['ordercon']);
+        except:
+            ordercon = 1;
         if catenum == 1:
             catename = '모든 소설';
         elif catenum == 2:
@@ -214,7 +217,7 @@ class mainSectionView:
             searchmodname = '작가';
         else:
             searchmodname = '';
-        itemlist = ItemDb().select(catenum, page, maxItemlist, searchmod, searchword);
+        itemlist = ItemDb().select(catenum, page, maxItemlist, searchmod, searchword, ordercon);
         itemlistcount = ItemDb().listcount(catenum, searchmod, searchword);
         lastpage = math.ceil(itemlistcount / maxItemlist);
         pageRange = range(max(1, page-2), min(page+2, lastpage)+1)
@@ -234,6 +237,7 @@ class mainSectionView:
             'searchmod': searchmod,
             'searchmodname': searchmodname,
             'searchword': searchword,
+            'ordercon': ordercon,
         };
         return render(request, 'jasmine/home.html', context)
 

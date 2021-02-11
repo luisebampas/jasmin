@@ -129,7 +129,6 @@ def userdelete(request):
     return render(request,'jasmine/home.html',context);
 
 
-
 def orderlist(request):
     usernum = request.GET['usernum'];
     print(usernum)
@@ -139,7 +138,6 @@ def orderlist(request):
         'section': 'jasmine/orderlist.html',
         'orderlist':rsusernum,
     };
-
     return render(request, 'jasmine/mypage.html', context)
 
 def cart(request):
@@ -151,7 +149,6 @@ def cart(request):
         'section': 'jasmine/cart.html',
         'cartlist':rsusernum,
     };
-
     return render(request, 'jasmine/mypage.html', context)
 
 
@@ -250,16 +247,30 @@ class mainSectionView:
         };
         return render(request, 'jasmine/home.html', context)
 
-    def payment(request):
 
-        context = {
-            'section': 'jasmine/payment.html'
-        };
-        return render(request, 'jasmine/home.html', context)
+    def payment(request):
+        try:
+            userid = request.session['suser']
+            userid = str(userid)
+            itemnum = int(request.GET['itemnum']);
+            item = ItemDb().selectone(itemnum)
+            context = {
+                'section': 'jasmine/payment.html',
+                'item': item,
+                'id': userid,
+            };
+            return render(request, 'jasmine/home.html', context)
+        except:
+            return redirect('login')
+
 
     def paydetail(request):
+        itemnum = int(request.GET['itemnum']);
+        item = ItemDb().selectone(itemnum)
+        id = request.session['suser']
         context = {
-            'section': 'jasmine/paydetail.html'
+            'section': 'jasmine/paydetail.html',
+            'item': item,
         };
         return render(request, 'jasmine/home.html', context)
 
@@ -275,4 +286,5 @@ class sideSectionView:
             'section': 'jasmine/category.html'
         };
         return render(request, 'jasmine/sidesection.html', context)
+
 

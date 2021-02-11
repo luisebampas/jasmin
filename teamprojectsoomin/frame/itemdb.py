@@ -66,6 +66,7 @@ class ItemDb(Db):
         super().close(conn, cursor);
         return all;
 
+
     def listcount(self, catenum, searchmod=1, searchword=''):
         conn = super().getConnection();
         cursor = conn.cursor();
@@ -118,3 +119,4 @@ if __name__ == '__main__':
     """
     itemlistcount = ItemDb().listcount(1);
     print(itemlistcount);
+

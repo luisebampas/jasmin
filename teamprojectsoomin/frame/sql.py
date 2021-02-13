@@ -8,7 +8,7 @@ class Sql:
     main = "SELECT o.ordernum, i.itemnum, i.itemname, i.price, a.authorname FROM orderlist o INNER JOIN items i ON o.itemnum = i.itemnum INNER JOIN authors a ON i.authornum = a.authornum where o.usernum = %d"
     cart = "SELECT c.itemnum, i.itemname, i.price FROM carts c INNER JOIN items i ON c.itemnum = i.itemnum where c.usernum = %d "
 
-    itemlist = """SELECT i.itemnum, i.itemname, a.authorname, i.price, i.itemdate 
+    itemlist = """SELECT i.itemnum, i.itemname, a.authorname, i.price, i.itemdate, i.sells 
                   FROM items i LEFT OUTER JOIN authors a 
                   ON i.authornum = a.authornum """;
     categoryAll = "WHERE catenum IS NOT NULL ";
@@ -19,7 +19,7 @@ class Sql:
     searchWithAuthor = "AND a.authorname LIKE '%"
     ordercon1 = "ORDER BY itemnum DESC ";
     ordercon2 = "ORDER BY itemdate ASC ";
-    ordercon3 = "ORDER BY download DESC ";
+    ordercon3 = "ORDER BY sells DESC ";
     ordercon4 = "ORDER BY itemname ASC ";
     ordercon5 = "ORDER BY itemname DESC ";
     ordercon6 = "ORDER BY price ASC ";

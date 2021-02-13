@@ -25,8 +25,7 @@ class ItemDb(Db):
         super().close(conn, cursor);
         return item;
 
-    def select(self, catenum, page, maxItemlist, searchmod=1, searchword=''):
-        ordercon = 1;
+    def select(self, catenum, page, maxItemlist, searchmod=1, searchword='', ordercon=1):
         offset = (int(page) - 1) * maxItemlist;
         conn = super().getConnection();
         cursor = conn.cursor();
@@ -64,13 +63,13 @@ class ItemDb(Db):
         result = cursor.fetchall();
         all = [];
         for i in result:
-            item = Itemlist(i[0], i[1], i[2], i[3], i[4]);
+            item = Itemlist(i[0], i[1], i[2], i[3], i[4], i[5]);
             all.append(item);
         super().close(conn, cursor);
         return all;
 
 
-    def listcount(self, catenum):
+    def listcount(self, catenum, searchmod=1, searchword=''):
         conn = super().getConnection();
         cursor = conn.cursor();
         if catenum == 1:

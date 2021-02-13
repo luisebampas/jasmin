@@ -59,16 +59,17 @@ class Item:
 
 
 class Itemlist:
-    def __init__(self, itemnum, itemname, authorname, price, itemdate):
+    def __init__(self, itemnum, itemname, authorname, price, itemdate, sells):
         self.itemnum = itemnum;
         self.itemname = itemname;
         self.authorname = authorname;
         self.price = price;
         self.itemdate = itemdate;
+        self.sells = sells;
 
     def __str__(self):
         return str(self.itemnum) + ' ' + self.itemname + ' ' + self.authorname + ' ' + \
-               str(self.price) + ' ' + str(self.itemdate);
+               str(self.price) + ' ' + str(self.itemdate) + ' ' + self.sells;
 
 
 class Itemdetail:

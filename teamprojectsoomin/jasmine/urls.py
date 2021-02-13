@@ -43,7 +43,8 @@ urlpatterns = [
     path('itemlist', views.mainSectionView.itemlist, name='itemlist'),
     path('itemcontent', views.mainSectionView.itemcontent, name='itemcontent'),
     path('payment', views.mainSectionView.payment, name='payment'),
-    path('paydetail', views.mainSectionView.paydetail, name='paydetail'),
+    path('payimpl', views.mainSectionView.payimpl, name='payimpl'),
+    path('viewpage', views.mainSectionView.viewpage, name='viewpage'),
 
     path('sideSection', views.sideSectionView.sideSection, name='sideSection'),
     path('category', views.sideSectionView.category, name='category'),

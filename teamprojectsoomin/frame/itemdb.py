@@ -1,6 +1,6 @@
 from frame.db import Db
 from frame.sql import Sql
-from frame.value import Item, Itemlist, Itemdetail
+from frame.value import Item, Itemlist, Itemdetail, Orders, Payment
 
 
 class ItemDb(Db):
@@ -112,6 +112,18 @@ class ItemDb(Db):
         finally:
             super().close(conn, cursor);
 
+    def sellitem(self, itemnum):
+        try:
+            conn = super().getConnection();
+            cursor = conn.cursor();
+            cursor.execute(Sql.sellitem % int(itemnum));
+            conn.commit();
+        except:
+            conn.rollback();
+            raise Exception;
+        finally:
+            super().close(conn, cursor);
+
 
 if __name__ == '__main__':
     """
@@ -122,3 +134,61 @@ if __name__ == '__main__':
     itemlistcount = ItemDb().listcount(1);
     print(itemlistcount);
 
+class OrdersDb(Db):
+
+    def insert(self, usernum, itemnum, odersummary):
+        try:
+            conn = super().getConnection();
+            cursor = conn.cursor();
+            cursor.execute(Sql.ordersinsert % (int(usernum), int(itemnum), odersummary));
+            conn.commit();
+        except:
+            conn.rollback();
+            raise Exception;
+        finally:
+            super().close(conn, cursor);
+
+    def select(self):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        cursor.execute(Sql.ordersselect);
+        result = cursor.fetchall();
+        all = [];
+        for u in result:
+            order = Orders(u[0], u[1], u[2], u[3]);
+            all.append(order);
+        super().close(conn, cursor);
+        return all;
+
+    def selectone(self, usernum):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        cursor.execute(Sql.odersselectone % int(usernum));
+        ordernum = cursor.fetchone();
+        super().close(conn, cursor);
+        return ordernum;
+
+class PaymentDb(Db):
+    def insert(self, ordernum, usernum, cost):
+        try:
+            conn = super().getConnection();
+            cursor = conn.cursor();
+            cursor.execute(Sql.paymentinsert % (int(ordernum), int(usernum), int(cost)));
+            conn.commit();
+        except:
+            conn.rollback();
+            raise Exception;
+        finally:
+            super().close(conn, cursor);
+
+    def select(self):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        cursor.execute(Sql.userlist);
+        result = cursor.fetchall();
+        all = [];
+        for u in result:
+            payment = Payment(u[0], u[1], u[2], u[3]);
+            all.append(payment);
+        super().close(conn, cursor);
+        return all;

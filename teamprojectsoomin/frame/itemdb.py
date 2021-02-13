@@ -33,6 +33,7 @@ class ItemDb(Db):
             catesql = Sql.categoryAll;
         else:
             catesql = Sql.category % catenum;
+
         if searchmod == 1:
             searchsql = Sql.searchAll + searchword + "%'"
         elif searchmod == 2:
@@ -41,6 +42,7 @@ class ItemDb(Db):
             searchsql = Sql.searchWithAuthor + searchword + "%'"
         else:
             searchsql = '';
+
         if ordercon == 1:
             ordersql = Sql.ordercon1;
         elif ordercon == 2:

@@ -70,6 +70,7 @@
      ​	2) viewr 화면 및 기능 구현.  cartlist 화면 구현
 
      ​    3) 이미지 로고 제작, ui 꾸미기 등 기타 디자인 작업
+
    
 * 상품 검색 기능 구현
 
@@ -84,4 +85,4 @@
 
 * 상품 목록의 페이지 번호 수정
 
-   * <form> - <select> - <option>의 기본값 selected 속성을 django로 지정하는 것을   jQuery를 이용하여 지정하도록 수정
+   * <form> - <select> - <option>의 기본값 selected 속성을 django로 지정하는 것을 jQuery를 이용하여 지정하도록 수정

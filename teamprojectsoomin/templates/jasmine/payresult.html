@@ -1,10 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load static %}
+{% load humanize %}
 
-</body>
-</html>
+{% block content %}
+
+
+<section>
+  <div class="container-fluid">
+      <div class = "row">
+        <h2> 결제에 성공했습니다.</h2>
+      </div>
+      <div class = "row">
+        <h3> 주문 정보 </h3>
+        <table class="table table-striped" width="670" cellspacing="1" cellpadding="0" border="0" bgcolor="#a2a2a2">
+            <tbody>
+                <tr>
+                  <td class="popup" width="86" height="28" bgcolor="#f4f4f4" align="center">이미지</td>
+                  <td class="popup" bgcolor="#f4f4f4" align="center">상품명</td>
+                  <td class="popup" width="138" bgcolor="#f4f4f4" align="center">가격</td>
+                  <td class="popup" width="74" bgcolor="#f4f4f4" align="center"></td>
+                </tr>
+            <!-- item 정보-->
+            {% if {{orderlist.itemnum}} == {{item.itemnum}} %}
+                {% for ordered in orderlist %}
+                <tr>
+                    <td height="28" bgcolor="#FFFFFF" align="center">
+                    <td align="center"><strong>{{ordered.itenum}}</strong></td>
+                    <td align="center"><strong>{{ordered.itenum}}</strong></td>
+                    <td align="center"><strong>{{ordered.itenum}}</strong></td>
+                    <td align="center"><div class="btn btn-sm"><strong><a class="button_middle" href="{% url 'viewpage' %}}">보러 가기</a></strong></div></td>
+                </tr>
+                {% end for %}
+            {% else %}
+            {% end if %}
+            </tbody>
+        </table>
+      </div>
+
+    <!--예상총액/장바구니 이동버튼-->
+      <div class = "row">
+        <table width="670" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+            <tr>
+              <td style="padding-top:8px" valign="top"><strong>총 결제 금액 : <font color="#cc3333"> {{item.price|intcomma}}원</font></strong>
+              </td>
+              <td style="padding-top:5px;" align="right">
+                <div class="btn btn-sm"><a class="button_middle" href="#"><strong>장바구니로 돌아가기</strong></a></div>
+              </td>
+             </tr>
+            </tbody>
+        </table>
+      </div><br>
+    <div class = "row">
+       <h2>최근에 구입한 상품</h2>
+       <div class="container">
+            <div class="row">
+               {% for item in orderlist %}
+                  <div class="col-xs-6 col-md-3">
+                    <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}" class="thumbnail">
+                      <img src="..." alt="...">
+                    </a>
+                  </div>
+               {% end for %}
+            </div>
+        </div>
+    </div>
+  </div>
+
+</section><br>
+
+
+
+{% endblock %}

@@ -8,7 +8,7 @@ class Sql:
     userupdate = "UPDATE users SET userpwd='%s', username='%s' WHERE userid='%s'";
 
     # 2. 유저의 주문이력 정보 #
-    orderlistone = "SELECT * FROM orderlist WHERE usernum=%d";
+    orderlistone = "SELECT * FROM orderlist WHERE usernum=%d ORDER BY ordernum DESC LIMIT 1";
     orderlistinsert = "INSERT INTO orderlist VALUES (%d,%d,%d)";
 
 
@@ -19,15 +19,16 @@ class Sql:
 
 
     # 5. 총 결제 정보
-    paymentselect = "INSERT INTO payment VALUES (%d,%d,CURRENT_DATE,%d)";
+    paymentinsert = "INSERT INTO payment VALUES (%d,%d,'%s',CURRENT_DATE,%d)";
     paymentselect = "SELECT * FROM payment";
+    paymentselectone = "SELECT * FROM payment WHERE usernum=%d ORDER BY ordernum DESC";
 
 
 
     # 6. 관리자의 총 주문/판매 정보 #
     ordersinsert = "INSERT INTO orders VALUES (null,%d,%d,'%s')";
     ordersselect = "SELECT * FROM orders";
-    odersselectone = "SELECT ordernum FROM orders WHERE usernum=%d"; # ordernum만 추출.
+    odersselectone = "SELECT ordernum FROM orders WHERE usernum=%d ORDER BY ordernum DESC LIMIT 1"; # ordernum만 추출.
 
 
     # 관리자의 보유상품 정보 #

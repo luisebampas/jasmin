@@ -161,9 +161,20 @@ def map(request):
 
 
 def cartlist(request):
-    context = {
-        'section': 'jasmine/cartlist.html'
-    };
+    try:
+        itemnum = int(request.GET['itemnum']);
+    except:
+        return redirect('login');
+    finally:
+        userid = str(request.session['suser']);
+        user = UserDb().selectone(userid)
+
+        OrderDb().cartinsert(user.usernum, itemnum);  # 총 주문기록에 새로운 내역 추가.
+        cartlist = OrderDb().cart(user.usernum);
+        context = {
+            'section': 'jasmine/cartlist.html',
+            'cartlist': cartlist,
+        };
     return render(request, 'jasmine/home.html', context)
 
 
@@ -271,27 +282,17 @@ class mainSectionView:
         user = UserDb().selectone(userid);
         item = ItemDb().selectone(itemnum);
 
-        try:
-            # 해당 아이템 주문/결제정보 생성
-            OrdersDb().insert(user.usernum, itemnum, paymethod); # 총 주문기록에 새로운 내역 추가.
-            ordernum = int(OrdersDb().selectone(user.usernum));
-            OrderDb().insert(ordernum, user.usernum, itemnum); # 사용자의 주문내역에 추가.
-            orderlist = OrderDb().selectone(user.usernum); # 방금 추가된 주문정보 불러오기.
-            PaymentDb().insert(ordernum, user.usernum, item.price); # 결제정보 추가.
-            ItemDb().sellitem(itemnum); # 아이템 판매처리, 판매수량 + 1
-            context = {
-                'section': 'jasmine/payresult.html',
-                'item': item,
-                'user': user,
-                'ordernum':ordernum,
-                'orderlist': orderlist
-            };
-
-        except:
-            context = {
-                'section': 'jasmine/error.html',
-                'error': ErrorCode.e0004
-            };
+        # 해당 아이템 주문/결제정보 생성
+        OrdersDb().insert(user.usernum, itemnum, paymethod); # 총 주문기록에 새로운 내역 추가.
+        ordernum = int(OrdersDb().selectone(user.usernum));
+        OrderDb().listinsert(ordernum, user.usernum, itemnum); # 사용자의 주문내역에 추가.
+        PaymentDb().insert(ordernum, user.usernum, item.itemname, item.price); # 결제정보 추가.
+        paylist = PaymentDb().selectone(user.usernum); # 유저의 지난 구매기록 모두 불러오기
+        ItemDb().sellitem(itemnum); # 아이템 판매처리, 판매수량 + 1
+        context = {
+            'section': 'jasmine/payresult.html',
+            'paylist': paylist,
+        };
         return render(request, 'jasmine/home.html', context);
 
 
@@ -300,7 +301,14 @@ class mainSectionView:
         context = {
             'section': 'jasmine/viewpage.html',
         };
-        return render(request,'jasmine/home.html', context)
+        return render(request,'jasmine/home.html', context);
+
+    def pdfview(request):
+
+        context = {
+            'section': 'jasmine/pdfview.html',
+        };
+        return render(request,'jasmine/home.html', context);
 
 
 class sideSectionView:

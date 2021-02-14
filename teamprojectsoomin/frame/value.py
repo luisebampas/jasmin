@@ -101,15 +101,23 @@ class Orders:
     def __str__(self):
         return str(self.ordernum)+' '+str(self.usernum)+' '+str(self.totalprice)+' '+self.ordersummary+' ';
 
+class Ordersone:
+    def __init__(self, ordernum):
+        self.ordernum = ordernum;
+
+    def __str__(self):
+        return str(self.ordernum);
+
 class Payment:
-    def __init__(self, ordernum, usernum, paydate, cost):
+    def __init__(self, ordernum, usernum, itemname, paydate, cost):
         self.ordernum = ordernum;
         self.usernum = usernum;
+        self.itemname = itemname;
         self.paydate = paydate;
         self.cost = cost;
 
     def __str__(self):
-        return str(self.ordernum)+' '+str(self.usernum)+' '+str(self.paydate)+' '+str(self.cost)+' ';
+        return str(self.ordernum)+' '+str(self.usernum)+' '+self.itemname+' '+str(self.paydate)+' '+str(self.cost)+' ';
 
 class Serieslist:
     def __init__(self, itemnum, itemname, price):

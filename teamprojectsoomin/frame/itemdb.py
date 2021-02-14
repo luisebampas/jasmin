@@ -1,6 +1,6 @@
 from frame.db import Db
 from frame.sql import Sql
-from frame.value import Item, Itemlist, Itemdetail, Orders, Payment
+from frame.value import Item, Itemlist, Itemdetail, Orders, Payment, Ordersone
 
 
 class ItemDb(Db):
@@ -164,16 +164,17 @@ class OrdersDb(Db):
         conn = super().getConnection();
         cursor = conn.cursor();
         cursor.execute(Sql.odersselectone % int(usernum));
-        ordernum = cursor.fetchone();
+        result = cursor.fetchone();
+        ordernum = str(result[0]);
         super().close(conn, cursor);
         return ordernum;
 
 class PaymentDb(Db):
-    def insert(self, ordernum, usernum, cost):
+    def insert(self, ordernum, usernum, itemname, cost):
         try:
             conn = super().getConnection();
             cursor = conn.cursor();
-            cursor.execute(Sql.paymentinsert % (int(ordernum), int(usernum), int(cost)));
+            cursor.execute(Sql.paymentinsert % (int(ordernum), int(usernum), itemname, int(cost)));
             conn.commit();
         except:
             conn.rollback();
@@ -188,7 +189,19 @@ class PaymentDb(Db):
         result = cursor.fetchall();
         all = [];
         for u in result:
-            payment = Payment(u[0], u[1], u[2], u[3]);
+            payment = Payment(u[0], u[1], u[2], u[3], u[4]);
             all.append(payment);
+        super().close(conn, cursor);
+        return all;
+
+    def selectone(self, usernum):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        cursor.execute(Sql.paymentselectone % usernum);
+        result = cursor.fetchall();
+        all = [];
+        for u in result:
+            payone = Payment(u[0], u[1], u[2], u[3], u[4]);
+            all.append(payone);
         super().close(conn, cursor);
         return all;

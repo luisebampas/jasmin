@@ -91,3 +91,9 @@
 * 성시영  작업 내역
   	- payimp 구현 중 OrderDb().insert( ) 오류. 해결 못함
   	- payresult 화면 구현. 
+
+## 2.14(일)
+
+* 성시영  작업 내역
+   - payimp 구현 완료. orders, orderlist, payment에 구매내역 Insert. 
+   - 장바구니 기능 구현 중. cartlist에 관련 정보 insert. 

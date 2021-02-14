@@ -41,7 +41,7 @@ function view_big_img(){
       </div>
       <div class="btn-wrap">
         <a class="buttons" href="{% url 'payment' %}?itemnum={{item.itemnum}}">즉시 구매하기</a>
-        <a class="buttons" href="{% url 'cart' %}?itemnum={{item.itemnum}}">장바구니에 담기</a>
+        <a class="buttons" href="{% url 'cartlist' %}?itemnum={{item.itemnum}}">장바구니에 담기</a>
       </div>
     </div>
   </div>

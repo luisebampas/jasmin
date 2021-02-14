@@ -63,14 +63,30 @@ class UserDb(Db):
         return all;
 
 class OrderDb(Db):
-    def listselectone(self, usernum):
+
+    def selectone(self,num):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        cursor.execute(Sql.orderlistone % (num) );
+        result = cursor.fetchall();
+        all = [];
+        for u in result:
+            order = Orderlist(u[0],u[1],u[2]);
+            all.append(order)
+        super().close(conn, cursor);
+        return all;
+
+    def listselectone(self, usernum): # payimpl에 사용
         conn = super().getConnection();
         cursor = conn.cursor();
         cursor.execute(Sql.orderlistone % int(usernum));
-        u = cursor.fetchall();
-        orderlist = Orderlist(u[0],u[1],u[2]);
-        super().close(conn, cursor);
-        return orderlist;
+        result = cursor.fetchall();
+        all = [];
+        for u in result:
+            orderlist = Orderlist(u[0],u[1],u[2]);
+            all.append(orderlist);
+            super().close(conn, cursor);
+        return all;
 
     def mainone(self, num):
         conn = super().getConnection();
@@ -84,11 +100,11 @@ class OrderDb(Db):
         super().close(conn, cursor);
         return allm;
 
-    def listinsert(self, ordernum, usernum, itemnum):
+    def listinsert(self, ordernum, usernum, itemnum):  # payimpl에 사용
         try:
             conn = super().getConnection();
             cursor = conn.cursor();
-            cursor.execute(Sql.orderlistinsert % (int(ordernum), int(usernum), int(itemnum)));
+            cursor.execute(Sql.orderlistinsert % (ordernum, usernum, itemnum));
             conn.commit();
         except:
             conn.rollback();
@@ -133,14 +149,14 @@ class OrderDb(Db):
             super().close(conn, cursor);
 
 
-
+"""
 def userlist_test():
     users = UserDb().select();
     for u in users:
         print(u);
 
 
-"""
+
 def userlistone_test():
     users = UserDb().selectone('id100');
     print(users);
@@ -153,15 +169,14 @@ def userdelete_test():
 """
 
 def orderlist_test():
-    OrderDb().listinsert(11, 23, 121);
+    OrderDb().listinsert(12, 103, 121);
 
 
 def orderselectone_test():
-    orderlist = OrderDb().listselectone(23);
-    print(orderlist);
+    orderlist = OrderDb().listselectone(103);
+    for u in orderlist:
+        print(u);
 
 if __name__ == '__main__':
-    userlist_test();
-    orderlist_test();
     orderselectone_test();
 

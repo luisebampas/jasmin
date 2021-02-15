@@ -37,22 +37,30 @@ urlpatterns = [
     path('userdelete', views.userdelete, name='userdelete'),
     path('orderlist', views.orderlist, name='orderlist'),
     path('cart', views.cart, name='cart'),
+
     path('adminpage', views.admin.adminpage, name='adminpage'),
     path('additemspage', views.admin.additemspage, name='additemspage'),
     path('searchauthor', views.admin.searchauthor, name='searchauthor'),
     path('addauthor', views.admin.addauthor, name='addauthor'),
     path('additem', views.admin.additem, name='additem'),
 
+    path('cartlist', views.cartlist, name='cartlist'),
+
+
+
     path('mainSection', views.mainSectionView.mainSection, name='mainSection'),
     path('itemlist', views.mainSectionView.itemlist, name='itemlist'),
     path('itemcontent', views.mainSectionView.itemcontent, name='itemcontent'),
     path('payment', views.mainSectionView.payment, name='payment'),
-    path('paydetail', views.mainSectionView.paydetail, name='paydetail'),
+    path('payimpl', views.mainSectionView.payimpl, name='payimpl'),
+    path('viewpage', views.mainSectionView.viewpage, name='viewpage'),
+    path('pdfview', views.mainSectionView.pdfview, name='pdfview'),
 
     path('sideSection', views.sideSectionView.sideSection, name='sideSection'),
     path('category', views.sideSectionView.category, name='category'),
 
     path('about', TemplateView.as_view(template_name='jasmine/about.html'), name='about'),
     path('map', views.map, name='map'),
+
 
 ]

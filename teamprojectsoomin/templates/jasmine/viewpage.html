@@ -1,0 +1,73 @@
+{% load static %}
+
+
+<section>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    function next(){
+            var curr = document.getElementById("dd");
+            var index = document.getElementById("dd").selectedIndex;
+            if(index < curr.options.length-1){
+                var newSrc = curr.options[index+1].value;
+                document.getElementById("dd").selectedIndex++;
+                document.getElementById("pdfFrame").src=newSrc;
+                document.getElementById("pdfFrame").contentWindow.location.reload();
+            }
+        }
+
+    function prev(){
+        var curr = document.getElementById("dd");
+        var index = document.getElementById("dd").selectedIndex;
+        if(index > 0){
+            var newSrc = curr.options[index-1].value;
+            document.getElementById("dd").selectedIndex--;
+            document.getElementById("pdfFrame").src=newSrc;
+            document.getElementById("pdfFrame").contentWindow.location.reload();
+        }
+    }
+
+
+    #book{
+            float: left;
+            height:700px;
+            width:70%;
+        }
+
+        .glyphicon{
+            font-size:100px;
+        }
+
+        .glyphicon:hover{
+            color:gray;
+            cursor:pointer;
+        }
+
+        .arrow{
+            vertical-align: top;
+            display: inline-block;
+            position: relative;
+            top: 40%;
+        }
+
+    <select id="dd">
+      <option value="http://www.copyright.gov/legislation/dmca.pdf">Pdf 1</option>
+      <option value="http://www.pdf995.com/samples/pdf.pdf">Pdf 2</option>
+      <option value="http://www.axmag.com/download/pdfurl-guide.pdf">Pdf 3</option>
+    </select>
+
+
+    <div id="book">
+        <div class="arrow">
+            <span onclick="prev()" class="glyphicon glyphicon-triangle-left" aria-hidden="true" ></span>
+        </div>
+        <iframe id="pdfFrame" src="http://www.axmag.com/download/pdfurl-guide.pdf"  width="80%" height="100%">
+          Your browser doesn't support iFrame.
+        </iframe>
+        <div class="arrow">
+            <span onclick="next()" class="glyphicon glyphicon-triangle-right" aria-hidden="true" ></span>
+        </div>
+    </div>
+</section>

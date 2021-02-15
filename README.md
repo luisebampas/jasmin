@@ -70,7 +70,7 @@
      ​	2) viewr 화면 및 기능 구현.  cartlist 화면 구현
 
      ​    3) 이미지 로고 제작, ui 꾸미기 등 기타 디자인 작업
-   
+
 * 상품 검색 기능 구현
 
    * SQL문의 LIKE를 이용하여 검색결과 출력
@@ -84,4 +84,16 @@
 
 * 상품 목록의 페이지 번호 수정
 
-   * <form> - <select> - <option>의 기본값 selected 속성을 django로 지정하는 것을   jQuery를 이용하여 지정하도록 수정
+   * <form> - <select> - <option>의 기본값 selected 속성을 django로 지정하는 것을 jQuery를 이용하여 지정하도록 수정
+
+## 2.13(토)
+
+* 성시영  작업 내역
+  	- payimp 구현 중 OrderDb().insert( ) 오류. 해결 못함
+  	- payresult 화면 구현. 
+
+## 2.14(일)
+
+* 성시영  작업 내역
+   - payimp 구현 완료. orders, orderlist, payment에 구매내역 Insert. 
+   - 장바구니 기능 구현 중. cartlist에 관련 정보 insert. 

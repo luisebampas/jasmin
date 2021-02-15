@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
+<style>
+  footer{
+    border : 10px;
+    border-style: solid none none none;
+    border-color: #ffcc00;
+  }
+</style>
+
 {% load static %}
 
 
@@ -9,7 +17,7 @@
   <!-- Page Content -->
   <div class="container">
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-2">
         <h1 class="my-4">WELCOME Jasmine</h1>
           <div class="list-group">
             <a href="{% url 'itemlist' %}?category=1" class="list-group-item">모든 소설</a>

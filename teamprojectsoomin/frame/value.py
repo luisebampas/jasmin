@@ -11,6 +11,7 @@ class User:
         return str(self.usernum)+' '+self.userid+' '+self.userpwd+' '+self.username+' ';
 
 class Orderlist:
+
     def __init__(self,  ordernum, usernum, itemnum):
         self.ordernum = ordernum;
         self.usernum = usernum;
@@ -100,6 +101,34 @@ class Itemdetail:
                str(self.price) + ' ' + str(self.itemdate) + ' ' + self.iteminfo + ' ' + \
                str(self.sells) + ' ' + str(self.series) + self.authorname + self.authorinfo;
 
+
+class Orders:
+    def __init__(self, ordernum, usernum, totalprice, ordersummary):
+        self.ordernum = ordernum;
+        self.usernum = usernum;
+        self.totalprice = totalprice;
+        self.ordersummary = ordersummary;
+
+    def __str__(self):
+        return str(self.ordernum)+' '+str(self.usernum)+' '+str(self.totalprice)+' '+self.ordersummary+' ';
+
+class Ordersone:
+    def __init__(self, ordernum):
+        self.ordernum = ordernum;
+
+    def __str__(self):
+        return str(self.ordernum);
+
+class Payment:
+    def __init__(self, ordernum, usernum, itemname, paydate, cost):
+        self.ordernum = ordernum;
+        self.usernum = usernum;
+        self.itemname = itemname;
+        self.paydate = paydate;
+        self.cost = cost;
+
+    def __str__(self):
+        return str(self.ordernum)+' '+str(self.usernum)+' '+self.itemname+' '+str(self.paydate)+' '+str(self.cost)+' ';
 
 class Serieslist:
     def __init__(self, itemnum, itemname, price):

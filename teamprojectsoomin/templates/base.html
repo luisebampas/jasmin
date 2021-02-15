@@ -7,12 +7,17 @@
 
 <head>
 
+
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>JASMINE</title>
+  <title>쟈스민</title>
+
+
+
 
   <link href="{% static 'vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
   <link href="{% static 'css/angriff1.css' %}" rel="stylesheet">
@@ -25,10 +30,16 @@
 
   <link href="{% static 'css/shop-homepage.css' %}" rel="stylesheet">
 
-
   <style>
     body{
       padding-top : 0px;
+    }
+    nav{
+      margin-bottom : 0px
+      padding-bottom : 0px
+      border : 10px;
+      border-style: none none solid none;
+      border-color: #ffcc00;
     }
   </style>
 
@@ -61,8 +72,8 @@
       </ul>
     </div>
   </nav>
-    {% block content %}
-    {% endblock %}
+  {% block content %}
+  {% endblock %}
   <!-- Bootstrap core JavaScript -->
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

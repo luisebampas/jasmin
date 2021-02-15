@@ -7,7 +7,7 @@
     <div class="book-preview">
       <div class="cover">
         <a href="#" onclick="view_big_img();">
-          <img class="thumbnails" src="static/img/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';">
+          <img class="thumbnails" src="static/img/items/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/items/terror.jpg';">
         </a>
       </div>
       <p><a href="#">미리보기</a></p>
@@ -65,7 +65,7 @@
     $.magnificPopup.open({
       items: [
         {
-          src: 'static/img/b{{item.itemnum}}.jpg'
+          src: 'static/img/items/b{{item.itemnum}}.jpg'
         }
       ],
       type: 'image'

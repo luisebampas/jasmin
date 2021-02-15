@@ -8,6 +8,9 @@
 
 # User-specific stuff
 .idea/
+venv/
+teamprojectsoomin/venv/
+teamprojectsoomin/.idea/
 
 # Generated files
 .idea/**/contentModel.xml

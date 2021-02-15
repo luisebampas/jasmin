@@ -174,13 +174,13 @@ class admin:
         context = {
             'section': None
         };
-        return render(request, 'jasmine/admin/adminpage.html', context)
+        return render(request, 'admin/manage.html', context)
 
     def additemspage(request):
         context = {
-            'section': 'jasmine/admin/admin_additems.html',
+            'section': 'admin/admin_additems.html',
         };
-        return render(request, 'jasmine/admin/adminpage.html', context)
+        return render(request, 'admin/manage.html', context)
 
     def searchauthor(request):
         # max recent published list shown in each authors
@@ -192,11 +192,11 @@ class admin:
             publist = ItemDb().recentPublished(author.authornum, limit);
             publistAll.append(publist)
         context = {
-            'section': 'jasmine/admin/admin_additems.html',
+            'section': 'admin/admin_additems.html',
             'authorlist': authorlist,
             'publistAll': publistAll,
         };
-        return render(request, 'jasmine/admin/adminpage.html', context)
+        return render(request, 'admin/manage.html', context)
 
     def addauthor(request):
         authorname = request.POST['add_authorname'];
@@ -204,14 +204,14 @@ class admin:
         try:
             AuthorDb().insert(authorname, authorinfo);
             context = {
-                'section': 'jasmine/admin/admin_additems.html',
+                'section': 'admin/admin_additems.html',
             };
         except:
             context = {
-                'section': 'jasmine/admin/admin_additems.html',
+                'section': 'admin/admin_additems.html',
                 'error': ErrorCode.e0011
             };
-        return render(request, 'jasmine/admin/adminpage.html', context)
+        return render(request, 'admin/manage.html', context)
 
     def additem(request):
         category = int(request.POST['category']);
@@ -225,14 +225,14 @@ class admin:
         try:
             ItemDb().insert(category, item_authornum, itemname, price, itemdate, iteminfo, sells, series);
             context = {
-                'section': 'jasmine/admin/admin_additems.html',
+                'section': 'admin/admin_additems.html',
             };
         except:
             context = {
-                'section': 'jasmine/admin/admin_additems.html',
+                'section': 'admin/admin_additems.html',
                 'error': ErrorCode.e0011
             };
-        return render(request, 'jasmine/admin/adminpage.html', context)
+        return render(request, 'admin/manage.html', context)
 
 def manage(request):
     return render(request, 'admin/manage.html')

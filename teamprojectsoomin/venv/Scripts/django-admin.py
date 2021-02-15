@@ -1,4 +1,4 @@
-#!c:\pystudy\teamproject\venv\scripts\python.exe
+#!c:\iot_teamp\gitrepository\teamprojectsoomin\venv\scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

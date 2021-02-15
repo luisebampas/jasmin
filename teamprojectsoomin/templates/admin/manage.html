@@ -8,30 +8,21 @@
     <div class="row">
 
       <div class="col-lg-3">
-
         <h1 style="color:#660066">Manage Jasmine</h1>
         <div class="list-group">
           <a href="{%url 'userlist' %}" class="list-group-item">Userlist</a>
           <a href="#" class="list-group-item">Itemlist</a>
+          <a href="{% url 'additemspage' %}" class="list-group-item">Add items</a>
         </div>
-
       </div>
       <!-- /.col-lg-3 -->
 
       <div class="col-lg-9">
-                {% if  section != None  %}
-                    {% include  section %}
-                {% else %}
-                    {% include  "admin/managemain.html" %}
-                {% endif%}
-        </div>
-
-
-
-
-        </div>
-        <!-- /.row -->
-
+        {% if  section != None  %}
+          {% include  section %}
+        {% else %}
+          {% include "admin/managemain.html" %}
+        {% endif%}
       </div>
       <!-- /.col-lg-9 -->
 

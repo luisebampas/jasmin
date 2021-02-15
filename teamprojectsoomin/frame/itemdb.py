@@ -3,9 +3,10 @@ from frame.sql import Sql
 from frame.value import Item, Itemlist, Itemdetail, Orders, Payment, Ordersone, RecentPublished
 
 
-
 class ItemDb(Db):
     def insert(self, catenum, authornum, itemname, price, itemdate, iteminfo, sells, series):
+        if series == 0:
+            series = ItemDb().getautoincre;
         try:
             conn = super().getConnection();
             cursor = conn.cursor();
@@ -16,6 +17,15 @@ class ItemDb(Db):
             raise Exception;
         finally:
             super().close(conn, cursor);
+
+    def getautoincre(self):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        cursor.execute(Sql.itemautoincre);
+        i = cursor.fetchone();
+        autoincre = i[0];
+        super().close(conn, cursor);
+        return autoincre;
 
     def selectone(self, itemnum):
         conn = super().getConnection();
@@ -60,7 +70,7 @@ class ItemDb(Db):
             ordersql = Sql.ordercon7;
         else:
             ordersql = ' ';
-        cursor.execute(Sql.itemlist + catesql + searchsql + ordersql + Sql.page % offset);
+        cursor.execute(Sql.itemlist + catesql + searchsql + ordersql + Sql.page % (maxItemlist, offset));
         result = cursor.fetchall();
         all = [];
         for i in result:
@@ -124,7 +134,6 @@ class ItemDb(Db):
         finally:
             super().close(conn, cursor);
 
-
     def recentPublished(self, authornum, limit):
         conn = super().getConnection();
         cursor = conn.cursor();
@@ -137,14 +146,6 @@ class ItemDb(Db):
         super().close(conn, cursor);
         return all;
 
-if __name__ == '__main__':
-    """
-    itemlist = ItemDb().select(1, 1);
-    for i in itemlist:
-        print(i)
-    """
-    itemlistcount = ItemDb().listcount(1);
-    print(itemlistcount);
 
 class OrdersDb(Db):
 
@@ -217,3 +218,23 @@ class PaymentDb(Db):
             all.append(payone);
         super().close(conn, cursor);
         return all;
+
+
+
+
+if __name__ == '__main__':
+    """
+    itemlist = ItemDb().select(1, 1);
+    for i in itemlist:
+        print(i)
+    
+    itemlistcount = ItemDb().listcount(1);
+    print(itemlistcount);
+    """
+    """
+    catenum = 2; authornum = 1; itemname = '테스트'; price = 9999; itemdate = '2021-02-15'; iteminfo = '시리즈테스트용';
+    sells = 0; series = 0;
+    auto = ItemDb().insert(catenum, authornum, itemname, price, itemdate, iteminfo, sells, series);
+    """
+    test = ItemDb().getautoincre();
+    print(test)

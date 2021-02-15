@@ -22,8 +22,10 @@ from jasmine import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',TemplateView.as_view(template_name='jasmine/home.html'), name='home'),
-    path('home',TemplateView.as_view(template_name='jasmine/home.html'), name='home'),
+    #path('',TemplateView.as_view(template_name='jasmine/home.html'), name='home'),
+    #path('home',TemplateView.as_view(template_name='jasmine/home.html'), name='home'),
+    path('', views.mainSectionView.mainSection, name='home'),
+    path('home', views.mainSectionView.mainSection, name='home'),
 
     path('login', views.MainView.login, name='login'),
     path('join', views.MainView.join, name='join'),

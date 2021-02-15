@@ -1,4 +1,128 @@
 {% load static %}
 
+<style>
+  .list_content .main-catesection {
+    text-decoration: none;
+  }
+</style>
 
-<section></section>
+<section>
+  <div class="list_content">
+    <a href="{% url 'itemlist' %}?category=2" class="main-catesection"><h3>일반 소설</h3></a>
+    <ul>
+      <a href="{% url 'itemlist' %}?category=2" class="main-catesection"><h4>신간</h4></a>
+      {% for item in cate2_new %}
+        <li class="list_item">
+          <!-- picture -->
+          <div class="pic-area">
+            <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}" class="book-img">
+              <img class="thumbnails" src="static/img/items/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/items/terror.jpg';">
+            </a>
+          </div>
+          <!-- //picture -->
+          <!-- content -->
+          <div class="cont-area">
+            <div class="item-title">
+              <strong>
+                <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}">{{item.itemname}}</a>
+              </strong>
+            </div>
+            <div class="item-info">
+              <span class="n1">{{item.authorname}}</span>
+              <span class="co1">|</span>
+              <span class="n2">{{item.itemdate|date:"Y-m-d"}}</span>
+            </div>
+          </div>
+          <!-- //content -->
+        </li>
+      {% endfor %}
+
+      <a href="{% url 'itemlist' %}?category=2&ordercon=3" class="main-catesection"><h4>베스트셀러</h4></a>
+      {% for item in cate2_best %}
+        <li class="list_item">
+          <!-- picture -->
+          <div class="pic-area">
+            <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}" class="book-img">
+              <img class="thumbnails" src="static/img/items/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/items/terror.jpg';">
+            </a>
+          </div>
+          <!-- //picture -->
+          <!-- content -->
+          <div class="cont-area">
+            <div class="item-title">
+              <strong>
+                <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}">{{item.itemname}}</a>
+              </strong>
+            </div>
+            <div class="item-info">
+              <span class="n1">{{item.authorname}}</span>
+              <span class="co1">|</span>
+              <span class="n2">{{item.itemdate|date:"Y-m-d"}}</span>
+            </div>
+          </div>
+          <!-- //content -->
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="list_content">
+    <a href="{% url 'itemlist' %}?category=12" class="main-catesection"><h3>장르 소설</h3></a>
+    <ul>
+      <a href="{% url 'itemlist' %}?category=12" class="main-catesection"><h4>신간</h4></a>
+      {% for item in cate12_new %}
+        <li class="list_item">
+          <!-- picture -->
+          <div class="pic-area">
+            <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}" class="book-img">
+              <img class="thumbnails" src="static/img/items/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/items/terror.jpg';">
+            </a>
+          </div>
+          <!-- //picture -->
+          <!-- content -->
+          <div class="cont-area">
+            <div class="item-title">
+              <strong>
+                <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}">{{item.itemname}}</a>
+              </strong>
+            </div>
+            <div class="item-info">
+              <span class="n1">{{item.authorname}}</span>
+              <span class="co1">|</span>
+              <span class="n2">{{item.itemdate|date:"Y-m-d"}}</span>
+            </div>
+          </div>
+          <!-- //content -->
+        </li>
+      {% endfor %}
+
+      <a href="{% url 'itemlist' %}?category=12&ordercon=3" class="main-catesection"><h4>베스트셀러</h4></a>
+      {% for item in cate12_best %}
+        <li class="list_item">
+          <!-- picture -->
+          <div class="pic-area">
+            <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}" class="book-img">
+              <img class="thumbnails" src="static/img/items/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/items/terror.jpg';">
+            </a>
+          </div>
+          <!-- //picture -->
+          <!-- content -->
+          <div class="cont-area">
+            <div class="item-title">
+              <strong>
+                <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}">{{item.itemname}}</a>
+              </strong>
+            </div>
+            <div class="item-info">
+              <span class="n1">{{item.authorname}}</span>
+              <span class="co1">|</span>
+              <span class="n2">{{item.itemdate|date:"Y-m-d"}}</span>
+            </div>
+          </div>
+          <!-- //content -->
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</section>

@@ -223,9 +223,14 @@ class admin:
         sells = int(request.POST['sells']);
         series = int(request.POST['series']);
         try:
+            series = int(series);
+        except:
+            series = 0;
+        try:
             ItemDb().insert(category, item_authornum, itemname, price, itemdate, iteminfo, sells, series);
             context = {
                 'section': 'admin/admin_additems.html',
+                'series': series,
             };
         except:
             context = {
@@ -275,8 +280,29 @@ def cartlist(request):
 
 class mainSectionView:
     def mainSection(request):
+        # catenum 2 일반 소설
+        # 신간
+        page = 1; maxItemlist = 4; searchmod = 0; searchword = ''; ordercon=1;
+        catenum = 2;
+        cate2_new = ItemDb().select(catenum, page, maxItemlist, searchmod, searchword, ordercon);
+        # 베스트셀러
+        ordercon = 3;
+        cate2_best = ItemDb().select(catenum, page, maxItemlist, searchmod, searchword, ordercon);
+
+        # catenum 12 장르 소설
+        # 신간
+        page = 1; maxItemlist = 4; searchmod = 0; searchword = ''; ordercon=1;
+        catenum = 12;
+        cate12_new = ItemDb().select(catenum, page, maxItemlist, searchmod, searchword, ordercon);
+        # 베스트셀러
+        ordercon = 3;
+        cate12_best = ItemDb().select(catenum, page, maxItemlist, searchmod, searchword, ordercon);
         context = {
-            'section': 'jasmine/mainsection.html'
+            'section': 'jasmine/mainsection.html',
+            'cate2_new': cate2_new,
+            'cate2_best': cate2_best,
+            'cate12_new': cate12_new,
+            'cate12_best': cate12_best,
         };
         return render(request, 'jasmine/home.html', context)
 

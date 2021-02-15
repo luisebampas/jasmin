@@ -12,3 +12,5 @@ INSERT INTO authors VALUES (authornum, '윤아연', '윤아연info');
 INSERT INTO authors VALUES (authornum, '윤은혜', '윤은혜info');
 
 INSERT INTO authors VALUES (1000, '테스트저자', '테스트용저자입니다.');
+
+ALTER TABLE authors AUTO_INCREMENT = 1001;

@@ -1,10 +1,4 @@
 <style>
-  #iframeform {
-    width: 0px;
-    height: 0px;
-    border: 0px;
-  }
-
   .author-list {
     height: 420px;
     overflow: auto;
@@ -34,13 +28,14 @@
 {% if authorlist != None %}
   <form action="#" name="search_author_result" method="post">
     <legend>검색결과</legend>
+    입력 버튼을 누르면 새 책 추가에 데이터가 입력됩니다.
     <div class="author-list">
       {% for author in authorlist %}
         <ul>
           <span>저자 이름: {{author.authorname}}</span>
           <span class="co1">|</span>
           <span>저자 번호: {{author.authornum}}</span>
-          <input type="button">
+          <input type="button" onclick="author_select({{author.authornum}});" value="입력">
           {% for publist in publistAll %}
             {% if forloop.counter == forloop.parentloop.counter %}
               {% for publish in publist %}
@@ -60,6 +55,7 @@
                   {{publish.price}}원
                   <span class="co1">|</span>
                   시리즈: {{publish.series}}
+                  <input type="button" onclick="series_select({{author.authornum}}, {{publish.series}});" value="입력">
                 </li>
               {% endfor %}
             {% endif %}
@@ -95,21 +91,31 @@
     <option value="2">일반 소설</option>
     <option value="12">장르 소설</option>
   </select><br>
-  저자 번호 : <input type="number" name="item_authornum"><br>
+  저자 번호 : <input type="number" id="item_authornum" name="item_authornum"><br>
   책 이름 : <input type="text" name="itemname"><br>
   가격 : <input type="number" name="price"><br>
   출간일<br>
   <input type="date" name="itemdate"><br><br>
   <textarea name="iteminfo" class="info-box" cols="100" rows="12" placeholder="책 정보"></textarea><br>
   <input type="hidden" name="sells" value="0">
-  책 시리즈 : <input type="number" name="series"><br>
+  책 시리즈 : <input type="number" id="series" name="series" value="0"> (0일시 자동으로 등록할 책 번호로 입력 됨)<br>
   <button type="submit" class="btn btn-default">추가</button>
 </form>
 <hr>
 
-<iframe id="iframeform" name="submitwin"></iframe>
 <script>
-  function ifun(msg){
-    alert(msg);
+  function author_select(authornum){
+    $('#item_authornum').val(authornum);
   };
+
+  function series_select(authornum, series){
+    $('#item_authornum').val(authornum);
+    $('#series').val(series);
+  };
+
+  {% if error != None %}
+    $(document).ready(function(){
+      alert(error);
+    });
+  {% endif %}
 </script>

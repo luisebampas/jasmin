@@ -1,0 +1,28 @@
+{% load static  %}
+
+<section>
+    <h1>회원 리스트</h1>
+
+            <table class="table">
+         <thead>
+           <tr>
+              <th>회원번호</th>
+              <th>이름</th>
+              <th>아이디</th>
+              <th>비밀번호</th>
+           </tr>
+         </thead>
+         <tbody>
+            {% for u in userlist %}
+               <tr>
+                  <td>{{ u.usernum }}</td>
+                  <td>{{ u.username }}</td>
+                   <td><a href="{% url 'userdetail' %}?id={{u.userid}}">{{u.userid}}</a></td>
+                  <td>{{ u.userpwd  }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+
+        </table>
+
+</section>

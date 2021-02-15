@@ -8,7 +8,8 @@
     <div class="row">
 
       <div class="col-lg-3">
-        <h1 class="my-4">WELCOME Jasmine</h1>
+
+        <h1 style="color:#660066">WELCOME Jasmine</h1>
         <div class="list-group">
           <a href="{% url 'userdetail' %}?id={{ request.session.suser }}" class="list-group-item">Userdetail</a>
           <a href="{% url 'cart' %}?usernum={{ request.session.susernum }}" class="list-group-item">Cart</a>

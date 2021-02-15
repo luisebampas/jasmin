@@ -54,22 +54,29 @@
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'home' %}">Home</a>
         </li>
-        {% if request.session.suser == None %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'join' %}">JOIN</a>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link " href="{% url 'mypage' %}?usernum={{ request.session.susernum }}">MYPAGE</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">LOGOUT</a>
-          </li>
-        {% endif %}
-      </ul>
+          {% if request.session.suser == None %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'join' %}">JOIN</a>
+            </li>
+          {% elif request.session.suser == 'admin' %}
+            <li class="nav-item">
+              <a class="nav-link " href="{% url 'manage' %}">Manage</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">LOGOUT</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link " href="{% url 'mypage' %}?usernum={{ request.session.susernum }}">MYPAGE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">LOGOUT</a>
+            </li>
+          {% endif %}
+        </ul>
     </div>
   </nav>
   {% block content %}

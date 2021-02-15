@@ -28,7 +28,12 @@ class Sql:
     itemlistone = """SELECT i.itemnum, i.catenum, i.itemname, i.price, i.itemdate, i.iteminfo, i.sells, i.series, a.authorname, a.authorinfo 
                      FROM items i LEFT OUTER JOIN authors a ON i.authornum = a.authornum 
                      WHERE itemnum = %d""";
-    iteminsert = """INSERT INTO items (catenum, authornum, itemname, price, itemdate, iteminfo, downloads, series)
+    iteminsert = """INSERT INTO items (catenum, authornum, itemname, price, itemdate, iteminfo, sells, series)
                     VALUES (%d, %d, '%s', %d, '%s', '%s', %d, %d)""";
     itemdelete = "DELETE FROM items WHERE itemnum=%d";
     itemupdate = "UPDATE items SET catenum=%d, authornum=%d, itemname='%s', price=%d, itemdate='%s', iteminfo='%s', series=%d WHERE itemnum=%d";
+    recentPublished = "SELECT itemnum, catenum, itemname, itemdate, price, series FROM items WHERE authornum = %d ORDER BY itemdate DESC LIMIT %d"
+
+    searchAuthorNameFront = "SELECT authorname, authornum FROM authors WHERE authorname LIKE '%"
+    searchAuthorNameRear = "%' ORDER BY authornum ASC"
+    authorinsert = "INSERT INTO authors VALUES (NULL, '%s', '%s')";

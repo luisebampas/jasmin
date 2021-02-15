@@ -11,7 +11,7 @@ class User:
         return str(self.usernum)+' '+self.userid+' '+self.userpwd+' '+self.username+' ';
 
 class Orderlist:
-    def __init__(self,  ordernum, usernum, itemnum ):
+    def __init__(self,  ordernum, usernum, itemnum):
         self.ordernum = ordernum;
         self.usernum = usernum;
         self.itemnum = itemnum;
@@ -58,6 +58,16 @@ class Item:
                self.iteminfo + ' ' + str(self.sells) + ' ' + str(self.series);
 
 
+class Author:
+    def __init__(self, authornum, authorname, authorinfo):
+        self.authornum = authornum;
+        self.authorname = authorname;
+        self.authorinfo = authorinfo;
+
+    def __str__(self):
+        return str(self.authornum) + ' ' + self.authorname + ' ' + self.authorinfo;
+
+
 class Itemlist:
     def __init__(self, itemnum, itemname, authorname, price, itemdate, sells):
         self.itemnum = itemnum;
@@ -100,3 +110,25 @@ class Serieslist:
     def __str__(self):
         return str(self.itemnum) + self.itemname + str(self.price);
 
+
+class Authorlist:
+    def __init__(self, authorname, authornum):
+        self.authorname = authorname;
+        self.authornum = authornum;
+
+    def __str__(self):
+        return self.authorname + ' ' + str(self.authornum);
+
+
+class RecentPublished:
+    def __init__(self, itemnum, catenum, itemname, itemdate, price, series):
+        self.itemnum = itemnum;
+        self.catenum = catenum
+        self.itemname = itemname;
+        self.itemdate = itemdate;
+        self.price = price;
+        self.series = series;
+
+    def __str__(self):
+        return str(self.itemnum) + ' ' + str(self.catenum) + ' ' + self.itemname + ' ' + \
+               str(self.itemdate) + ' ' + str(self.price) + ' ' + str(self.series);

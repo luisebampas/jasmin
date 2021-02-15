@@ -4,12 +4,13 @@ import math
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.utils.http import urlencode
+
+from frame.authordb import AuthorDb
 from frame.itemdb import ItemDb
 from frame.error import ErrorCode
 from frame.userdb import UserDb, OrderDb
 
 logger = logging.getLogger('users');
-
 
 
 class MainView:
@@ -128,7 +129,6 @@ def userdelete(request):
         };
     return render(request,'jasmine/home.html',context);
 
-
 def orderlist(request):
     usernum = request.GET['usernum'];
     print(usernum)
@@ -150,6 +150,71 @@ def cart(request):
         'cartlist':rsusernum,
     };
     return render(request, 'jasmine/mypage.html', context)
+
+class admin:
+    def adminpage(request):
+        context = {
+            'section': None
+        };
+        return render(request, 'jasmine/admin/adminpage.html', context)
+
+    def additemspage(request):
+        context = {
+            'section': 'jasmine/admin/admin_additems.html',
+        };
+        return render(request, 'jasmine/admin/adminpage.html', context)
+
+    def searchauthor(request):
+        # max recent published list shown in each authors
+        limit = 5;
+        search_authorname = request.POST['search_authorname'];
+        authorlist = AuthorDb().searchauthor(search_authorname);
+        publistAll = [];
+        for author in authorlist:
+            publist = ItemDb().recentPublished(author.authornum, limit);
+            publistAll.append(publist)
+        context = {
+            'section': 'jasmine/admin/admin_additems.html',
+            'authorlist': authorlist,
+            'publistAll': publistAll,
+        };
+        return render(request, 'jasmine/admin/adminpage.html', context)
+
+    def addauthor(request):
+        authorname = request.POST['add_authorname'];
+        authorinfo = request.POST['add_authorinfo'];
+        try:
+            AuthorDb().insert(authorname, authorinfo);
+            context = {
+                'section': 'jasmine/admin/admin_additems.html',
+            };
+        except:
+            context = {
+                'section': 'jasmine/admin/admin_additems.html',
+                'error': ErrorCode.e0011
+            };
+        return render(request, 'jasmine/admin/adminpage.html', context)
+
+    def additem(request):
+        category = int(request.POST['category']);
+        item_authornum = int(request.POST['item_authornum']);
+        itemname = request.POST['itemname'];
+        price = int(request.POST['price']);
+        itemdate = request.POST['itemdate'];
+        iteminfo = request.POST['iteminfo'];
+        sells = int(request.POST['sells']);
+        series = int(request.POST['series']);
+        try:
+            ItemDb().insert(category, item_authornum, itemname, price, itemdate, iteminfo, sells, series);
+            context = {
+                'section': 'jasmine/admin/admin_additems.html',
+            };
+        except:
+            context = {
+                'section': 'jasmine/admin/admin_additems.html',
+                'error': ErrorCode.e0011
+            };
+        return render(request, 'jasmine/admin/adminpage.html', context)
 
 
 def map(request):
@@ -217,7 +282,7 @@ class mainSectionView:
         itemlist = ItemDb().select(catenum, page, maxItemlist, searchmod, searchword, ordercon);
         itemlistcount = ItemDb().listcount(catenum, searchmod, searchword);
         lastpage = math.ceil(itemlistcount / maxItemlist);
-        pageRange = range(max(1, page-2), min(page+2, lastpage)+1)
+        pagerange = range(max(1, page-2), min(page+2, lastpage)+1)
         prevpage = page-1;
         nextpage = page+1;
         context = {
@@ -226,7 +291,7 @@ class mainSectionView:
             'catename': catename,
             'itemlist': itemlist,
             'itemlistcount': itemlistcount,
-            'pageRange': pageRange,
+            'pageRange': pagerange,
             'currentpage': page,
             'prevpage': prevpage,
             'nextpage': nextpage,

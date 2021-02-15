@@ -1,14 +1,15 @@
 from frame.db import Db
 from frame.sql import Sql
-from frame.value import Item, Itemlist, Itemdetail, Orders, Payment, Ordersone
+from frame.value import Item, Itemlist, Itemdetail, Orders, Payment, Ordersone, RecentPublished
+
 
 
 class ItemDb(Db):
-    def insert(self, name, price, imgname):
+    def insert(self, catenum, authornum, itemname, price, itemdate, iteminfo, sells, series):
         try:
             conn = super().getConnection();
             cursor = conn.cursor();
-            cursor.execute(Sql.iteminsert % (name, price, imgname));
+            cursor.execute(Sql.iteminsert % (catenum, authornum, itemname, price, itemdate, iteminfo, sells, series));
             conn.commit();
         except:
             conn.rollback();
@@ -68,7 +69,6 @@ class ItemDb(Db):
         super().close(conn, cursor);
         return all;
 
-
     def listcount(self, catenum, searchmod=1, searchword=''):
         conn = super().getConnection();
         cursor = conn.cursor();
@@ -124,6 +124,18 @@ class ItemDb(Db):
         finally:
             super().close(conn, cursor);
 
+
+    def recentPublished(self, authornum, limit):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        cursor.execute(Sql.recentPublished % (authornum, limit));
+        result = cursor.fetchall();
+        all = [];
+        for i in result:
+            pubs = RecentPublished(i[0], i[1], i[2], i[3], i[4], i[5]);
+            all.append(pubs);
+        super().close(conn, cursor);
+        return all;
 
 if __name__ == '__main__':
     """

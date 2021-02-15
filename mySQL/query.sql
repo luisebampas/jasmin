@@ -1,8 +1,13 @@
 # paging
 # offset에는 20 * (페이지번호- 1)
 ##########
-## 검색조건 
-# WHERE itemname LIKE '%{{검색어}}%'
+# 검색조건 
+## 카테고리 
+# WHERE catenum = 2 
+## 검색어 
+# AND CONCAT (itemname, a.authorname) LIKE '%{{검색어}}%'
+# AND itemname LIKE '%{{검색어}}%'
+# AND a.authorname LIKE '%{{검색어}}%'
 ##########
 ## 정렬조건 
 ## 번호순(최신등록순) 
@@ -44,3 +49,14 @@ WHERE itemnum = @test_itemnum;
 # series list
 SELECT itemnum, itemname, price FROM items
 WHERE series = (SELECT series FROM items WHERE itemnum = @test_itemnum);
+
+# search author
+SELECT authorname, authornum FROM authors 
+WHERE authorname LIKE '%윤재우%'
+ORDER BY authornum ASC;
+
+# recent published books
+SELECT itemname, itemdate, price FROM items
+WHERE authornum = 1
+ORDER BY itemdate DESC
+LIMIT 10;

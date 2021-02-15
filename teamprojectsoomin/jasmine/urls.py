@@ -37,6 +37,9 @@ urlpatterns = [
     path('userdelete', views.userdelete, name='userdelete'),
     path('orderlist', views.orderlist, name='orderlist'),
     path('cart', views.cart, name='cart'),
+    path('cartdelete', views.cartdelete, name='cartdelete'),
+    path('cartlist', views.cartlist, name='cartlist'),
+
 
     path('adminpage', views.admin.adminpage, name='adminpage'),
     path('additemspage', views.admin.additemspage, name='additemspage'),
@@ -52,7 +55,9 @@ urlpatterns = [
     path('itemlist', views.mainSectionView.itemlist, name='itemlist'),
     path('itemcontent', views.mainSectionView.itemcontent, name='itemcontent'),
     path('payment', views.mainSectionView.payment, name='payment'),
+    path('pay2', views.mainSectionView.pay2, name='pay2'),
     path('payimpl', views.mainSectionView.payimpl, name='payimpl'),
+    path('paycart', views.mainSectionView.paycart, name='paycart'),
     path('viewpage', views.mainSectionView.viewpage, name='viewpage'),
     path('pdfview', views.mainSectionView.pdfview, name='pdfview'),
 

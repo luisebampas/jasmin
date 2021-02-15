@@ -15,7 +15,7 @@
   <meta name="author" content="">
 
   <title>쟈스민</title>
-
+  <link rel="shortcut icon" href="{% static 'img/icon/favicon.jpg' %}" type="image/x-icon">
 
 
 
@@ -42,34 +42,39 @@
       border-color: #ffcc00;
     }
   </style>
-
+</head>
 
 <body>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'about' %}">JASMINE</a>
-      {% include "jasmine/searchbar.html" %}
-      <ul class="navbar-nav navbar-right ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'home' %}">Home</a>
-        </li>
-        {% if request.session.suser == None %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
+        <ul class="navbar-nav navbar-left">
+          <li>
+            <img class="img-responsive center-block" src="static/img/icon/mainlogo.png" display="inline-block"><a href="{% url 'about' %}"></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'join' %}">JOIN</a>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link " href="{% url 'mypage' %}?usernum={{ request.session.susernum }}">MYPAGE</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">LOGOUT</a>
-          </li>
-        {% endif %}
-      </ul>
+          <li><span></span></li><span></span>
+        </ul>
+        {% include "jasmine/searchbar.html" %}
+        <ul class="navbar-nav navbar-right">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              {% if request.session.suser == None %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'join' %}">JOIN</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link " href="{% url 'mypage' %}?usernum={{ request.session.susernum }}">MYPAGE</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">LOGOUT</a>
+              </li>
+              {% endif %}
+        </ul>
     </div>
   </nav>
   {% block content %}

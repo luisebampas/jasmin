@@ -55,7 +55,7 @@
                   {{publish.price}}원
                   <span class="co1">|</span>
                   시리즈: {{publish.series}}
-                  <input type="button" onclick="series_select({{author.authornum}}, {{publish.series}});" value="입력">
+                  <input type="button" onclick="series_select({{author.authornum}}, {{publish.catenum}}, {{publish.series}}, {{publish.price}}, '{{publish.itemname}}');" value="입력">
                 </li>
               {% endfor %}
             {% endif %}
@@ -88,17 +88,17 @@
   <legend>새 책 추가</legend>
   카테고리
   <select name="category">
-    <option value="2">일반 소설</option>
-    <option value="12">장르 소설</option>
+    <option class="item_category" value="2">일반 소설</option>
+    <option class="item_category" value="12">장르 소설</option>
   </select><br>
   저자 번호 : <input type="number" id="item_authornum" name="item_authornum"><br>
-  책 이름 : <input type="text" name="itemname"><br>
-  가격 : <input type="number" name="price"><br>
+  책 이름 : <input type="text" id="item_itemname" name="itemname"><br>
+  가격 : <input type="number" id="item_price" name="price"><br>
   출간일<br>
-  <input type="date" name="itemdate"><br><br>
-  <textarea name="iteminfo" class="info-box" cols="100" rows="12" placeholder="책 정보"></textarea><br>
+  <input type="date" id="item_itemdate" name="itemdate"><br><br>
+  <textarea id="item_iteminfo" name="iteminfo" class="info-box" cols="100" rows="12" placeholder="책 정보"></textarea><br>
   <input type="hidden" name="sells" value="0">
-  책 시리즈 : <input type="number" id="series" name="series" value="0"> (0일시 자동으로 등록할 책 번호로 입력 됨)<br>
+  책 시리즈 : <input type="number" id="item_series" name="series" value="0"> (0일시 자동으로 등록할 책 번호로 입력 됨)<br>
   <button type="submit" class="btn btn-default">추가</button>
 </form>
 <hr>
@@ -108,9 +108,16 @@
     $('#item_authornum').val(authornum);
   };
 
-  function series_select(authornum, series){
+  function series_select(authornum, catenum, series, price, itemname, itemdate){
     $('#item_authornum').val(authornum);
-    $('#series').val(series);
+    $('#item_series').val(series);
+    $('#item_price').val(price);
+    $('#item_itemname').val(itemname);
+    $('.item_category').each(function(){
+      if($(this).val() == catenum){
+        $(this).attr("selected", "selected");
+      }
+    });
   };
 
   {% if error != None %}

@@ -1,5 +1,15 @@
 {% load static  %}
 
+<script>
+  $(document).ready(function(){
+    $('.form-order').each(function(){
+      if($(this).val()=={{ordercon}}){
+        $(this).attr("selected", "selected");
+      }
+    });
+  });
+</script>
+
 <section>
   <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -30,42 +40,87 @@
 
   <!-- item list -->
   <div class="list_content">
+    <div class="list-topbar">
+      <span class="current-cate">현재 카테고리 : {{catename}}</span>
+      {% if itemlistcount != 0 %}
+        <form action="{% url 'itemlist' %}" accept-charset="utf-8" method="get">
+          <input type="hidden" name="category" value="{{catenum}}">
+          <input type="hidden" name="page" value="{{currentpage}}">
+          <input type="hidden" name="searchmod" value="{{searchmod}}">
+          <input type="hidden" name="searchword" value="{{searchword}}">
+          <select class="form-select" name="ordercon" onchange="this.form.submit()">
+            <option class="form-order" value="1">최신등록순</option>
+            <option class="form-order" value="2">최근출간순</option>
+            <option class="form-order" value="3">누적판매순</option>
+            <option class="form-order" value="4">상품명순▲</option>
+            <option class="form-order" value="5">상품명순▼</option>
+            <option class="form-order" value="6">최고가격순</option>
+            <option class="form-order" value="7">최저가격순</option>
+          </select>
+        </form>
+        <br>
+      {% endif %}
+      {% if searchmod != 0 and searchword != '' %}
+      <span class="search-result">{{searchmodname}}에서 '{{searchword}}'로 검색한 결과: {{itemlistcount}}건</span>
+      {% endif %}
+    </div>
     <ul>
       {% for item in itemlist %}
         <li class="list_item">
           <!-- picture -->
           <div class="pic-area">
-            <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}" class="book-img"><img class="thumbnails" src="{% static 'img/testimg.jpg' %}"></a>
+            <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}" class="book-img">
+              <img class="thumbnails" src="static/img/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';">
+            </a>
           </div>
           <!-- //picture -->
           <!-- content -->
           <div class="cont-area">
             <div class="item-title">
               <strong>
-                <a href="{% url 'itemcontent' %}">{{item.itemname}}</a>
+                <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}">{{item.itemname}}</a>
               </strong>
             </div>
             <div class="item-info">
               <span class="n1">{{item.authorname}}</span>
               <span class="co1">|</span>
-              <span class="n2">{{item.itemdate}}</span>
+              <span class="n2">{{item.itemdate|date:"Y-m-d"}}</span>
             </div>
           </div>
           <!-- //content -->
         </li>
       {% endfor %}
-
     </ul>
+    {% if itemlistcount == 0 %}
+    <center><h3>검색결과가 존재하지 않습니다.</h3></center>
+    {% endif %}
   </div>
   <!-- //item list -->
 
-  <div class="paging">
-    <a href="#" class="first"><<</a>
-    <a href="#" class="prev"><</a>
-    <a href="#" class="current">1</a>
-    <a href="#">2</a>
-    <a href="#" class="next">></a>
-    <a href="#" class="last">>></a>
-  </div>
+  <nav class="paging">
+    <strong>
+      <a href="{% url 'itemlist' %}?category={{catenum}}&page=1&searchmod={{searchmod}}&searchword={{searchword}}&ordercon={{ordercon}}"><<</a>
+      {% if prevpage != 0 %}
+        <a href="{% url 'itemlist' %}?category={{catenum}}&page={{prevpage}}&searchmod={{searchmod}}&searchword={{searchword}}&ordercon={{ordercon}}"><</a>
+      {% else %}
+        <span><</span>
+      {% endif %}
+      {% for pagenum in pageRange %}
+        {% if pagenum == currentpage %}
+          <span>{{pagenum}}</span>
+        {% else %}
+          <a href="{% url 'itemlist' %}?category={{catenum}}&page={{pagenum}}&searchmod={{searchmod}}&searchword={{searchword}}&ordercon={{ordercon}}">{{pagenum}}</a>
+        {% endif %}
+      {% endfor %}
+      {% if nextpage <= lastpage %}
+        <a href="{% url 'itemlist' %}?category={{catenum}}&page={{nextpage}}&searchmod={{searchmod}}&searchword={{searchword}}&ordercon={{ordercon}}">></a>
+      {% else %}
+        <span>></span>
+      {% endif %}
+      <a href="{% url 'itemlist' %}?category={{catenum}}&page={{lastpage}}&searchmod={{searchmod}}&searchword={{searchword}}&ordercon={{ordercon}}">>></a>
+    </strong>
+  </nav>
 
 </section>
+
+ 

@@ -63,6 +63,7 @@ class UserDb(Db):
         return all;
 
 class OrderDb(Db):
+
     def selectone(self,num):
         conn = super().getConnection();
         cursor = conn.cursor();
@@ -75,17 +76,41 @@ class OrderDb(Db):
         super().close(conn, cursor);
         return all;
 
-    def mainone(self,num):
+    def listselectone(self, usernum): # payimpl에 사용
         conn = super().getConnection();
         cursor = conn.cursor();
-        cursor.execute(Sql.main % (num) );
+        cursor.execute(Sql.orderlistone % int(usernum));
+        result = cursor.fetchall();
+        all = [];
+        for u in result:
+            orderlist = Orderlist(u[0],u[1],u[2]);
+            all.append(orderlist);
+            super().close(conn, cursor);
+        return all;
+
+    def mainone(self, num):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        cursor.execute(Sql.main % num);
         result = cursor.fetchall();
         allm = [];
         for u in result:
             orders = Mainlist(u[0],u[1],u[2],u[3],u[4]);
-            allm.append(orders)
+            allm.append(orders);
         super().close(conn, cursor);
         return allm;
+
+    def listinsert(self, ordernum, usernum, itemnum):  # payimpl에 사용
+        try:
+            conn = super().getConnection();
+            cursor = conn.cursor();
+            cursor.execute(Sql.orderlistinsert % (ordernum, usernum, itemnum));
+            conn.commit();
+        except:
+            conn.rollback();
+            raise Exception;
+        finally:
+            super().close(conn, cursor);
 
     def cart(self,num):
         conn = super().getConnection();
@@ -98,6 +123,19 @@ class OrderDb(Db):
             allc.append(carts)
         super().close(conn, cursor);
         return allc;
+
+
+    def cartinsert(self, usernum, itemnum):
+        try:
+            conn = super().getConnection();
+            cursor = conn.cursor();
+            cursor.execute(Sql.cartinsert % (int(usernum), int(itemnum)));
+            conn.commit();
+        except:
+            conn.rollback();
+            raise Exception;
+        finally:
+            super().close(conn, cursor);
 
     def cartdelete(self, cartnum):
         try:
@@ -117,6 +155,10 @@ def userlist_test():
     users = UserDb().select();
     for u in users:
         print(u);
+def cartlist_test():
+    carts = OrderDb().cart(4);
+    for u in carts:
+        print(u);
 
 
 def userlistone_test():
@@ -129,6 +171,16 @@ def userupdate_test():
 def userdelete_test():
     users = UserDb().delete('id100');
 
+
+def orderlist_test():
+    OrderDb().listinsert(12, 103, 121);
+
+
+def orderselectone_test():
+    orderlist = OrderDb().listselectone(103);
+    for u in orderlist:
+        print(u);
+
 if __name__ == '__main__':
-    userlist_test();
+    cartlist_test();
 

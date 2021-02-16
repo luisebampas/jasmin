@@ -60,3 +60,6 @@ SELECT itemname, itemdate, price FROM items
 WHERE authornum = 1
 ORDER BY itemdate DESC
 LIMIT 10;
+
+# get auto_increment of items table
+SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'items' AND table_schema = DATABASE();

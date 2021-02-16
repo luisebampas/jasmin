@@ -22,8 +22,10 @@ from jasmine import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',TemplateView.as_view(template_name='jasmine/home.html'), name='home'),
-    path('home',TemplateView.as_view(template_name='jasmine/home.html'), name='home'),
+    #path('',TemplateView.as_view(template_name='jasmine/home.html'), name='home'),
+    #path('home',TemplateView.as_view(template_name='jasmine/home.html'), name='home'),
+    path('', views.mainSectionView.mainSection, name='home'),
+    path('home', views.mainSectionView.mainSection, name='home'),
 
     path('login', views.MainView.login, name='login'),
     path('join', views.MainView.join, name='join'),
@@ -37,7 +39,7 @@ urlpatterns = [
     path('userdelete', views.userdelete, name='userdelete'),
     path('orderlist', views.orderlist, name='orderlist'),
     path('cart', views.cart, name='cart'),
-    path('cartdelete', views.cartdelete, name='cartdelete'),
+    #path('cartdelete', views.cartdelete, name='cartdelete'),
     path('manage',views.manage, name='manage'),
     path('userlist',views.userlist, name='userlist'),
 
@@ -59,8 +61,6 @@ urlpatterns = [
     path('viewpage', views.mainSectionView.viewpage, name='viewpage'),
     path('pdfview', views.mainSectionView.pdfview, name='pdfview'),
 
-    path('sideSection', views.sideSectionView.sideSection, name='sideSection'),
-    path('category', views.sideSectionView.category, name='category'),
 
     path('about', TemplateView.as_view(template_name='jasmine/about.html'), name='about'),
     path('map', views.map, name='map'),

@@ -11,7 +11,6 @@ class User:
         return str(self.usernum)+' '+self.userid+' '+self.userpwd+' '+self.username+' ';
 
 class Orderlist:
-
     def __init__(self,  ordernum, usernum, itemnum):
         self.ordernum = ordernum;
         self.usernum = usernum;
@@ -161,3 +160,5 @@ class RecentPublished:
     def __str__(self):
         return str(self.itemnum) + ' ' + str(self.catenum) + ' ' + self.itemname + ' ' + \
                str(self.itemdate) + ' ' + str(self.price) + ' ' + str(self.series);
+
+

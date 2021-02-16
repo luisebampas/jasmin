@@ -15,9 +15,6 @@
           <a href="{% url 'cart' %}?usernum={{ request.session.susernum }}" class="list-group-item">Cart</a>
           <a href="{% url 'orderlist' %}?usernum={{ request.session.susernum }}" class="list-group-item">OrderList</a>
           <a href="{% url 'mypage' %}?usernum={{ request.session.susernum }}" class="list-group-item">OrderHistory</a>
-          {% if request.session.susernum == 100 %}
-            <a href="{% url 'adminpage' %}" class="list-group-item">Admin Page</a>
-          {% endif %}
         </div>
       </div>
       <!-- /.col-lg-3 -->

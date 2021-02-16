@@ -72,3 +72,7 @@ INSERT INTO items VALUES (itemnum, 2, 3, '라 테스트용8', 7000, '2020-03-01'
 INSERT INTO items VALUES (itemnum, 2, 3, '라 테스트용8', 7000, '2020-03-01', '테스트용8-3권', 99, @tseries);
 
 INSERT INTO items VALUES (1000, 1, 1000, '테스트용', 100000, CURRENT_DATE(), '테스트용책입니다.', 1000, 1000);
+
+ALTER TABLE items AUTO_INCREMENT = 1001;
+
+ALTER TABLE items 

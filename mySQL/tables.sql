@@ -1,36 +1,36 @@
-
+DROP DATABASE jasminDb;
 CREATE DATABASE jasminDb;
 USE jasminDb;
 
 # 기본 테이블 
 CREATE TABLE authors (
 	authornum INT,
-	authorname NVARCHAR(20),
-	authorinfo NVARCHAR(200)
+	authorname NVARCHAR(20) NOT NULL,
+	authorinfo NVARCHAR(1000)
 );
 
 CREATE TABLE category (
 	catenum INT,
-	catename NVARCHAR(10)
+	catename NVARCHAR(10) NOT NULL
 );
 
 CREATE TABLE items (
 	itemnum INT,
-	catenum INT,
-	authornum INT,
-	itemname NVARCHAR(40),
-	price INT,
-	itemdate DATE,
-	iteminfo NVARCHAR(200),
-	sells INT,
-	series INT
+	catenum INT NOT NULL,
+	authornum INT NOT NULL,
+	itemname NVARCHAR(40) NOT NULL,
+	price INT NOT NULL,
+	itemdate DATE NOT NULL,
+	iteminfo NVARCHAR(1000),
+	sells INT NOT NULL,
+	series INT NOT NULL
 );
 
 CREATE TABLE users (
 	usernum INT,
 	userid VARCHAR(20),
-	userpwd VARCHAR(20),
-	username VARCHAR(20)
+	userpwd VARCHAR(20) NOT NULL,
+	username VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE carts (

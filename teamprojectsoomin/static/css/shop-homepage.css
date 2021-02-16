@@ -367,17 +367,15 @@ clear: left;
   margin-left: auto; margin-right: auto;
 }
 
-.navbar-form > .form-group > .form-select {
+.form-select {
   margin-bottom: 0;
   vertical-align: middle;
   height: 34px;
 }
 
-/*
-.navbar-form > .form-group > .form-control {
+.form-control {
   width: 200px;
 }
-*/
 
 @media (max-width: 768px) {
   .navbar-brand, .navbar-form {

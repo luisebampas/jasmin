@@ -1,26 +1,13 @@
-
+{% extends "base.html" %}
 
 {% load static %}
 
-<style>
-    section{
-        background-image: url("static/img/icon/goldwind.png");
-        background-position:left down;
-        background-repeat: no-repeat;
-    }
 
 </style>
-
-
-<section id="back">
-
+{% block content %}
+<section>
     <h1>JOIN PAGE</h1>
-<<<<<<< HEAD
     <div class="form-group" id="join_div">
-=======
-
-    <div id="join_div">
->>>>>>> master
         <form id="join_form" action="{% url 'joinimpl' %}" method="post">
         {% csrf_token %}
         <label for="exampleInputid">ID</label>
@@ -31,6 +18,6 @@
         <input type="text" class="form-control" name="name" placeholder="이름"><br><br>
         <input id="joinsq" type="submit" value="REGISTER">
         </form>
-    </div><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
+    </div>
 </section>
+{% endblock %}

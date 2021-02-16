@@ -16,12 +16,9 @@ class Sql:
     main = "SELECT o.ordernum, i.itemnum, i.itemname, i.price, a.authorname FROM orderlist o INNER JOIN items i ON o.itemnum = i.itemnum INNER JOIN authors a ON i.authornum = a.authornum where o.usernum = %d"
     cart = "SELECT c.cartnum, c.itemnum, i.itemname, i.price FROM carts c INNER JOIN items i ON c.itemnum = i.itemnum where c.usernum = %d "
     cartinsert = "INSERT INTO carts VALUES (null,%d,%d)";
-<<<<<<< HEAD
     cartdelete = "DELETE FROM carts WHERE cartnum= %d ";
 
-=======
-    cartdelete = "DELETE FROM carts WHERE itemnum= %s";
->>>>>>> master
+
 
     # 5. 총 결제 정보
     paymentinsert = "INSERT INTO payment VALUES (%d,%d,'%s',CURRENT_DATE,%d)";

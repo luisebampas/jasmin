@@ -20,13 +20,13 @@
                 </tr>
                 <tr>
                 <!-- item 정보-->
-                    <td align="center"><img class="img-responsive center-block" src="static/img/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';">
+                    <td align="center"><img class="img-responsive center-block" src="static/img/items/t{{item1.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';">
                     <td align="center"><strong>{{item1.itemname}}</strong></td>
                     <td align="center"><strong>{{item1.price|intcomma}}</strong></td>
                 </tr>
                 <tr>
                 <!-- item 정보-->
-                    <td align="center"><img class="img-responsive center-block" src="static/img/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';">
+                    <td align="center"><img class="img-responsive center-block" src="static/img/items/t{{item2.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';">
                     <td align="center"><strong>{{item2.itemname}}</strong></td>
                     <td align="center"><strong>{{item2.price|intcomma}}</strong></td>
                 </tr>
@@ -34,19 +34,7 @@
         </table>
       </div>
     <!--예상총액/장바구니 이동버튼-->
-      <div class = "row">
-        <table width="670" cellspacing="0" cellpadding="0" border="0">
-            <tbody>
-            <tr>
-              <td style="padding-top:8px" valign="top"><strong>총 결제 금액 : <font color="#cc3333"> {{item1.price|intcomma}}원</font></strong>
-              </td>
-              <td style="padding-top:5px;" align="right">
-                <div class="btn btn-sm"><a class="button_middle" href="#"><strong>장바구니로 돌아가기</strong></a></div>
-              </td>
-             </tr>
-            </tbody>
-        </table>
-      </div><br>
+
       {% include  "jasmine/paymethod.html" %}
   </div>
 </section>

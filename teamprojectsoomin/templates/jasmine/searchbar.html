@@ -1,4 +1,3 @@
-
 <form class="navbar-form navbar-left" action="{% url 'itemlist' %}" accept-charset="utf-8" method="get">
   <div class="form-group">
     <input type="hidden" name="category" value="{{catenum}}">
@@ -8,7 +7,7 @@
       <option class="form-searchmod" value="2">제목</option>
       <option class="form-searchmod" value="3">작가</option>
     </select>
-    <input type="text" class="form-control" placeholder="Search" name="searchword" value="{{searchword}}">
+   <input type="text" class="form-control" placeholder="Search" name="searchword" value="{{searchword}}">
   </div>
   <button type="submit" class="btn btn-default">검색</button>
 </form>
@@ -22,4 +21,3 @@
     });
   });
 </script>
-

@@ -5,8 +5,6 @@ from frame.value import Item, Itemlist, Itemdetail, Orders, Payment, Ordersone, 
 
 class ItemDb(Db):
     def insert(self, catenum, authornum, itemname, price, itemdate, iteminfo, sells, series):
-        if series == 0:
-            series = ItemDb().getautoincre;
         try:
             conn = super().getConnection();
             cursor = conn.cursor();
@@ -141,7 +139,8 @@ class ItemDb(Db):
         result = cursor.fetchall();
         all = [];
         for i in result:
-            pubs = RecentPublished(i[0], i[1], i[2], i[3], i[4], i[5]);
+            idate = i[3].strftime('%Y-%m-%d');
+            pubs = RecentPublished(i[0], i[1], i[2], idate, i[4], i[5],);
             all.append(pubs);
         super().close(conn, cursor);
         return all;
@@ -218,7 +217,6 @@ class PaymentDb(Db):
             all.append(payone);
         super().close(conn, cursor);
         return all;
-
 
 
 

@@ -1,16 +1,11 @@
 {% load static %}
 
-<style>
-  .list_content .main-catesection {
-    text-decoration: none;
-  }
-</style>
 
 <section>
   <div class="list_content">
     <a href="{% url 'itemlist' %}?category=2" class="main-catesection"><h3>일반 소설</h3></a>
     <ul>
-      <a href="{% url 'itemlist' %}?category=2" class="main-catesection"><h4>신간</h4></a>
+      <a href="{% url 'itemlist' %}?category=2&ordercon=2" class="main-catesection"><h4>신간</h4></a>
       {% for item in cate2_new %}
         <li class="list_item">
           <!-- picture -->
@@ -69,7 +64,7 @@
   <div class="list_content">
     <a href="{% url 'itemlist' %}?category=12" class="main-catesection"><h3>장르 소설</h3></a>
     <ul>
-      <a href="{% url 'itemlist' %}?category=12" class="main-catesection"><h4>신간</h4></a>
+      <a href="{% url 'itemlist' %}?category=12&ordercon=2" class="main-catesection"><h4>신간</h4></a>
       {% for item in cate12_new %}
         <li class="list_item">
           <!-- picture -->

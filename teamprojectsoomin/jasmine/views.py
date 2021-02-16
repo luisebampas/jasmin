@@ -177,8 +177,10 @@ class admin:
         return render(request, 'admin/manage.html', context)
 
     def additemspage(request):
+        newbooknum = ItemDb().getautoincre();
         context = {
             'section': 'admin/admin_additems.html',
+            'newbooknum': newbooknum,
         };
         return render(request, 'admin/manage.html', context)
 
@@ -187,6 +189,7 @@ class admin:
         limit = 5;
         search_authorname = request.POST['search_authorname'];
         authorlist = AuthorDb().searchauthor(search_authorname);
+        newbooknum = ItemDb().getautoincre();
         publistAll = [];
         for author in authorlist:
             publist = ItemDb().recentPublished(author.authornum, limit);
@@ -195,21 +198,25 @@ class admin:
             'section': 'admin/admin_additems.html',
             'authorlist': authorlist,
             'publistAll': publistAll,
+            'newbooknum': newbooknum,
         };
         return render(request, 'admin/manage.html', context)
 
     def addauthor(request):
         authorname = request.POST['add_authorname'];
         authorinfo = request.POST['add_authorinfo'];
+        newbooknum = ItemDb().getautoincre();
         try:
             AuthorDb().insert(authorname, authorinfo);
             context = {
                 'section': 'admin/admin_additems.html',
+                'newbooknum': newbooknum,
             };
         except:
             context = {
                 'section': 'admin/admin_additems.html',
-                'error': ErrorCode.e0011
+                'error': ErrorCode.e0011,
+                'newbooknum': newbooknum,
             };
         return render(request, 'admin/manage.html', context)
 
@@ -222,20 +229,19 @@ class admin:
         iteminfo = request.POST['iteminfo'];
         sells = int(request.POST['sells']);
         series = int(request.POST['series']);
-        try:
-            series = int(series);
-        except:
-            series = 0;
+        newbooknum = ItemDb().getautoincre();
         try:
             ItemDb().insert(category, item_authornum, itemname, price, itemdate, iteminfo, sells, series);
             context = {
                 'section': 'admin/admin_additems.html',
                 'series': series,
+                'newbooknum': newbooknum,
             };
         except:
             context = {
                 'section': 'admin/admin_additems.html',
-                'error': ErrorCode.e0011
+                'error': ErrorCode.e0011,
+                'newbooknum': newbooknum,
             };
         return render(request, 'admin/manage.html', context)
 
@@ -282,7 +288,7 @@ class mainSectionView:
     def mainSection(request):
         # catenum 2 일반 소설
         # 신간
-        page = 1; maxItemlist = 4; searchmod = 0; searchword = ''; ordercon=1;
+        page = 1; maxItemlist = 4; searchmod = 0; searchword = ''; ordercon=2;
         catenum = 2;
         cate2_new = ItemDb().select(catenum, page, maxItemlist, searchmod, searchword, ordercon);
         # 베스트셀러
@@ -291,7 +297,7 @@ class mainSectionView:
 
         # catenum 12 장르 소설
         # 신간
-        page = 1; maxItemlist = 4; searchmod = 0; searchword = ''; ordercon=1;
+        page = 1; maxItemlist = 4; searchmod = 0; searchword = ''; ordercon=2;
         catenum = 12;
         cate12_new = ItemDb().select(catenum, page, maxItemlist, searchmod, searchword, ordercon);
         # 베스트셀러

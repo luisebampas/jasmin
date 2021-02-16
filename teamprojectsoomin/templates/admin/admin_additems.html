@@ -1,14 +1,5 @@
 <style>
-  .author-list {
-    height: 420px;
-    overflow: auto;
-    border: 1px solid #777;
-  }
 
-  .info-box {
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
 </style>
 
 <!-- author search -->
@@ -50,12 +41,12 @@
                   <span class="co1">|</span>
                   {{publish.itemname}}
                   <span class="co1">|</span>
-                  {{publish.itemdate|date:"Y-m-d"}}
+                  {{publish.itemdate}}
                   <span class="co1">|</span>
                   {{publish.price}}원
                   <span class="co1">|</span>
                   시리즈: {{publish.series}}
-                  <input type="button" onclick="series_select({{author.authornum}}, {{publish.catenum}}, {{publish.series}}, {{publish.price}}, '{{publish.itemname}}');" value="입력">
+                  <input type="button" onclick="series_select({{author.authornum}}, {{publish.catenum}}, {{publish.series}}, {{publish.price}}, '{{publish.itemname}}', '{{publish.itemdate}}');" value="입력">
                 </li>
               {% endfor %}
             {% endif %}
@@ -98,7 +89,7 @@
   <input type="date" id="item_itemdate" name="itemdate"><br><br>
   <textarea id="item_iteminfo" name="iteminfo" class="info-box" cols="100" rows="12" placeholder="책 정보"></textarea><br>
   <input type="hidden" name="sells" value="0">
-  책 시리즈 : <input type="number" id="item_series" name="series" value="0"> (0일시 자동으로 등록할 책 번호로 입력 됨)<br>
+  책 시리즈 : <input type="number" id="item_series" name="series" value="{{newbooknum}}"><br>
   <button type="submit" class="btn btn-default">추가</button>
 </form>
 <hr>
@@ -113,6 +104,7 @@
     $('#item_series').val(series);
     $('#item_price').val(price);
     $('#item_itemname').val(itemname);
+    $('#item_itemdate').val(itemdate);
     $('.item_category').each(function(){
       if($(this).val() == catenum){
         $(this).attr("selected", "selected");

@@ -1,14 +1,4 @@
 
-<script>
-  $(document).ready(function(){
-    $('.form-searchmod').each(function(){
-      if($(this).val()=={{searchmod}}){
-        $(this).attr("selected", "selected");
-      }
-    });
-  });
-</script>
-
 <form class="navbar-form navbar-left" action="{% url 'itemlist' %}" accept-charset="utf-8" method="get">
   <div class="form-group">
     <input type="hidden" name="category" value="{{catenum}}">
@@ -22,3 +12,13 @@
   </div>
   <button type="submit" class="btn btn-default">검색</button>
 </form>
+
+<script>
+  $(document).ready(function(){
+    $('.form-searchmod').each(function(){
+      if($(this).val()=={{searchmod}}){
+        $(this).attr("selected", "selected");
+      }
+    });
+  });
+</script>

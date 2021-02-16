@@ -42,7 +42,7 @@ class Sql:
     searchWithTitle = "AND itemname LIKE '%"
     searchWithAuthor = "AND a.authorname LIKE '%"
     ordercon1 = "ORDER BY itemnum DESC ";
-    ordercon2 = "ORDER BY itemdate ASC ";
+    ordercon2 = "ORDER BY itemdate DESC ";
     ordercon3 = "ORDER BY sells DESC ";
     ordercon4 = "ORDER BY itemname ASC ";
     ordercon5 = "ORDER BY itemname DESC ";
@@ -60,7 +60,6 @@ class Sql:
     itemupdate = "UPDATE items SET catenum=%d, authornum=%d, itemname='%s', price=%d, itemdate='%s', iteminfo='%s', series=%d WHERE itemnum=%d";
 
     recentPublished = "SELECT itemnum, catenum, itemname, itemdate, price, series FROM items WHERE authornum = %d ORDER BY itemnum DESC LIMIT %d"
-
     searchAuthorNameFront = "SELECT authorname, authornum FROM authors WHERE authorname LIKE '%"
     searchAuthorNameRear = "%' ORDER BY authornum ASC"
     authorinsert = "INSERT INTO authors VALUES (NULL, '%s', '%s')";

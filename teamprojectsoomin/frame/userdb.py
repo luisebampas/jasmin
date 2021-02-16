@@ -136,11 +136,11 @@ class OrderDb(Db):
         finally:
             super().close(conn, cursor);
 
-    def cartdelete(self, cartnum):
+    def cartdelete(self, itemnum):
         try:
             conn = super().getConnection();
             cursor = conn.cursor();
-            cursor.execute(Sql.cartdelete % (cartnum));
+            cursor.execute(Sql.cartdelete % (itemnum));
             conn.commit();
         except:
             conn.rollback();

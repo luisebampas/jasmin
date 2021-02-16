@@ -7,59 +7,42 @@
 
 <section>
   <div class="container-fluid">
-      <div class = "row">
+     <div class = "row">
         <h2> 장바구니</h2>
-      </div>
-      <div class = "row">
-        <table class="table table-hover table-striped" width="700" cellspacing="1" cellpadding="0" border="0" bgcolor="#a2a2a2">
+     </div><br>
+     <div class = "row">
+      <div class = "col-lg-12">
+       <form id="cartitems" action="{% url 'pay2' %}" method="POST" >
+       {% csrf_token %}
+         <table class="table table-hover table-striped" width="700" cellspacing="1" cellpadding="0" border="0" bgcolor="#a2a2a2">
             <tbody>
                 <tr>
-                  <td class="popup" width="30"  bgcolor="#f4f4f4" align="center">
-                      <form><input type="checkbox" id="selectall" name="all" value="all"></form></td>
                   <td width="80" height="30" bgcolor="#f4f4f4" align="center">이미지</td>
-                  <td bgcolor="#f4f4f4" align="center">제 목</td>
+                  <td width="400"bgcolor="#f4f4f4" align="center">제 목</td>
                   <td width="138" bgcolor="#f4f4f4" align="center">가격</td>
-                  <td width="74" bgcolor="#f4f4f4" align="center"> 비고 </td>
+                  <td width="74" bgcolor="#f4f4f4" align="center"> 삭제 </td>
+                  <td width="30"  bgcolor="#f4f4f4" align="center">
+                      <input type="checkbox" id="selectall" name="all" value="all"></td>
                 </tr>
             <!-- item 정보-->
             {% for carts in cartlist %}
                 <tr>
-                    <td width="30"  bgcolor="#f4f4f4" align="center">
-                      <form><input type="checkbox" id="select" name="{{forloop.counter}}" value="{{forloop.counter}}"></form></td>
                     <td align="center"><img class="img-responsive center-block" src="static/img/t{{cart.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';"></td>
                     <td align="center"><strong>{{carts.itemname}}</strong></td>
                     <td align="center"><strong>{{carts.price|intcomma}}원</strong></td>
-                    <td align="center"><div class="btn btn-sm"><strong>비고</a></strong></div></td>
+                    <td align="center"><a class="btn btn-sm" action="{% url 'cartdelete' %}?itemnum={{carts.itemnum}}" method="GET"></a>삭제</td>
+                    <td width="30"  bgcolor="#f4f4f4" align="center">
+                        <input type='checkbox' id="{{forloop.counter}}" name="{{forloop.counter}}" value="{{carts.itemnum}}"></td>
                 </tr>
             {% endfor %}
             </tbody>
-        </table>
+         </table>
+        <div class="button btn-default">
+          <input class="btn btn-sm" type="submit" value="결제하기">
+        </div>
+       </form>
       </div>
-
-    <!--예상총액/장바구니 이동버튼-->
-      <div class = "row">
-        <table width="670" cellspacing="0" cellpadding="0" border="0">
-            <tbody>
-            <tr>
-              <td style="padding-top:8px" valign="top"><strong>총 예상 금액 : <font color="#cc3333"> 원</font></strong>
-              </td>
-              <td style="padding-top:5px;" align="right">
-                <div class="btn btn-sm"><a class="button_middle" href="{% url 'itemlist' %}"><strong>목록으로 돌아가기</strong></a></div>
-              </td>
-             </tr>
-            </tbody>
-        </table>
-      </div><br>
-
-      <div class="row">
-            <div class="button btn-default">
-                <a class="buttons" href="{% url 'payimpl' %}?itemnum={{cart.itemnum}}&id={{ request.session.suser }}&paymethod=card">주문 하기</a>
-            </div>
-      </div>
-  </div><br>
-
+     </div>
+  </div>
 </section><br>
-
-
-
 {% endblock %}

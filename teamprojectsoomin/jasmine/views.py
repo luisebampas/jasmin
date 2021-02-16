@@ -18,7 +18,7 @@ class MainView:
         context = {
             'section': 'jasmine/login.html'
         };
-        return render(request, 'jasmine/login.html', context)
+        return render(request, 'jasmine/home.html', context)
 
     def logout(request):
         if request.session['suser'] != None:
@@ -58,7 +58,7 @@ class MainView:
         context = {
             'section': 'jasmine/join.html'
         };
-        return render(request, 'jasmine/join.html', context)
+        return render(request, 'jasmine/home.html', context)
 
     def joinimpl(request):
         id = request.POST['id'];
@@ -171,6 +171,7 @@ def cart(request):
     return render(request, 'jasmine/mypage.html', context)
 
 def cartdelete(request):
+<<<<<<< HEAD
     cartnum = request.GET['cartnum'];
     print(cartnum)
     try:
@@ -188,6 +189,31 @@ def cartdelete(request):
     usernm = request.session['susernum']
     qstr = urlencode({'usernum': usernm})
     return HttpResponseRedirect('%s?%s' % ('cart', qstr))
+=======
+    itemnum = int(request.GET['itemnum']);
+    OrderDb().cartdelet(itemnum)
+    request.session['suser'] = None;
+    return render(request,'jasmine/cartlist.html');
+
+
+def cartlist(request):
+    try:
+        itemnum = int(request.GET['itemnum']);
+    except:
+        return redirect('login');
+    finally:
+        userid = str(request.session['suser']);
+        user = UserDb().selectone(userid)
+
+        OrderDb().cartinsert(user.usernum, itemnum);  # 총 주문기록에 새로운 내역 추가.
+        cartlist = OrderDb().cart(user.usernum);
+        context = {
+            'section': 'jasmine/cartlist.html',
+            'cartlist': cartlist,
+        };
+    return render(request, 'jasmine/home.html', context)
+
+>>>>>>> master
 
 class admin:
     def adminpage(request):
@@ -292,22 +318,6 @@ def map(request):
     return render(request, 'jasmine/about.html', context)
 
 
-def cartlist(request):
-    try:
-        itemnum = int(request.GET['itemnum']);
-    except:
-        return redirect('login');
-    finally:
-        userid = str(request.session['suser']);
-        user = UserDb().selectone(userid)
-
-        OrderDb().cartinsert(user.usernum, itemnum);  # 총 주문기록에 새로운 내역 추가.
-        cartlist = OrderDb().cart(user.usernum);
-        context = {
-            'section': 'jasmine/cartlist.html',
-            'cartlist': cartlist,
-        };
-    return render(request, 'jasmine/home.html', context)
 
 
 class mainSectionView:
@@ -412,26 +422,40 @@ class mainSectionView:
         };
         return render(request, 'jasmine/home.html', context)
 
-
     def payment(request):
-        try:
-            userid = str(request.session['suser']);
-            itemnum = int(request.GET['itemnum']);
-            item = ItemDb().selectone(itemnum);
-            context = {
-                'section': 'jasmine/payment.html',
-                'item': item,
-                'id': userid
+
+        userid = str(request.session['suser']);
+        itemnum = int(request.GET['itemnum']);
+        item = ItemDb().selectone(itemnum);
+        context = {
+            'section': 'jasmine/payment.html',
+            'item': item,
+            'id': userid,
             };
-        except:
-            return redirect('login');
-        return render(request, 'jasmine/home.html', context)
+        return render(request, 'jasmine/home.html', context);
+
+    def pay2(request):
+        userid = str(request.session['suser']);
+        itemlist = [];
+        for n in range(1,3):
+            data = request.POST[str(n)];
+            itemlist.append(data);
+        item1 = ItemDb().selectone(itemlist[0]);
+        item2 = ItemDb().selectone(itemlist[1]);
+        context = {
+            'section': 'jasmine/pay2.html',
+            'id': userid,
+            'item1': item1,
+            'item2': item2,
+        };
+        return render(request, 'jasmine/home.html', context);
+
 
 
     def payimpl(request):
-        itemnum = int(request.GET['itemnum']);
-        userid = request.GET['id'];
-        paymethod = request.GET['paymethod'];
+        itemnum = int(request.POST['itemnum']);
+        userid = request.POST['id'];
+        paymethod = request.POST['PayMethod'];
         user = UserDb().selectone(userid);
         item = ItemDb().selectone(itemnum);
 
@@ -448,13 +472,32 @@ class mainSectionView:
         };
         return render(request, 'jasmine/home.html', context);
 
+    def paycart(request):
+        itemnum = int(request.GET['itemnum']);
+        userid = request.GET['id'];
+        paymethod = request.GET['paymethod'];
+        user = UserDb().selectone(userid);
+        item = ItemDb().selectone(itemnum);
+
+        # 해당 아이템 주문/결제정보 생성
+        OrdersDb().insert(user.usernum, itemnum, paymethod); # 총 주문기록에 새로운 내역 추가.
+        ordernum = int(OrdersDb().selectone(user.usernum));
+        OrderDb().listinsert(ordernum, user.usernum, itemnum); # 사용자의 주문내역에 추가.
+        PaymentDb().insert(ordernum, user.usernum, item.itemname, item.price); # 결제정보 추가.
+        paylist = PaymentDb().selectone(user.usernum); # 유저의 지난 구매기록 모두 불러오기
+        ItemDb().sellitem(itemnum); # 아이템 판매처리, 판매수량 + 1
+        context = {
+            'section': 'jasmine/paycart.html',
+            'paylist': paylist,
+        };
+        return render(request, 'jasmine/home.html', context);
 
     def viewpage(request):
-
         context = {
             'section': 'jasmine/viewpage.html',
         };
         return render(request,'jasmine/home.html', context);
+
 
     def pdfview(request):
 

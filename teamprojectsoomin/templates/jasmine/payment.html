@@ -20,9 +20,9 @@
                 </tr>
                 <tr>
                 <!-- item 정보-->
-                    <td height="28" bgcolor="#FFFFFF" align="center">
+                    <td align="center"><img class="img-responsive center-block" src="static/img/items/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';">
                     <td align="center"><strong>{{item.itemname}}</strong></td>
-                    <td align="center"><strong>{{item.|intcomma}}</strong></td>
+                    <td align="center"><strong>{{item.price|intcomma}}</strong></td>
                 </tr>
             </tbody>
         </table>
@@ -43,24 +43,6 @@
         </table>
       </div><br>
       {% include  "jasmine/paymethod.html" %}
-      <div class="row">
-        <table width="680" cellspacing="0" cellpadding="0" border="0" align="center">
-            <tbody>
-                <tr>
-                    <td align="left">
-                        <div class="button btn-default">
-                            <a class="buttons" href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}">이전 단계</a>
-                        </div>
-                    </td>
-                    <td align="center">
-                        <div class="button btn-default">
-                            <a class="buttons" href="{% url 'payimpl' %}?itemnum={{item.itemnum}}&id={{ request.session.suser }}&paymethod=card">결제하기</a>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-      </div>
   </div><br>
 
 </section><br>

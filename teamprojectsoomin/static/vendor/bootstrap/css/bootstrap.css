@@ -2016,6 +2016,7 @@ pre code {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  min-width:100%
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2040,6 +2041,7 @@ pre code {
   border-color: #80bdff;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  min-width:100%
 }
 
 .form-control::-webkit-input-placeholder {
@@ -4346,17 +4348,17 @@ input[type="button"].btn-block {
 
 .navbar-brand {
   display: inline-block;
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
-  margin-right: 1rem;
-  font-size: 1.25rem;
-  line-height: inherit;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  margin-right: 0rem;
+  line-height: 86;
   white-space: nowrap;
 }
 
 .navbar-form navbar-left{
   display: inline-block;
   align-items: center;
+  min-width:100%;
 }
 
 .navbar-brand:hover, .navbar-brand:focus {

@@ -1,0 +1,56 @@
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+
+<section>
+  <div class="container-fluid">
+      <div class = "row">
+        <h2> 주문 및 결제</h2>
+      </div>
+      <div class = "row">
+        <h3> 주문 정보 </h3>
+        <table class="table table-striped" width="670" cellspacing="1" cellpadding="0" border="0" bgcolor="#a2a2a2">
+            <tbody>
+                <tr>
+                  <td class="popup" width="86" height="28" bgcolor="#f4f4f4" align="center">Thanks to</td>
+                  <td class="popup" bgcolor="#f4f4f4" align="center">상품명</td>
+                  <td class="popup" width="138" bgcolor="#f4f4f4" align="center">가격</td>
+                </tr>
+                <tr>
+                <!-- item 정보-->
+                    <td align="center"><img class="img-responsive center-block" src="static/img/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';">
+                    <td align="center"><strong>{{item1.itemname}}</strong></td>
+                    <td align="center"><strong>{{item1.price|intcomma}}</strong></td>
+                </tr>
+                <tr>
+                <!-- item 정보-->
+                    <td align="center"><img class="img-responsive center-block" src="static/img/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';">
+                    <td align="center"><strong>{{item2.itemname}}</strong></td>
+                    <td align="center"><strong>{{item2.price|intcomma}}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    <!--예상총액/장바구니 이동버튼-->
+      <div class = "row">
+        <table width="670" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+            <tr>
+              <td style="padding-top:8px" valign="top"><strong>총 결제 금액 : <font color="#cc3333"> {{item1.price|intcomma}}원</font></strong>
+              </td>
+              <td style="padding-top:5px;" align="right">
+                <div class="btn btn-sm"><a class="button_middle" href="#"><strong>장바구니로 돌아가기</strong></a></div>
+              </td>
+             </tr>
+            </tbody>
+        </table>
+      </div><br>
+      {% include  "jasmine/paymethod.html" %}
+  </div>
+</section>
+
+
+
+{% endblock %}

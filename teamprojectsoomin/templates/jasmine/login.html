@@ -1,8 +1,16 @@
-{% extends "base.html" %}
+
 {% load static %}
 
 
-{% block content %}
+
+<style>
+    section{
+        background-image: url("static/img/icon/mintwave.png");
+        background-position:left down;
+        background-repeat: no-repeat;
+    }
+
+</style>
 
 <section>
 
@@ -18,6 +26,7 @@
             <button id="loginsq" type="submit" class="btn btn-default">login</button><br><br>
             회원가입을 원하신다면&#10153;  <div id="login_join"><a href="{% url 'join' %}">join</a></div>
         </form>
+<<<<<<< HEAD
     </div>
 
     <div id="box_reason" style="margin:100px auto; padding: 13px; width:30%;" >
@@ -40,6 +49,11 @@
             </li>
         </ul>
     </div>
+=======
+    </div><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+>>>>>>> master
 
 </section>
-{% endblock %}

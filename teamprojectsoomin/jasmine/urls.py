@@ -39,14 +39,13 @@ urlpatterns = [
     path('userdelete', views.userdelete, name='userdelete'),
     path('orderlist', views.orderlist, name='orderlist'),
     path('cart', views.cart, name='cart'),
-<<<<<<< HEAD
-    #path('cartdelete', views.cartdelete, name='cartdelete'),
+
     path('manage',views.manage, name='manage'),
     path('userlist',views.userlist, name='userlist'),
-=======
+
     path('cartdelete', views.cartdelete, name='cartdelete'),
     path('cartlist', views.cartlist, name='cartlist'),
->>>>>>> viewr
+
 
 
     path('adminpage', views.admin.adminpage, name='adminpage'),
@@ -66,7 +65,7 @@ urlpatterns = [
     path('payimpl', views.mainSectionView.payimpl, name='payimpl'),
     path('paycart', views.mainSectionView.paycart, name='paycart'),
     path('viewpage', views.mainSectionView.viewpage, name='viewpage'),
-    path('pdfview', views.mainSectionView.pdfview, name='pdfview'),
+    path('paydetail', views.mainSectionView.viewpage, name='paydetail'),
 
 
     path('about', TemplateView.as_view(template_name='jasmine/about.html'), name='about'),

@@ -27,7 +27,7 @@
             <!-- item 정보-->
             {% for carts in cartlist %}
                 <tr>
-                    <td align="center"><img class="img-responsive center-block" src="static/img/t{{cart.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';"></td>
+                    <td align="center"><img class="img-responsive center-block" src="static/img/items/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';"></td>
                     <td align="center"><strong>{{carts.itemname}}</strong></td>
                     <td align="center"><strong>{{carts.price|intcomma}}원</strong></td>
                     <td align="center"><a class="btn btn-sm" action="{% url 'cartdelete' %}?itemnum={{carts.itemnum}}" method="GET"></a>삭제</td>
@@ -37,8 +37,8 @@
             {% endfor %}
             </tbody>
          </table>
-        <div class="button btn-default">
-          <input class="btn btn-sm" type="submit" value="결제하기">
+        <div class="button btn-waning">
+          <input class="btn btn-lg" type="submit" value="결제하기">
         </div>
        </form>
       </div>

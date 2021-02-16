@@ -27,7 +27,7 @@
         <!-- item 정보-->
         {% for payone in paylist %}
             <tr>
-                <td height="120"><img class="img-responsive center-block" src="static/img/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';"></td>
+                <td height="120"><img class="img-responsive center-block" src="static/img/items/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';"></td>
                 <td align="center"><strong>{{payone.itemname}}</strong></td>
                 <td align="center"><strong>{{payone.cost|intcomma}}원</strong></td>
                 <td align="center"><div class="btn btn-sm"><strong><a class="button_middle" href="{% url 'viewpage' %}}?itemnum={item.itemnum}">보러 가기</a></strong></div></td>
@@ -46,7 +46,7 @@
                 {% elif paylist|length < 7 %}
                   <div class="col-xs-4 col-md-2">
                     <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}" class="thumbnail">
-                      <img class="img-responsive center-block" src="static/img/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';">
+                      <img class="img-responsive center-block" src="static/img/items/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';">
                     </a>
                   </div>
                 {%endif%}

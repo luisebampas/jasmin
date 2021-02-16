@@ -1,8 +1,9 @@
+
+<h2>결제 수단 선택</h2><br>
+
+<div class="container">
 <div class="row">
-    <h1>결제 수단 선택<h1><br>
-</div>
-<div class="row">
-    <form class="navbar-form navbar-left" action="{% url 'payimpl' %}" accept-charset="utf-8" method="POST">
+    <form action="{% url 'payimpl' %}" accept-charset="utf-8" method="POST">
     {% csrf_token %}
        <div class="form-group">
         <table width="670" cellspacing="0" cellpadding="0" border="0">
@@ -65,23 +66,24 @@
             </tbody>
         </table>
        </div>
-         <table width="680" cellspacing="0" cellpadding="0" border="0" align="center">
+        <table width="680" cellspacing="0" cellpadding="0" border="0" align="center">
             <tbody>
                 <tr>
                     <td align="left">
                         <div class="button btn-default">
-                            <a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}">이전 단계</a>
+                            <button class="btn-waning" value="결제하기"><a href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}">이전 단계</a></button>
                         </div>
                     </td>
                     <input type="hidden" name="itemnum" value="{{item.itemnum}}">
                     <input type="hidden" name="id" value="{{ request.session.suser }}">
-                    <td align="center">
+                    <td align=left">
                         <div class="button">
-                            <button class="btn-default" type="submit" value="결제하기"></button>
+                            <button class="btn-waning">결제하기</button>
                         </div>
                     </td>
                 </tr>
             </tbody>
-         </table></br>
+        </table></br>
     </form>
+</div>
 </div>

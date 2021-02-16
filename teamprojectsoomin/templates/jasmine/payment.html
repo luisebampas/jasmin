@@ -20,9 +20,9 @@
                 </tr>
                 <tr>
                 <!-- item 정보-->
-                    <td height="28" bgcolor="#FFFFFF" align="center">
+                    <td align="center"><img class="img-responsive center-block" src="static/img/items/t{{item.itemnum}}.jpg" onerror="this.onerror=null; this.src='static/img/terror.jpg';">
                     <td align="center"><strong>{{item.itemname}}</strong></td>
-                    <td align="center"><strong>{{item.|intcomma}}</strong></td>
+                    <td align="center"><strong>{{item.price|intcomma}}</strong></td>
                 </tr>
             </tbody>
         </table>
@@ -43,7 +43,6 @@
         </table>
       </div><br>
       {% include  "jasmine/paymethod.html" %}
-
   </div><br>
 
 </section><br>

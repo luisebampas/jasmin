@@ -43,24 +43,7 @@
         </table>
       </div><br>
       {% include  "jasmine/paymethod.html" %}
-      <div class="row">
-        <table width="680" cellspacing="0" cellpadding="0" border="0" align="center">
-            <tbody>
-                <tr>
-                    <td align="left">
-                        <div class="button btn-default">
-                            <a class="buttons" href="{% url 'itemcontent' %}?itemnum={{item.itemnum}}">이전 단계</a>
-                        </div>
-                    </td>
-                    <td align="center">
-                        <div class="button btn-default">
-                            <a class="buttons" href="{% url 'payimpl' %}?itemnum={{item.itemnum}}&id={{ request.session.suser }}&paymethod=card">결제하기</a>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-      </div>
+
   </div><br>
 
 </section><br>

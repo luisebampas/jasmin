@@ -178,5 +178,6 @@ def orderselectone_test():
         print(u);
 
 if __name__ == '__main__':
+    userlist_test();
     orderselectone_test();
 

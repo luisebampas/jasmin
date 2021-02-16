@@ -77,6 +77,18 @@ class ItemDb(Db):
         super().close(conn, cursor);
         return all;
 
+    def selectall(self):
+        conn = super().getConnection();
+        cursor = conn.cursor();
+        cursor.execute(Sql.itemlist);
+        result = cursor.fetchall();
+        all = [];
+        for i in result:
+            item = Itemlist(i[0],i[1],i[2],i[3],i[4],i[5]);
+            all.append(item);
+        super().close(conn,cursor);
+        return all;
+
     def listcount(self, catenum, searchmod=1, searchword=''):
         conn = super().getConnection();
         cursor = conn.cursor();

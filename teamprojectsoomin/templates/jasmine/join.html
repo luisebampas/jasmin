@@ -15,13 +15,20 @@
 <section id="back">
 
     <h1>JOIN PAGE</h1>
+<<<<<<< HEAD
+    <div class="form-group" id="join_div">
+=======
 
     <div id="join_div">
+>>>>>>> master
         <form id="join_form" action="{% url 'joinimpl' %}" method="post">
         {% csrf_token %}
-        ID<input type="text" name="id"><br>
-        PWD<input type="text" name="pwd"><br>
-        NAME<input type="text" name="name"><br><br>
+        <label for="exampleInputid">ID</label>
+        <input type="text" class="form-control" name="id" placeholder="아이디를입력하세요"><br>
+        <label for="exampleInputpassword">PWD</label>
+        <input type="text" class="form-control" name="pwd" placeholder="비밀번호"><br>
+        <label for="exampleInputpassword">이름</label>
+        <input type="text" class="form-control" name="name" placeholder="이름"><br><br>
         <input id="joinsq" type="submit" value="REGISTER">
         </form>
     </div><br><br><br><br><br><br><br><br><br><br><br><br><br>

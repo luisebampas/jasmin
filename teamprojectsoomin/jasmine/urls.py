@@ -39,9 +39,14 @@ urlpatterns = [
     path('userdelete', views.userdelete, name='userdelete'),
     path('orderlist', views.orderlist, name='orderlist'),
     path('cart', views.cart, name='cart'),
+<<<<<<< HEAD
+    path('cartdelete', views.cartdelete, name='cartdelete'),
+=======
 
+>>>>>>> master
     path('manage',views.manage, name='manage'),
     path('userlist',views.userlist, name='userlist'),
+    path('itemlistall', views.itemlistall, name='itemlistall'),
 
     path('cartdelete', views.cartdelete, name='cartdelete'),
     path('cartlist', views.cartlist, name='cartlist'),

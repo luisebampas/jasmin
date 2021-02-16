@@ -1,0 +1,30 @@
+{% load static  %}
+
+<section>
+    <h1>아이템 리스트</h1>
+
+            <table class="table">
+         <thead>
+           <tr>
+              <th>아이템번호</th>
+              <th>제목</th>
+              <th>저자</th>
+              <th>가격</th>
+               <th>등록일자</th>
+           </tr>
+         </thead>
+         <tbody>
+            {% for i in itemlist %}
+               <tr>
+                  <td>{{ i.itemnum }}</td>
+                  <td>{{ i.itemname }}</td>
+                  <td>{{i.authorname}}</td>
+                  <td>{{ i.price  }}</td>
+                   <td>{{ i.itemdate  }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+
+        </table>
+
+</section>

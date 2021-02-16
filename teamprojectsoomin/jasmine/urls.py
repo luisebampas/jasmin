@@ -39,9 +39,10 @@ urlpatterns = [
     path('userdelete', views.userdelete, name='userdelete'),
     path('orderlist', views.orderlist, name='orderlist'),
     path('cart', views.cart, name='cart'),
-    #path('cartdelete', views.cartdelete, name='cartdelete'),
+    path('cartdelete', views.cartdelete, name='cartdelete'),
     path('manage',views.manage, name='manage'),
     path('userlist',views.userlist, name='userlist'),
+    path('itemlistall', views.itemlistall, name='itemlistall'),
 
 
     path('adminpage', views.admin.adminpage, name='adminpage'),

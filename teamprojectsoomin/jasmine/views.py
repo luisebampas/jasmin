@@ -21,9 +21,9 @@ class MainView:
         return render(request, 'jasmine/login.html', context)
 
     def logout(request):
-        if request.session['suser']!= None:
+        if request.session['suser'] != None:
             del request.session['suser'];
-        return render(request,'jasmine/home.html')
+        return mainSectionView.mainSection(request)
 
     def loginimpl(request):
         id = request.POST['id'];
@@ -167,7 +167,27 @@ def cart(request):
         'section': 'jasmine/cart.html',
         'cartlist':rsusernum,
     };
+
     return render(request, 'jasmine/mypage.html', context)
+
+def cartdelete(request):
+    cartnum = request.GET['cartnum'];
+    print(cartnum)
+    try:
+        OrderDb().cartdelete(int(cartnum));
+        context = {
+            'section': 'jasmine/cart.html',
+        };
+    except:
+        context = {
+            'section': 'jasmine/error.html',
+            'error':ErrorCode.e0002
+        };
+        return render(request,'jasmine/mypage.html',context);
+
+    usernm = request.session['susernum']
+    qstr = urlencode({'usernum': usernm})
+    return HttpResponseRedirect('%s?%s' % ('cart', qstr))
 
 class admin:
     def adminpage(request):
@@ -256,7 +276,13 @@ def userlist(request):
     };
     return render(request, 'admin/manage.html',context)
 
-
+def itemlistall(request):
+    ritemlist = ItemDb().selectall();
+    context = {
+        'section':'admin/itemlist.html',
+        'itemlist' : ritemlist
+    };
+    return render(request, 'admin/manage.html',context)
 
 
 def map(request):

@@ -18,7 +18,7 @@ class MainView:
         context = {
             'section': 'jasmine/login.html'
         };
-        return render(request, 'jasmine/login.html', context)
+        return render(request, 'jasmine/home.html', context)
 
     def logout(request):
         if request.session['suser'] != None:
@@ -51,7 +51,7 @@ class MainView:
         context = {
             'section': 'jasmine/join.html'
         };
-        return render(request, 'jasmine/join.html', context)
+        return render(request, 'jasmine/home.html', context)
 
     def joinimpl(request):
         id = request.POST['id'];
